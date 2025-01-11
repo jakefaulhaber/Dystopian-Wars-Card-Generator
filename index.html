@@ -1,0 +1,613 @@
+<html>
+<head>
+	<title>Card</title>
+	<link rel="stylesheet" type="text/css" href="cards.css">
+
+	<script src="js/utility.js"></script>
+	<script src="data/ships_imperium.js"></script>
+	<script src="data/rules.js"></script>
+	<script src="data/weapons.js"></script>
+	<script src="data/generators.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Special+Elite&display=swap" rel="stylesheet">
+
+
+	<script>
+		const savedOptions = {}
+		const savedOptionsString = getCookie('options')
+		let savedList = getCookie('list') || ''
+
+		if (savedOptionsString) {
+			Object.assign(savedOptions, JSON.parse(savedOptionsString))
+		}
+
+		function selectFaction(e, faction) {
+			if (faction) {
+				const select = document.querySelector('#faction_select')
+				select.value = faction
+			} else {
+				faction = e.target.value
+				setCookie('faction', faction, 365)
+				setCookie('options', '', 0)
+			}
+			init(faction)
+		}
+
+		function clearOptions() {
+			setCookie('options', '', 0)
+		}
+
+		function renderOptions() {
+			const cards = document.querySelectorAll('.output .card')
+
+			cards.forEach((card) => {
+				const cardOptions = savedOptions[card.dataset.ship]
+
+				if (cardOptions) {
+					const optionNames = Object.keys(cardOptions)
+					optionNames.push('Optional Upgrades')
+					optionNames.map((optionName) => {
+						const optionValue = cardOptions[optionName] || (optionName != 'Optional Upgrades' ? 0 : null)
+
+						let optionValueId, optionChoice
+						if (optionValue) {
+							if (optionValue?.toString().indexOf('_') > -1) {
+								optionValueId = optionValue.split('_')[0]
+								optionChoice = optionValue.split('_')[1]
+							} else {
+								optionValueId = parseInt(optionValue)
+							}
+						} else {
+							optionValueId = optionValue
+						}
+
+						const optionElements = Array.from(card.querySelectorAll(`[data-option="${optionName}"]`))
+
+						optionElements.map((optionElement) => {
+							optionElement.style.display = 'none'
+						})
+
+						if (optionValueId || optionValueId === 0) {
+							card.querySelector(`[data-option="${optionName}"][data-option-choice-id="${optionValueId}${optionChoice ? '_' + optionChoice : ''}"]`).style.display = ''
+						}
+					})
+				}
+
+				card.querySelectorAll('tr').forEach((tr, i) => {
+					tr.classList.remove('odd')
+				})
+				const visibleRows = Array.from(card.querySelectorAll('tr')).filter(tr => tr.offsetParent !== null);
+				visibleRows.forEach((tr, i) => {
+					if (i % 2 == 0) {
+						tr.classList.add('odd')
+					}
+				})
+			})
+		}
+
+		// setTimeout(renderOptions, 2000)
+
+		function saveOption(e) {
+			const shipKey = e.target.dataset.ship
+			const optionName = e.target.name
+			const optionValue = e.target.value
+
+			if (!savedOptions?.[shipKey]) {
+				savedOptions[shipKey] = {}
+			}
+
+			if (savedOptions[shipKey][optionName] === optionValue) {
+				delete savedOptions[shipKey][optionName]
+			} else {
+				savedOptions[shipKey][optionName] = optionValue
+			}
+			setCookie('options', JSON.stringify(savedOptions), 365)
+			renderOptions()
+		}
+
+		function saveList(e) {
+			let newSavedList = ''
+			document.querySelectorAll('.list input:checked').forEach((input) => {
+				if (input.checked) {
+					newSavedList += newSavedList ? ',' + input.value : input.value
+				}
+			})
+
+			if (newSavedList != savedList) {
+				setCookie('list', newSavedList, 365)
+				savedList = newSavedList
+				init(getCookie('faction'))
+			}
+
+			setCookie('list', savedList, 365)
+		}
+
+		function init(faction) {
+			const output = $('.output')
+			const listElement = $('.list')
+			listElement.innerHTML = ''
+			output.innerHTML = ''
+
+			const shipData = window[faction + '_ships']
+
+			let shipKeys = Object.keys(shipData)
+			shipKeys.sort((a, b) => shipData[a].name.localeCompare(shipData[b].name))
+			shipKeys.map((shipKey) => {
+				const ship = shipData[shipKey]
+				listElement.innerHTML += `<label><input type="checkbox" onchange="saveList(event)" ${savedList.indexOf(shipKey) > -1 ? 'checked' : ''} value="${shipKey}" /> ${shipData[shipKey].name}</label>`
+			})
+
+			const ships = savedList.length ? savedList.split(',') : []
+
+			let weaponRules = []
+
+			const optionIds = {}
+			function getOptionId(shipKey, optionName) {
+				if (!optionIds[shipKey]) {
+					optionIds[shipKey] = {}
+				}
+
+				if (!optionIds[shipKey][optionName] && optionIds[shipKey][optionName] !== 0) {
+					optionIds[shipKey][optionName] = 0
+				} else {
+					optionIds[shipKey][optionName] += 1
+				}
+
+				return optionIds[shipKey][optionName]
+			}
+						
+
+			ships.map((shipKey, cardIndex) => {
+				const ship = shipData[shipKey]
+				const options = {}
+				let optionId = 0
+
+				if (!savedOptions[shipKey]) {
+					savedOptions[shipKey] = {}
+				}
+
+				const card = $('.template .card').cloneNode(true)
+				card.dataset.ship = shipKey
+
+				card.find('.name').innerHTML = ship.name
+				card.find('.type').innerHTML = ship.type
+				card.find('.mass').innerHTML = ship.mass.split('/')[0]
+				card.find('.speed').innerHTML = ship.speed.split('/')[0]
+				card.find('.turn').innerHTML = ship.turnLimit.split('/')[0]
+				card.find('.armor').innerHTML = ship.armour.split('/')[0]
+				card.find('.citadel').innerHTML = ship.citadel.split('/')[0]
+				card.find('.adv').innerHTML = ship.adv.split('/')[0]
+				card.find('.sdv').innerHTML = ship.sdv.split('/')[0]
+				card.find('.fray').innerHTML = ship.fray.split('/')[0]
+				card.find('.hull').innerHTML = ship.hull.split('/')[0]
+
+				if (parseInt(ship.mass) > 1) {
+					card.find('.mass_crippled').innerHTML = ship.mass.split('/')[1]
+					card.find('.speed_crippled').innerHTML = ship.speed.split('/')[1]
+					card.find('.turn_crippled').innerHTML = ship.turnLimit.split('/')[1]
+					card.find('.armor_crippled').innerHTML = ship.armour.split('/')[1]
+					card.find('.citadel_crippled').innerHTML = ship.citadel.split('/')[1]
+					card.find('.adv_crippled').innerHTML = ship.adv.split('/')[1]
+					card.find('.sdv_crippled').innerHTML = ship.sdv.split('/')[1]
+					card.find('.fray_crippled').innerHTML = ship.fray.split('/')[1]
+					card.find('.hull_crippled').innerHTML = ship.hull.split('/')[1]
+				} else {
+					card.find('.crippled').style.display = 'none'
+					card.find('.battle_ready').classList.add('mass_1')
+				}
+				
+
+				ship.traits.split(',').map((trait) => {
+					trait = trait.trim()
+					const image = getImage(trait)
+				
+					if (image) {
+						card.find('.trait_images').innerHTML += `<img src="${image}" title="${trait}">`
+					} else {
+						card.find('.traits').innerHTML += `<span>${trait}</span>`
+					}
+				})
+
+				const iconsToShow = ['assault', 'shooting', 'ramming', 'movement', 'srs', 'defense', 'weakness']
+
+				function initOptionalRule(rule) {
+					if (rule.option) {
+						if (options[rule.option]) {
+							options[rule.option].push(rule)
+							optionId += 1
+						} else {
+							options[rule.option] = [rule]
+						}
+					}
+				}
+
+				function renderRule(rule, container) {
+					let ruleName = rule
+					if (typeof rule != 'string') {
+						ruleName = rule.name
+					}
+
+					if (window.general_rules[ruleName]) {
+						const icons = window.general_rules[ruleName].type.toLowerCase().split('/').map((type) => {
+							if (iconsToShow.indexOf(type) > -1) {
+								return `<img src="images/${type}.png" title="${type}">`
+							}
+						})
+						
+						container.innerHTML += `<div ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
+							<h3>${icons.join('')}${ruleName}</h3>
+							<p>${window.general_rules[ruleName].description}</p>
+						</div>`
+					} else {
+						container.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
+					}
+				}
+
+				const generalRulesElement = card.find('.general_rules')
+				ship.rules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, generalRulesElement)
+				})
+
+				const srsRulesElement = card.find('.srs_rules')
+				ship?.rules.srs?.map((rule, i) => {
+
+					let ruleText = rule
+					let ruleName = rule
+					if (typeof rule != 'string') {
+						ruleText = rule.name + ` [${rule.value}]`
+						ruleName = rule.name
+					}
+
+					if (window.general_rules[ruleName]) {
+						srsRulesElement.innerHTML += `<div>
+							<h3>${ruleText}</h3>
+							<p>${window.general_rules[ruleName].description}</p>
+						</div>`
+					} else {
+						srsRulesElement.innerHTML += `<h3 class="missing_rule">Missing Rule: ${rule}</h3>`
+					}
+				})
+
+
+
+
+
+				const weaponsWrapper = card.find('.weapons')
+				const weaponsElement = weaponsWrapper.find('tbody')
+				const generatorElement = card.find('.generator_rules')
+				if (parseInt(ship.mass) == 1) {
+					weaponsWrapper.classList.add('mass_1')
+				}
+
+				ship.weapons.map((weapon, weaponId) => {
+
+					if (weapon.option) {
+						if (options[weapon.option]) {
+							options[weapon.option].push(weapon)
+						} else {
+							options[weapon.option] = [weapon]
+						}
+					}
+
+					function renderWeapon(name, weapon, weaponData) {
+
+						if (!weaponData) {
+							weaponsElement.innerHTML += `<tr ${weapon.option ? `data-option-choice-id="${getOptionId(shipKey, weapon.option)}"` : ''} data-option="${weapon.option ? weapon.option : ''}"><td colspan="9">${name} (Missing)</td></tr>`
+							return
+						}
+
+						weaponRules = weaponRules.concat(weaponData.qualities.split(','))
+
+						let long, longCrippled, closing, closingCrippled, pb, pbCrippled;
+						long = longCrippled = closing = closingCrippled = pb = pbCrippled = '-'
+						if (weaponData?.pb) {
+							pb = weaponData.pb.split('/')[0]
+							pbCrippled = weaponData.pb.split('/')[1]
+						}
+						if (weaponData?.closing) {
+							closing = weaponData.closing.split('/')[0]
+							closingCrippled = weaponData.closing.split('/')[1]
+						}
+						if (weaponData?.long) {
+							long = weaponData.long.split('/')[0]
+							longCrippled = weaponData.long.split('/')[1]
+						}
+
+
+						weaponsElement.innerHTML += `<tr ${weapon.option ? `data-option-choice-id="${getOptionId(shipKey, weapon.option)}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
+							<td class="w_name">${name}</td><td class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td><td>${weapon.arc}</td><td>${pb}</td><td>${closing}</td><td>${long}</td>
+							<td>${pbCrippled}</td><td>${closingCrippled}</td><td>${longCrippled}</td>
+						</tr>`
+					}
+
+					const weaponData = window.weapons[weapon.name]
+					renderWeapon(weapon.name, weapon, weaponData)
+				})
+
+
+
+
+
+				ship?.generators?.map((generator, i) => {
+					if (generator.option) {
+						if (options[generator.option]) {
+							options[generator.option].push(generator)
+						} else {
+							options[generator.option] = [generator]
+						}
+					}
+
+					function renderGenerator(generator) {
+						const generatorDescription = window.generators[generator.name]
+						
+						if (generator.option) {
+							const choicesOptionId = getOptionId(shipKey, generator.option)
+							generator.choices.map((choice) => {
+								const generatorDescription = window.generators[choice] || 'Missing rules'
+								generatorElement.innerHTML += `<div ${generator.option ? `data-option-choice-id="${choicesOptionId}_${choice}"` : ''} data-option="${generator.option ? generator.option : ''}">
+									<h3>${choice}</h3>
+									<p>${generatorDescription}</p>
+								</div>`
+							})
+
+						} else {
+							generatorElement.innerHTML += `<div>
+								<h3>${generator.name}</h3>
+								<p>${generatorDescription}</p>
+							</div>`
+						}
+					}
+
+					renderGenerator(generator)
+				})
+
+
+
+
+
+				const optionWrapper = card.querySelector('.options')
+				Object.keys(options).map((optionName) => {
+					const optionChoices = options[optionName]
+					const optionRow = document.createElement('div')
+
+					optionChoices.map((option, optionId) => {
+
+						if (!savedOptions[shipKey]?.[optionName]) {
+							if (option.option != 'Optional Upgrades') {
+								savedOptions[shipKey][optionName] = 0
+							}
+						}
+
+						let optionInner = option?.name
+						let optionChoices = ''
+						let optionIdSuffix = ''
+						if (option?.choices) {
+							optionIdSuffix = '_' + option.choices[0]
+							optionChoices = `<select onchange="saveOption(event)" data-ship="${shipKey}" name="${optionName}">`
+							option.choices.map((choice) => {
+								optionChoices += `<option ${savedOptions[shipKey][optionName] == `${optionId}_${choice}` ? 'selected="selected"' : ''} value="${optionId}_${choice}">${choice}</option>`
+							})
+							optionChoices += '</select>'
+						}
+
+						let savedOptionId = null
+						let savedOption = savedOptions[shipKey][optionName]
+						if (savedOption) {
+							savedOptionId = savedOption.indexOf('_') > -1 ? savedOption.split('_')[0] : savedOption
+						}
+
+						const optionCost = option.optionCost ? ` (${option.optionCost})` : ''
+						let checked = savedOptionId == optionId
+						let type = 'radio'
+						
+						if (option.option == 'Optional Upgrades') {
+							type = 'checkbox'
+						}
+
+						// Check first option (the default)
+						if (option.option != 'Optional Upgrades' && (!savedOptionId && optionId == 0)) {
+							checked = true
+						}
+
+						optionElement = `<label>
+							<input ${checked ? 'checked="checked"' : ''} onchange="saveOption(event)" type="${type}" data-ship="${shipKey}" name="${optionName}" value="${optionId}${optionIdSuffix}">
+							${optionInner}${optionCost}${optionChoices}
+						</label>`
+						optionRow.innerHTML += optionElement
+					})
+					optionWrapper.innerHTML += '<h3>' + optionName + '</h3>'
+					optionWrapper.append(optionRow)
+				})
+
+				output.append(card)
+
+			})
+
+
+
+// Todo: Add attached unit details to rule listing
+
+
+			weaponRules = weaponRules.map((quality) => {
+				let qualityDetail = quality.match(/\(([\w|]+)\)/)
+				if (qualityDetail?.[1]) {
+					return quality.replace(qualityDetail[0], '')
+				}
+				return quality
+			})
+			weaponRules = weaponRules.map((rule) => rule.trim()).filter((rule, index, self) => self.indexOf(rule.trim()) === index)
+
+			const weaponRulesElement = document.createElement('section')
+			weaponRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
+			weaponRulesElement.classList.add('weapon_rules', 'rules')
+			output.append(weaponRulesElement)
+
+			if (!weaponRules.length) {
+				weaponRulesElement.innerHTML += '<p>No weapon rules found</p>'
+			}
+
+			weaponRules.map((quality) => {
+				let qualityDetail = quality.match(/\(([\w|]+)\)/)
+				if (qualityDetail?.[1]) {
+					quality = quality.replace(qualityDetail[0], '')
+				}
+
+				const ruleText = window.weapon_rules[quality]
+				if (ruleText) {
+					weaponRulesElement.innerHTML += `<h3>${quality}</h3>`
+					weaponRulesElement.innerHTML += `<p>${ruleText}</p>`
+				} else {
+					weaponRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
+				}
+			})
+
+			renderOptions()
+		}
+
+		window.addEventListener('load', () => {
+			const faction = getCookie('faction') || 'imperium'
+			setCookie('faction', faction, 365)
+			selectFaction(null, faction)
+		})
+
+	</script>    
+</head>
+<body>
+	<div class="nav">
+		<button onclick="clearOptions()">Clear</button>
+		<select id="faction_select" onchange="selectFaction(event)">
+			<option value="imperium">Imperium</option>
+			<option value="union">Union</option>
+		</select>
+	</div>
+
+	<div class="list"></div>
+
+	<div class="output"></div>
+
+	<div class="template" style="display: none;">
+		<div class="card">
+			<form class="options"></form>
+			<div class="header">
+				<h1>
+					<span class="name"></span>
+					<div class="right">
+						<div class="trait_images"></div>
+						<div class="traits"></div>
+					</div>
+				</h1>
+				<h2 class="type"></h2>
+			</div>
+			<div class="row">
+				<div class="stats">
+					<table class="battle_ready">
+						<tr>
+							<td>Mass</td>
+							<td class="mass"></td>
+						</tr>
+						<tr>
+							<td>Speed</td>
+							<td class="speed"></td>
+						</tr>
+						<tr>
+							<td>Turn</td>
+							<td class="turn"></td>
+						</tr>
+						<tr>
+							<td>Armor</td>
+							<td class="armor"></td>
+						</tr>
+						<tr>
+							<td>Citadel</td>
+							<td class="citadel"></td>
+						</tr>
+						<tr>
+							<td>ADV</td>
+							<td class="adv"></td>
+						</tr>
+						<tr>
+							<td>SDV</td>
+							<td class="sdv"></td>
+						</tr>
+						<tr>
+							<td>Fray</td>
+							<td class="fray"></td>
+						</tr>
+						<tr>
+							<td>Hull</td>
+							<td class="hull"></td>
+						</tr>
+					</table>
+					<table class="crippled">
+						<tr>
+							<td class="mass_crippled"></td>
+							<td>Mass</td>
+						</tr>
+						<tr>
+							<td class="speed_crippled"></td>
+							<td>Speed</td>
+						</tr>
+						<tr>
+							<td class="turn_crippled"></td>
+							<td>Turn</td>
+						</tr>
+						<tr>
+							<td class="armor_crippled"></td>
+							<td>Armor</td>
+						</tr>
+						<tr>
+							<td class="citadel_crippled"></td>
+							<td>Citadel</td>
+						</tr>
+						<tr>
+							<td class="adv_crippled"></td>
+							<td>ADV</td>
+						</tr>
+						<tr>
+							<td class="sdv_crippled"></td>
+							<td>SDV</td>
+						</tr>
+						<tr>
+							<td class="fray_crippled"></td>
+							<td>Fray</td>
+						</tr>
+						<tr>
+							<td class="hull_crippled"></td>
+							<td>Hull</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="rules general_rules">
+					<h2>General</h2>
+				</div>
+				<div class="rules attack_rules">
+					<h2>Attack</h2>
+				</div>
+			</div>
+			
+			<div class="rules srs_rules"></div>
+			<div class="rules generator_rules"></div>
+
+			<table class="weapons">
+				<thead>
+					<tr>
+						<th>Weapon</th>
+						<th>Qualities</th>
+						<th>Arc</th>
+						<th>PB</th>
+						<th>Closing</th>
+						<th>Long</th>
+						<th>PB</th>
+						<th>Closing</th>
+						<th>Long</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+</html>

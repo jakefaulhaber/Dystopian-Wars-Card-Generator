@@ -1,0 +1,400 @@
+body {
+	font-family: 'Roboto Slab', sans-serif;
+	margin: 0;
+}
+
+.nav {
+	padding: 1rem;
+	color: white;
+	background-color: #333;
+}
+
+.list {
+	padding: 1rem;
+	background-color: #eee;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.list label {
+	margin-right: .5rem;
+	cursor: pointer;
+}
+
+.card {
+	padding: 1rem;
+	max-width: 52rem;
+	position: relative;
+	border: 5px solid #eee;
+	border-width: 5px;
+	margin-bottom: 1rem;
+	margin: 0 auto;
+}
+
+.card::after {
+	content: ' ';
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/images/texture.png');
+	background-size: cover;
+	opacity: .6;
+}
+
+.weapon_rules {
+	position: relative;
+	padding: 1rem;
+	max-width: 52rem;
+	margin-top: 1rem;
+	border: 5px solid #eee;
+	margin: 1rem auto;
+}
+
+.weapon_rules::after {
+	content: ' ';
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/images/texture.png');
+	background-size: cover;
+	opacity: .6;
+}
+
+
+
+
+
+
+.options {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	margin-left: 2rem;
+	width: 30rem;
+}
+
+.options div {
+	border-bottom: 1px solid #eee;
+	padding: .3rem 0;
+}
+
+.options label {
+	cursor: pointer;
+	display: block;
+}
+
+.options label:first-child input {
+}
+
+.options input {
+}
+
+.options select {
+	margin-left: .6rem;
+}
+
+
+
+
+
+
+h1, h2 {
+	margin: 0;
+	font-family: 'Special Elite', sans-serif;
+}
+
+h1 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1.7rem;
+}
+
+h2 {
+	font-size: 1.2rem;
+	color: #333;
+	margin-top: 0;
+}
+
+h3 {
+	font-size: .9rem;
+	margin: .5rem 0 .1rem 0;
+	display: flex;
+	align-items: center;
+
+}
+
+h1 .right {
+	margin-top: -0.4rem;
+	display: flex;
+	align-items: center;
+}
+
+.rules {
+	padding: 1rem;
+}
+
+.rules p {
+	font-size: .9rem;
+	margin: 0;
+}
+
+.rules.generator_rules, .rules.srs_rules {
+	padding-left: 0;
+	padding-bottom: 0;
+	padding-top: .5rem;
+}
+
+.rules img {
+	width: 1.2rem;
+	margin-right: .2rem;
+}
+
+.rules img:last-of-type {
+	margin-right: .3rem;
+}
+
+.rules h2 {
+	border-bottom: 2px dotted #333;
+}
+
+.missing_rule {
+	margin: 2rem 0!important;
+	border: 1px solid orange;
+	background-color: red;
+	color: white;
+	padding: 1rem;
+}
+
+
+.row {
+	display: flex;
+}
+
+
+
+
+
+
+
+.stats {
+	display: flex;
+	margin-top: .5rem;
+	align-items: flex-start;
+}
+
+.stats table {
+	width: 50%;
+	border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.stats tr:first-child td {
+	padding-top: .5rem;
+	border-top: 2px dotted #333;
+}
+
+.stats .battle_ready {
+	background-color: #daeaf3;
+}
+
+.stats .battle_ready.mass_1 td:first-child {
+	padding-left: 1rem!important;
+}
+
+.stats .battle_ready.mass_1 td:last-child {
+	padding-right: 1rem!important;
+}
+
+.stats .crippled {
+	background-color: #ad4f35;
+	color: white;
+}
+
+.stats .battle_ready td:first-child {
+	text-align: right;
+	padding-left: .5rem;
+}
+
+.stats .battle_ready td:last-child {
+	text-align: center;
+	padding-right: .5rem;
+	padding-left: .7rem;
+}
+
+.stats .crippled td:first-child {
+	text-align: center;
+	padding-left: .5rem;
+	padding-right: .7rem;
+}
+
+.stats .crippled td:last-child {
+	text-align: left;
+	padding-right: .5rem;
+}
+
+.stats td {
+	/* font-family: Bitter, serif; */
+	font-family: 'Special Elite', serif;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-size: 1.2rem;
+	text-align: left;
+	border-bottom: 2px dotted #333;
+	border-top: 2px dotted rgba(255, 255, 255, 0);
+	height: 2rem;
+	vertical-align: center;
+	padding-top: .2rem;
+	/* background-color: #bfb19d; */
+}
+
+
+
+
+
+
+
+
+.trait_images {
+	display: flex;
+	align-items: center;
+	margin-left: .5rem;
+	margin-top: .4rem;
+}
+
+.trait_images img {
+	width: 30px;
+	height: auto;
+	margin: 0 0 0 .3rem;
+}
+
+.traits {
+	display: flex;
+	align-items: center;
+	margin-left: .3rem;
+	margin-top: .4rem;
+}
+
+.traits span {
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: .9rem;
+	font-weight: 500;
+	background-color: #c3deed;
+	padding: .2rem .6rem;
+	margin: 0 .2rem;
+	border-radius: .7rem;
+}
+
+
+
+
+
+
+.weapons {
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-top: 1rem;
+	width: 100%;
+}
+
+.weapons.mass_1 td:nth-child(n+7), .weapons.mass_1 th:nth-child(n+7) {
+	display: none;
+}
+
+.weapons th {
+	padding: 0 .5rem;
+	text-transform: uppercase;
+	font-size: .8rem;
+	padding-bottom: .5rem;
+}
+
+.weapons th:nth-child(-n+2) {
+	text-align: left;
+}
+
+.weapons td {
+	padding: .2rem .5rem;
+	border-bottom: 2px dotted #333;
+	height: 34px;
+	font-size: .9rem;
+}
+
+.weapons td:nth-child(n+3) {
+	text-align: center;
+}
+
+.weapons td:nth-child(-n+6) {
+	background-color: #e7ecee;
+}
+
+/* .weapons td:nth-child(6) {
+	border-right: 2px solid #333;
+} */
+
+.weapons td:nth-child(n+7) {
+	background-color: #ad4f35;
+	color: white;
+}
+
+.weapons tr:first-child td {
+	border-top: 2px dotted #333;
+}
+
+.weapons tr.odd td:nth-child(-n+6) {
+	background-color: #daeaf3;
+	color: black;
+}
+
+.weapons tr.odd td:nth-child(n+7) {
+	background-color: #913f28;
+	color: white;
+}
+
+.w_qualities {
+	font-size: .8rem;
+}
+
+.w_name {
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+@media print {
+	.nav {
+		display: none;
+	}
+	.list {
+		display: none;
+	}
+	@page {
+		padding: .5cm;
+	}
+	body {
+		margin: 0;
+	}
+	html {
+		font-size: 70%;
+	}
+	.card, .weapon_rules {
+		page-break-inside: avoid;
+		margin: 0;
+		width: 95%;
+		max-width: 100%;
+	}
+	.options {
+		display: none;
+	}
+}
