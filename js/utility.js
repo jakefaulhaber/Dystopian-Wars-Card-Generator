@@ -15,22 +15,6 @@ function slugify(text) {
 		.replace(/_+$/, '')
 }
 
-// function toggle(element, hide) {
-// 	if (hide) {
-// 		if (element.parentElement.nodeName != 'HIDDEN') {
-// 			const hiddenWrapper = document.createElement('hidden')
-// 			element.insertAdjacentElement('afterend', hiddenWrapper)
-// 			hiddenWrapper.appendChild(element)
-// 		}
-// 	} else {
-// 		const hiddenWrapper = element.parentElement
-// 		if (hiddenWrapper.nodeName == 'HIDDEN') {
-// 			hiddenWrapper.insertAdjacentElement('afterend', element)
-// 			hiddenWrapper.remove()
-// 		}
-// 	}
-// }
-
 function getImage(string) {
 	const images = ['Imperium', 'Flagship', 'Surface Unit', 'Submerged Unit', 'Skimming Unit', 'Aerial Unit'] 
 

@@ -23,7 +23,7 @@ body {
 
 .card {
 	padding: 1rem;
-	max-width: 52rem;
+	max-width: 62rem;
 	position: relative;
 	border: 5px solid #eee;
 	border-width: 5px;
@@ -43,30 +43,6 @@ body {
 	background-size: cover;
 	opacity: .6;
 }
-
-.weapon_rules {
-	position: relative;
-	padding: 1rem;
-	max-width: 52rem;
-	margin-top: 1rem;
-	border: 5px solid #eee;
-	margin: 1rem auto;
-}
-
-.weapon_rules::after {
-	content: ' ';
-	position: absolute;
-	pointer-events: none;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url('/images/texture.png');
-	background-size: cover;
-	opacity: .6;
-}
-
-
 
 
 
@@ -136,8 +112,19 @@ h1 .right {
 	align-items: center;
 }
 
+
+
+
+
+
+
 .rules {
-	padding: 1rem;
+	padding: 0 0 0 1rem;
+}
+
+.rules.below {
+	margin-top: 1rem;
+	padding: 0;
 }
 
 .rules p {
@@ -145,7 +132,7 @@ h1 .right {
 	margin: 0;
 }
 
-.rules.generator_rules, .rules.srs_rules {
+.rules.generator_rules {
 	padding-left: 0;
 	padding-bottom: 0;
 	padding-top: .5rem;
@@ -172,10 +159,10 @@ h1 .right {
 	padding: 1rem;
 }
 
-
 .row {
 	display: flex;
 }
+
 
 
 
@@ -368,6 +355,27 @@ h1 .right {
 
 
 
+.weapon_rules {
+	position: relative;
+	padding: 1rem;
+	max-width: 52rem;
+	margin-top: 1rem;
+	border: 5px solid #eee;
+	margin: 1rem auto;
+}
+
+.weapon_rules::after {
+	content: ' ';
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('/images/texture.png');
+	background-size: cover;
+	opacity: .6;
+}
 
 
 

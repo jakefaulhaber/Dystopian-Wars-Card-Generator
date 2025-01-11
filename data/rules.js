@@ -16,6 +16,7 @@ window.weapon_rules = {
 }
 
 window.general_rules = {
+    'Ablative Armour': {type: 'Defense', description: 'Exploding Hit results equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.'},
     'Advanced Sturmcoils': {type: 'Shooting', description: 'Sturmklaue and Heavy Sturmklaue gain Sustained'},
     'Anti-Air Specialist': {type: 'Shooting', description: 'Can choose not to count Aerial Units as being a Range Band further away. Attacks with the Aerial Quality against Aerial Units gain Homing.'},
     'Auto-Firing Solutions': {type: 'Shooting', description: 'Attacks by Volt Gun Batteries and Heavy Volt Gun Batteries on this Model may re-roll blank results'},
@@ -26,6 +27,7 @@ window.general_rules = {
     'Elite Crew': {type: 'Assault', description:'Re-roll blanks during Assaults'},
     'Flak Barrage': {type: 'SRS', description: 'At the start of the End Phase, before SRS Resolution, Roll a number of Action Dice indicated by the rule. Remove one SRS Token that is in contact with this Unit or Friendly Units within 15" for each Exploding Hit.'},
     'Focused Gunnery': {type: 'Shooting', description: 'One attack with Gunnery per Activation gets +2 dice and may re-roll Blanks.'},
+    'Fortunes of War': {type: 'Defense', description: 'You may Cancel Valour Effects in an Encounter where this Unit has at least one Battle Ready Model in the Play Area.'},
     'Hammer Sweep': {type: 'Movement/Ramming', description: 'Increase Speed by 1" and gain +2 dice when Ramming if moving straight'},
     'Heavy Escort': {type: 'Defense', description: '+2 to the Defence Action Dice Pool on all friendly Models within 5". This bonus is in addition to any other bonuses such as being part of an Attached Unit (+1 ADV/SDV).'},
     'Heavy Firepower': {type: 'Shooting', description: 'Once per Activation, before declaring target, Each Model in this Unit with this rule may make the following Valour Effect. When making an Attack, up to three of that Model\'s weapons may contribute their Lead value to the Action Dice Pool, rather than the normal single Lead weapon value. Other Models may support this Attack but cannot benefit from this rule.'},
@@ -45,6 +47,7 @@ window.general_rules = {
     'SRS Capacity': {type: 'SRS', description: ''},
     'SRS Mine Clearance': {type: 'SRS', description: 'During its Operations Step, while placing SRS Tokens, may place tokens touching Minefield Markers within 20". At the end of the Special Operations Step discard an SRS Token and roll an Action Die. On an Exploding Hit, the Minefield is discarded. Repeat as desired. If Minefield discarded, remaining SRS Tokens in stack may be placed on another Minefield Marker within 5" and continue clearing. If no remaining Minefield within 5", SRS Tokens remain in place.'},
     'SRS Recon': {type: 'SRS', description: 'During Operations Step, spend SRS tokens to draw and discard V&V.'},
+    'Storm Generator': {type: 'Generator', description: 'In the Shooting Phase, make a Shooting Attack using the Lightning Strike weapon profile. 360-degree LoS, Range 20". Ignores Shield/Shroud Generators. Incoming fire re-rolls Heavy Hits. +2 Assault when Battle-Ready.'},
     Vanguard: {type: 'Deployment', description: 'Starting with Player B, after both sides are deployed, each player may choose one of their Units with Vanguard and Move up to 5". Alternate between Players'},
     'Veteran Voltmeister': {type: 'Assault', description: 'If has Voltaic Decksweepers, when Assaulting, +1 dice. Assault gains the Voltaic Quality. No effect when Supporting.'},
     'Voltaic Decksweepers': {type: 'Assault', description: 'Add dice = to target Mass when Assaulting and not Crippled.'},

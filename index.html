@@ -223,7 +223,10 @@
 					}
 				}
 
-				function renderRule(rule, container) {
+				function renderRule(rule, element) {
+					
+					console.log({element})
+
 					let ruleName = rule
 					if (typeof rule != 'string') {
 						ruleName = rule.name
@@ -235,45 +238,74 @@
 								return `<img src="images/${type}.png" title="${type}">`
 							}
 						})
+
+						let ruleText
+						if (typeof rule != 'string') {
+							ruleText = rule.name + ` [${rule.value}]`
+						} else {
+							ruleText = rule
+						}
 						
-						container.innerHTML += `<div ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
-							<h3>${icons.join('')}${ruleName}</h3>
+						element.innerHTML += `<div class="rule" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
+							<h3>${icons.join('')}${ruleText}</h3>
 							<p>${window.general_rules[ruleName].description}</p>
 						</div>`
 					} else {
-						container.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
+						element.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
 					}
 				}
 
-				const generalRulesElement = card.find('.general_rules')
+				const leftRulesElement = card.find('.rules.left')
+				const rightRulesElement = card.find('.rules.right')
+				const belowRulesElement = card.find('.rules.below')
+
+
+				const offensiveRules = []
+				const defensiveRules = []
+				const srsRules = []
+				const miscRules = []
+
 				ship.rules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, generalRulesElement)
-				})
-
-				const srsRulesElement = card.find('.srs_rules')
-				ship?.rules.srs?.map((rule, i) => {
-
-					let ruleText = rule
-					let ruleName = rule
+					let fullRule
 					if (typeof rule != 'string') {
-						ruleText = rule.name + ` [${rule.value}]`
-						ruleName = rule.name
+						fullRule = window.general_rules[rule.name]
+					} else {
+						fullRule = window.general_rules[rule]
 					}
 
-					if (window.general_rules[ruleName]) {
-						srsRulesElement.innerHTML += `<div>
-							<h3>${ruleText}</h3>
-							<p>${window.general_rules[ruleName].description}</p>
-						</div>`
+					let type = fullRule.type
+
+					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1) {
+						offensiveRules.push(rule)
+					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
+						defensiveRules.push(rule)
+					} else if (type.indexOf('SRS') > -1) {
+						srsRules.push(rule)
 					} else {
-						srsRulesElement.innerHTML += `<h3 class="missing_rule">Missing Rule: ${rule}</h3>`
+						miscRules.push(rule)
 					}
 				})
 
+				offensiveRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, rightRulesElement)
+				})
 
+				defensiveRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, leftRulesElement)
+				})
 
+				srsRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, belowRulesElement)
+				})
 
+				miscRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, belowRulesElement)
+				})
+				
 
 				const weaponsWrapper = card.find('.weapons')
 				const weaponsElement = weaponsWrapper.find('tbody')
@@ -332,7 +364,7 @@
 
 
 				ship?.generators?.map((generator, i) => {
-					if (generator.option) {
+					if (generator?.option) {
 						if (options[generator.option]) {
 							options[generator.option].push(generator)
 						} else {
@@ -341,9 +373,9 @@
 					}
 
 					function renderGenerator(generator) {
-						const generatorDescription = window.generators[generator.name]
+						const generatorDescription = window.generators[generator?.name || generator]
 						
-						if (generator.option) {
+						if (generator?.option) {
 							const choicesOptionId = getOptionId(shipKey, generator.option)
 							generator.choices.map((choice) => {
 								const generatorDescription = window.generators[choice] || 'Missing rules'
@@ -355,7 +387,7 @@
 
 						} else {
 							generatorElement.innerHTML += `<div>
-								<h3>${generator.name}</h3>
+								<h3>${generator?.name || generator}</h3>
 								<p>${generatorDescription}</p>
 							</div>`
 						}
@@ -581,16 +613,11 @@
 					</table>
 				</div>
 
-				<div class="rules general_rules">
-					<h2>General</h2>
-				</div>
-				<div class="rules attack_rules">
-					<h2>Attack</h2>
-				</div>
+				<div class="rules left"></div>
+				<div class="rules right"></div>
 			</div>
-			
-			<div class="rules srs_rules"></div>
-			<div class="rules generator_rules"></div>
+
+			<div class="rules below"></div>
 
 			<table class="weapons">
 				<thead>
@@ -608,6 +635,13 @@
 				</thead>
 				<tbody></tbody>
 			</table>
+
+			<div class="row">
+				
+			</div>
+			
+			<div class="rules generator_rules"></div>
+
 		</div>
 	</div>
 </html>

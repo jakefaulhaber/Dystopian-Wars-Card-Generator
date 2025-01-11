@@ -415,7 +415,6 @@ window.imperium_ships = {
 			'Ablative Armour',
 			'Heavy Firepower',
 			'Inductorium',
-			'Storm Generator',
 			'Voltaic Decksweepers',
 		],
 		weapons: [
@@ -444,6 +443,9 @@ window.imperium_ships = {
 				arc: 'F',
 			}
 		],
+		generators: [
+			'Storm Generator'
+		]
 	},
 
 	schaumburg: {

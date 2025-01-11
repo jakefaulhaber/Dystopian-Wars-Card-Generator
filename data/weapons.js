@@ -67,6 +67,12 @@ window.weapons = {
 		long: '6(4)/4(3)',
 		qualities: 'Submerged, Torpedo, Voltaic, Extreme Range'
 	},
+	'Heavy Speerschleuders': {
+		pb: '12(4)/8(-)',
+		closing: '12(7)/8(5)',
+		long: '11(6)/7(4)',
+		qualities: 'Submerged, Torpedo, Voltaic, Extreme Range'
+	},
 	'Gustav Twin Bombard': {
 		closing: '11(5)/7(4)',
 		long: '11(5)/7(4)',
