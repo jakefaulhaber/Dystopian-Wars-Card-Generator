@@ -32,6 +32,7 @@
 				setCookie('faction', faction, 365)
 				setCookie('options', '', 0)
 			}
+			console.log('a')
 			init(faction)
 		}
 
@@ -87,8 +88,6 @@
 			})
 		}
 
-		// setTimeout(renderOptions, 2000)
-
 		function saveOption(e) {
 			const shipKey = e.target.dataset.ship
 			const optionName = e.target.name
@@ -118,6 +117,7 @@
 			if (newSavedList != savedList) {
 				setCookie('list', newSavedList, 365)
 				savedList = newSavedList
+				console.log('b')
 				init(getCookie('faction'))
 			}
 
@@ -129,6 +129,8 @@
 			const listElement = $('.list')
 			listElement.innerHTML = ''
 			output.innerHTML = ''
+
+			console.log(faction, window.imperium_ships)
 
 			const shipData = window[faction + '_ships']
 
@@ -459,10 +461,6 @@
 			})
 
 
-
-// Todo: Add attached unit details to rule listing
-
-
 			weaponRules = weaponRules.map((quality) => {
 				let qualityDetail = quality.match(/\(([\w|]+)\)/)
 				if (qualityDetail?.[1]) {
@@ -502,6 +500,7 @@
 		window.addEventListener('load', () => {
 			const faction = getCookie('faction') || 'imperium'
 			setCookie('faction', faction, 365)
+			console.log('asdf', getCookie('faction'))
 			selectFaction(null, faction)
 		})
 

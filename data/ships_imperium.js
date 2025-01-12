@@ -1,5 +1,5 @@
 window.imperium_ships = {
-	ice_maiden : {
+	ice_maiden: {
 		name: 'Ice Maiden',
 		type: 'Dreadnought Super-Carrier',
 		points: 535,
@@ -13,15 +13,15 @@ window.imperium_ships = {
 		sdv: '6/4',
 		fray: '15/13',
 		hull: '15/16',
-		
+
 		rules: [
 			{
 				name: 'SRS Capacity',
-				value: '10/5'
+				value: '10/5',
 			},
 			{
 				name: 'Blitzen SRS Capacity',
-				value: '4/2'
+				value: '4/2',
 			},
 			'Combat Air Patrol',
 			'SRS Mine Clearance',
@@ -30,7 +30,7 @@ window.imperium_ships = {
 			'Large Target',
 			'Pycrete Construction',
 			'Inductorium',
-			'Advanced Sturmcoils'
+			'Advanced Sturmcoils',
 		],
 		weapons: [
 			{
@@ -64,37 +64,37 @@ window.imperium_ships = {
 			{
 				name: 'Sturmklaue',
 				arc: 'F/P',
-				option: 'F/P Weapon'
+				option: 'F/P Weapon',
 			},
 			{
 				name: 'Volt Gun Battery',
 				arc: 'F/P',
-				option: 'F/P Weapon'
+				option: 'F/P Weapon',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: 'F/S',
-				option: 'F/S Weapon'
+				option: 'F/S Weapon',
 			},
 			{
 				name: 'Volt Gun Battery',
 				arc: 'F/S',
-				option: 'F/S Weapon'
+				option: 'F/S Weapon',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: 'P/S',
-				option: 'P/S Weapon'
+				option: 'P/S Weapon',
 			},
 			{
 				name: 'Volt Gun Battery',
 				arc: 'P/S',
-				option: 'P/S Weapon'
-			}
-		]
+				option: 'P/S Weapon',
+			},
+		],
 	},
 
-	toten : {
+	toten: {
 		name: 'Toten',
 		type: 'Heavy Destroyer',
 		points: 90,
@@ -114,25 +114,25 @@ window.imperium_ships = {
 			'Elite Crew',
 			'Focused Gunnery',
 			'Inductorium',
-			'Voltaic Decksweepers'
+			'Voltaic Decksweepers',
 		],
 		weapons: [
 			{
 				name: 'Light Broadside',
 				arc: 'P&S',
-				qualities: 'Broadside, Fusillade'
+				qualities: 'Broadside, Fusillade',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: '360',
-				qualities: 'Gunnery, Devastating, Arc'
+				qualities: 'Gunnery, Devastating, Arc',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: 'F/P/S',
-				qualities: 'Gunnery, Devastating, Arc'
-			}
-		]
+				qualities: 'Gunnery, Devastating, Arc',
+			},
+		],
 	},
 
 	arminius: {
@@ -149,12 +149,7 @@ window.imperium_ships = {
 		sdv: '3',
 		fray: '6',
 		hull: '3',
-		rules: [
-			'Disciplined',
-			'Elite Crew',
-			'Inductorium',
-			'Pack Hunter'
-		],
+		rules: ['Disciplined', 'Elite Crew', 'Inductorium', 'Pack Hunter'],
 		weapons: [
 			{
 				name: 'Broadside',
@@ -163,14 +158,14 @@ window.imperium_ships = {
 			{
 				name: 'Volt Gun Battery',
 				arc: 'F/P/S',
-				option: 'F/P/S Weapon'
+				option: 'F/P/S Weapon',
 			},
 			{
 				name: 'Shock Rocket Battery',
 				arc: 'F/P/S',
-				option: 'F/P/S Weapon'
-			}
-		]
+				option: 'F/P/S Weapon',
+			},
+		],
 	},
 
 	odin_reaver: {
@@ -190,7 +185,7 @@ window.imperium_ships = {
 		rules: [
 			'Hammer Sweep',
 			'Vanguard',
-			'Vulnerable Stern', 
+			'Vulnerable Stern',
 			'Huginn and Muninn',
 			'Inductorium',
 			{
@@ -198,39 +193,44 @@ window.imperium_ships = {
 				name: 'Voltaic Decksweepers',
 				optionCost: 5,
 			},
-			'Wolves of the Sea'
+			'Wolves of the Sea',
 		],
 		weapons: [
 			{
 				name: 'Heavy Sturmklaue',
-				arc: 'F'
+				arc: 'F',
 			},
 			{
 				name: 'Heavy Volt Gun Battery',
 				arc: 'F/P/S',
-				option: 'F/P/S Weapon'
+				option: 'F/P/S Weapon',
 			},
 			{
 				name: 'Heavy Shock Rocket Battery',
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
-				optionCost: 3
+				optionCost: 3,
 			},
 			{
 				name: 'Broadside',
-				arc: 'P&S'
-			}
+				arc: 'P&S',
+			},
 		],
 		generators: [
 			{
 				name: 'Generator',
-				choices: ['Langsam Generator', 'Magnetic Generator', 'Repulsion Field Generator', 'Shield Generator', 'Shroud Generator'],
+				choices: [
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
 				option: 'F/P/S Weapon',
-				optionCost: -5
+				optionCost: -5,
 			},
-		]
+		],
 	},
-
 
 	reiter: {
 		name: 'Reiter',
@@ -250,43 +250,43 @@ window.imperium_ships = {
 			'Disciplined',
 			{
 				name: 'Attached Unit',
-				value: 'Prussian, Flagship'
+				value: 'Prussian, Flagship',
 			},
 			'Anti-Air Specialist',
 			'Inductorium',
 			{
 				name: 'Flak Barrage',
-				value: 10
-			}
+				value: 10,
+			},
 		],
 		weapons: [
 			{
 				name: 'Vierling Flak Array',
-				arc: 'F/P/S'
+				arc: 'F/P/S',
 			},
 			{
 				name: 'Vierling Autokanone',
 				arc: '360',
-				option: '360 Weapon'
+				option: '360 Weapon',
 			},
 			{
 				name: 'Shock Rocket Battery',
 				arc: '360',
-				option: '360 Weapon'
+				option: '360 Weapon',
 			},
 			{
 				name: 'Freya Array',
 				arc: '360',
-				option: '360 Weapon'
+				option: '360 Weapon',
 			},
 			{
 				name: 'Broadside',
-				arc: 'P/S'
+				arc: 'P/S',
 			},
 			{
 				name: 'Speerschleuders',
-				arc: 'F'
-			}
+				arc: 'F',
+			},
 		],
 	},
 
@@ -308,10 +308,10 @@ window.imperium_ships = {
 			'Disciplined',
 			{
 				name: 'Attached Unit',
-				value: 'Prussion, Flagship'
+				value: 'Prussion, Flagship',
 			},
 			'Inductorium',
-			'Luftlancer Assault'
+			'Luftlancer Assault',
 		],
 		weapons: [
 			{
@@ -325,27 +325,34 @@ window.imperium_ships = {
 			{
 				name: 'Heavy Volt Gun Battery',
 				arc: 'F/P/S',
-				option: 'F/P/S Weapon'
+				option: 'F/P/S Weapon',
 			},
 			{
 				name: 'Heavy Shock Rocket Battery',
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
-				optionCost: 3
+				optionCost: 3,
 			},
 			{
 				name: 'Speerschleuders',
 				arc: 'F',
-			}
+			},
 		],
 		generators: [
 			{
 				name: 'Generator',
-				choices: ['Atomic Generator', 'Fury Generator', 'Magnetic Generator', 'Repulsion Field Generator', 'Shield Generator', 'Shroud Generator'],
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
 				option: 'F/P/S Weapon',
-				optionCost: -5
+				optionCost: -5,
 			},
-		]
+		],
 	},
 
 	augustus: {
@@ -371,7 +378,7 @@ window.imperium_ships = {
 				option: 'Optional Upgrades',
 				name: 'Phosphor Shells',
 				optionCost: 5,
-			}
+			},
 		],
 		weapons: [
 			{
@@ -381,17 +388,17 @@ window.imperium_ships = {
 			{
 				name: 'Gustav Twin Bombard',
 				arc: 'F',
-				option: 'F Weapon'
+				option: 'F Weapon',
 			},
 			{
 				name: 'Bertha Heavy Bombard',
 				arc: 'F',
-				option: 'F Weapon'
+				option: 'F Weapon',
 			},
 			{
 				name: 'Speerschleuders',
 				arc: 'F',
-			}
+			},
 		],
 	},
 
@@ -437,15 +444,29 @@ window.imperium_ships = {
 			{
 				name: 'Heavy Volt Gun Battery',
 				arc: 'A',
+				option: 'A Weapon',
 			},
 			{
 				name: 'Heavy Speerschleuders',
 				arc: 'F',
-			}
+			},
 		],
 		generators: [
-			'Storm Generator'
-		]
+			'Storm Generator',
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A Weapon',
+				optionCost: -5,
+			},
+		],
 	},
 
 	schaumburg: {
@@ -463,7 +484,7 @@ window.imperium_ships = {
 		fray: '9/9',
 		hull: '4/3',
 		rules: [
-			{name: 'Attached Unit', value: 'Prussian, Flagship'},
+			{ name: 'Attached Unit', value: 'Prussian, Flagship' },
 			'Disciplined',
 			'Landing Vessel',
 			'Mine Layer',
@@ -479,8 +500,7 @@ window.imperium_ships = {
 			{
 				name: 'Speerschleuders',
 				arc: 'F',
-			}
+			},
 		],
-	},	
-
-}
+	},
+};

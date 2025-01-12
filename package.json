@@ -1,0 +1,10 @@
+{
+  "name": "dystopian_wars_card_generator",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npx http-server -o"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
