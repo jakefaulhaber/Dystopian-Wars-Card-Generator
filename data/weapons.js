@@ -1,4 +1,8 @@
 window.weapons = {
+	'Colossal Melee Weapon': {
+		pb: '14/9',
+		qualities: 'Voltaic, Ramming'
+	},
 	Sturmbringer: {
 		pb: '12(7)/8(5)',
 		closing: '8(4)/5(3)',
@@ -83,4 +87,24 @@ window.weapons = {
 		long: '10(6)/6(4)',
 		qualities: 'Gunnery, Arc, Blast, Extreme Range',
 	},
+	'Uber Volt Vierling': {
+		pb: '15(6)/10(6)',
+		closing: '13(5)/10(5)',
+		qualities: 'Voltaic, Sustained'
+	},
+	'Lightning Strike': {
+		pb: '10/8',
+		closing: '8/-',
+		qualities: 'Arc, Devastating',
+	},
+	'Heavy Torpedo Salvo': {
+		pb: '12(4)/8(-)',
+		closing: '12(7)/8(5)',
+		long: '11(6)/7(5)',
+		qualities: 'Submerged, Torpedo, Extreme Range',
+	},
+	'Vengeance Keel Saw': {
+		pb: '12/10',
+		qualities: 'Ramming, Piercing, Sustained',
+	}	
 };

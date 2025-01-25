@@ -4,7 +4,7 @@ window.weapon_rules = {
 	Gunnery: 'Target mass 1 treated as Obscured.',
 	Sustained: 'Re-roll any one result type before Exploding.',
 	Voltaic:
-		'On dealing 1+ Critical, additional Disorder. +1 dice vs active Generators',
+		'On Critical add a Disorder. +1 dice vs active Generators',
 	Broadside: 'Can be fired in each direction.',
 	Fusillade:
 		'Re-roll Counter and Heavy Counter results. No effect on Aerial/Submerged without matching Quality.',
@@ -19,6 +19,7 @@ window.weapon_rules = {
 	'Extreme Range':
 		'Long Range Band 20" - 40". Not required to match when Supporting a Lead weapon.',
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
+	Ramming: 'Adds dice when ramming.'
 };
 
 window.general_rules = {
@@ -51,10 +52,28 @@ window.general_rules = {
 		description:
 			'Blitzen SRS Tokens contribute 5 Dice to Attack Runs. Can be combined with other SRS Tokens. A Blitzen Bomber is removed for every two successes in Interception. Can only be Intercepted after normal SRS Tokens have all been Intercepted. If majority of stack is Blitzen, gain Sustained, Bomb and Voltaic. If more Blitzen than Mass of Target, gain Devastating. No SRS Recon or SRS Mine Clearance. No Attack Runs on Aerial Units',
 	},
+	'Chowkidar Crew': {
+		type: 'Defense/Ramming',
+		description:
+			'Ignore the effects of Emergency Disorder. No Disorder when Ramming. +2 Repair dice.',
+	},
 	'Combat Air Patrol': {
 		type: 'SRS',
 		description:
 			'Launch SRS Tokens in the First Round (to a max of Crippled Capacity) with infinite range.',
+	},
+	'Deep Dive': {
+		type: 'Movement',
+		description: `In the Special Operations phase of the round, while Battle Ready and in Open Water this Unit may declare it is going to Deep Dive. For the remainder of that Round, the Unit doubles its Drift Movement but cannot make any other Movement. The Unit also cannot launch SRS or make any Action that does not have the Submerged Quality. Furthermore, while it carries out a Deep Dive Special Operation, this Unit cannot be the Initial Target of any Action that does not have the Submerged Quality. A Unit cannot be part of an Attached Unit if it carries out a Deep Dive Special Operation, unless both Units have this rule. A Unit cannot carry out a Deep Dive Special Operation if it has already done so the previous Round.`
+	},
+	'Deceptive Deployment': {
+		type: 'Deployment',
+		description:
+			'After both sides are deployed, you may redeploy this Unit up to 5". If has Shroud Generator, gain Vanguard.',
+	},
+	'Devil\'s Own Luck': {
+		type: 'Valour',
+		description: `Once per Round, you may Cancel a Valour Effect. Discard a Victory & Valour card from your hand of any value.`
 	},
 	Disciplined: {
 		type: 'Defense',
@@ -79,6 +98,16 @@ window.general_rules = {
 		type: 'Defense',
 		description:
 			'You may Cancel Valour Effects in an Encounter where this Unit has at least one Battle Ready Model in the Play Area.',
+	},
+	'Full Steam Ahead': {
+		type: 'Movement',
+		description:
+			'May double Drift. If it does so, can\'t turn.',
+	},
+	'Fury of Nimue': {
+		type: 'Ramming',
+		description:
+			'Can Ram Surface Units. +1 Victory Point for each Surface Unit destroyed by Assault or Ramming. Re-roll Blanks in Attacks and Assault against Mass 3+.',
 	},
 	'Hammer Sweep': {
 		type: 'Movement/Ramming',
@@ -155,6 +184,10 @@ window.general_rules = {
 		description:
 			'Drift = 1". No Disorder from Collisions. Gunnery targeting this Unit may re-roll Blanks. 4+ Disorder are ignored rather than causing damage. Can extend outside Deployment Zone if touching back edge.',
 	},
+	'Silent Stalker': {
+		type: 'Deployment/Shooting',
+		description: `Deploy at the start of an Encounter as a Silent Stalker. Units that do so are deployed at the same time as Vanguard moves and may be deployed anywhere at least 20" from the enemy deployment zone. Deploying with Silent Stalker gives Torpedo attacks Homing this round.`
+	},
 	Spotter: {
 		type: 'Shooting',
 		description:
@@ -175,6 +208,11 @@ window.general_rules = {
 		type: 'Generator',
 		description:
 			'In the Shooting Phase, make a Shooting Attack using the Lightning Strike weapon profile. 360-degree LoS, Range 20". Ignores Shield/Shroud Generators. Incoming fire re-rolls Heavy Hits. +2 Assault when Battle-Ready.',
+	},
+	'Strategic Withdrawal': {
+		type: 'Misc',
+		description:
+			`At the start of the Maintenance Step of the End Phase, unless one or more Models in the Unit has Navigation Lock Critical Damage, this Unit may be placed back into Reserves. If so, Crippled Models in the Unit are immediately destroyed.`,
 	},
 	Vanguard: {
 		type: 'Deployment',
@@ -201,4 +239,72 @@ window.general_rules = {
 		description:
 			"Always use Battle-Ready value of weapons. When making an Assault, gain dice equal to this Model's mass. If all Assaulting models have this rule, re-roll blank results and gain Devastating. No Damage or Disorder when ramming.",
 	},
+	'Blitzschlag': {
+		type: 'Assault',
+		description:
+			'Once per Activation, discard a Valour card >= 40. Each Model that has caused at least one point of damage in a Ramming Action this Activation, may make a second Ramming Action within 3" of the first. No further movement if you do.',
+	},
+	'Colossus': {
+		type: 'Movement/Ramming',
+		description:
+			'Turn on the spot to face any direction at the end of its Movement. May Ram Surface Units and Skimming Units. Ram with <3" movement. Does not suffer from Damage or Disorder while ramming.',
+	},
+	'Submarauder': {
+		type: 'Movement',
+		description: `May instead be held in Reserve as a Submarauder. On each Round, Submarauders are Activated before all other Units in the Force. 
+		During the first Round, a 50mm Submarauder Marker is placed anywhere outside of either Player\'s deployment and at least 2” from Terrain. 
+		From the second Round onwards when a Submarauder Activates, it is immediately deployed. When a Submarauder is deployed, it must be placed 
+		within 10" of any Submarauder Marker or Wreck Marker in the Play Area. You must remove one of your Submarauder Markers each time this happens. 
+		No Submarauder Model can be deployed touching another Model. When a Submarauder is deployed it uses the Crippled profile of their weapons for 
+		that Round. Unless one or more Models in the Unit has Navigation Lock, at the end of round this Unit may be removed from Play and become a Submarauder 
+		again. Leave a 50mm Submarauder Marker in the position of any one Model in this Unit.`
+	},
+	'Zornhau': {
+		type: 'Shooting/Ramming',
+		description: 'Re-roll Blank Results in Ranged Attacks and Ramming against Surface/Ground Units >= 2 mass.'
+	},
+	'Amphibious': {
+		type: 'Movement',
+		description: 'This Unit is a Surface Unit after deployment. The Unit can move across Land and Obstacle terrain at normal Speed without suffering damage or collision. It has a Drift of zero when on Land. While this Unit is on Land or Obstacle Terrain, that Terrain is ignored for LOS purposes to and from this Unit'
+	},
+	'Freya Array': {
+		type: 'Defense',
+		description: 'While Generator is active, Enemy Units cannot be deployed within 10" of this Model. Coherency 5".'
+	},
+	'Monster of Nassau': {
+		type: 'Shooting',
+		description: 'Bombards gain +5 to its Action Dice Pool and may re-roll Blank results. This Unit awards +1 Victory Point to your opponent if it destroyed by a Unit with the Union Trait.'
+	},
+	'Coastal Bombardment': {
+		type: 'Shooting',
+		description: 'Models in this Unit may re-roll blanks when shooting at Ground Units with weapons that have the Gunnery Quality'
+	},
+	'Forward Deployment':  {
+		type: 'Deployment',
+		description: 'Can\'t be held in reserve. They must be deployed anywhere outside of the Encounter\'s deployment zones and least 12" from the enemy deployment zone.'
+	},
+	'Focused Bombardment': {
+		type: 'Shooting',
+		description: 'A single Attack in this Model\'s Activation using a Bombard gain +5 to its Action Dice Pool. If the Attack is with the Big Bertha, it may also re-roll Blank results.'
+	},
+	'Haddingjar Projector': {
+		type: 'Defense',
+		description: 'Friendly Surface/Skimming Models >= 2 Mass, counts as being equipped with the same Generators as this Model while within 7" of this Model.'
+	},
+	'Tempermental Design': {
+		type: 'Weakness',
+		description: 'This Unit cannot make Jury-Rigged Repairs. When making Repair Rolls, two successes are required to remove each Critical Damage Marker. Repair Rolls using the Advanced Repair Facilities rule ignores this rule.'
+	},
+	'Terror From Below': {
+		type: 'Ramming',
+		description: `This Unit may Ram Surface Units even if it moved less than 3" in the Movement Phase. +3 when Ramming Surface Units.`
+	},
+	'Veteran Voltmeisters': {
+		type: 'Assault',
+		description: '+1 dice when Assaulting. Assault gains Voltaic. No effect when Supporting.'
+	},
+	'Unstoppable': {
+		type: 'Ramming',
+		description: `After Ramming, remove from the Play area before disengaging and Place on the other side of the Impacted Model, retaining its facing as though it had just passed through the Impacted Model and emerged on the other side.`
+	}
 };

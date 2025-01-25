@@ -23,6 +23,8 @@ window.imperium_ships = {
 				name: 'Blitzen SRS Capacity',
 				value: '4/2',
 			},
+			'Disciplined',
+			'Heavy Firepower',
 			'Combat Air Patrol',
 			'SRS Mine Clearance',
 			'SRS Recon',
@@ -30,7 +32,7 @@ window.imperium_ships = {
 			'Large Target',
 			'Pycrete Construction',
 			'Inductorium',
-			'Advanced Sturmcoils',
+			'Advanced Sturmcoils'
 		],
 		weapons: [
 			{
@@ -45,6 +47,122 @@ window.imperium_ships = {
 				name: 'Sturmbringer',
 				arc: 'F',
 			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: 'F&A',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: 'P&S',
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'P/S',
+				option: 'P/S Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'P/S',
+				option: 'P/S Weapon',
+			},
+		],
+	},
+
+	sms_eiskalte_schoenheit: {
+		name: 'SMS Eiskalte Schoenheit',
+		type: 'Dreadnought Super-Carrier',
+		points: 535,
+		traits: 'Ice Maiden Class, Teutonic, Imperium, Flagship, Surface Unit',
+		mass: '6/6',
+		speed: '5/3',
+		turnLimit: '3/2',
+		armour: '7/6',
+		citadel: '12/10',
+		adv: '9/6',
+		sdv: '6/4',
+		fray: '15/13',
+		hull: '15/16',
+
+		rules: [
+			{
+				name: 'SRS Capacity',
+				value: '10/5',
+			},
+			{
+				name: 'Blitzen SRS Capacity',
+				value: '4/2',
+			},
+			'Disciplined',
+			'Heavy Firepower',
+			'Combat Air Patrol',
+			'SRS Mine Clearance',
+			'SRS Recon',
+			'Inspirational',
+			'Large Target',
+			'Pycrete Construction',
+			'Inductorium',
+			'Advanced Sturmcoils',
+			'Spotter'
+		],
+		weapons: [
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F',
+				option: 'F Weapon 1'
+			},
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F',
+				option: 'F Weapon 2'
+			},
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F',
+				option: 'F Weapon 3'
+			},
+			{
+				name: 'Bertha Heavy Bombard',
+				arc: 'F',
+				option: 'F Weapon 1'
+			},
+			{
+				name: 'Bertha Heavy Bombard',
+				arc: 'F',
+				option: 'F Weapon 2'
+			},
+			{
+				name: 'Bertha Heavy Bombard',
+				arc: 'F',
+				option: 'F Weapon 3'
+			},			
 			{
 				name: 'Vierling Autokanone',
 				arc: '360',
@@ -120,20 +238,63 @@ window.imperium_ships = {
 			{
 				name: 'Light Broadside',
 				arc: 'P&S',
-				qualities: 'Broadside, Fusillade',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: '360',
-				qualities: 'Gunnery, Devastating, Arc',
 			},
 			{
 				name: 'Sturmklaue',
 				arc: 'F/P/S',
-				qualities: 'Gunnery, Devastating, Arc',
 			},
 		],
 	},
+
+	malus: {
+		name: 'Malus',
+		type: 'Anti-Air Destroyer',
+		points: 90,
+		traits: 'Imperium, Prussian, Anti-Air Destroyer, Malus-class, Surface Unit',
+		mass: '1',
+		speed: '11',
+		turnLimit: '10',
+		armour: '5',
+		citadel: '10',
+		adv: '3',
+		sdv: '3',
+		fray: '5',
+		hull: '3',
+		rules: [
+			'Anti-Air Specialist',
+			'Disciplined',
+			{
+				name: 'Flak Barrage',
+				value: 3
+			},
+			'Forward Deployment',
+			'Inductorium',
+		],
+		weapons: [
+			{
+				name: 'Light Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: 'F/P/S'
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+				option: '360 Weapon'
+			},
+			{
+				name: 'Shock Rocket Battery',
+				arc: '360',
+				option: '360 Weapon'
+			}
+		],
+	},	
 
 	arminius: {
 		name: 'Arminius',
@@ -164,6 +325,7 @@ window.imperium_ships = {
 				name: 'Shock Rocket Battery',
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
+				optionCost: 3,
 			},
 		],
 	},
@@ -321,17 +483,15 @@ window.imperium_ships = {
 			{
 				name: 'Heavy Volt Gun Battery',
 				arc: 'F/P/S',
-			},
-			{
-				name: 'Heavy Volt Gun Battery',
-				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
+				multiple: 2
 			},
 			{
 				name: 'Heavy Shock Rocket Battery',
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
-				optionCost: 3,
+				optionCost: 6,
+				multiple: 2
 			},
 			{
 				name: 'Speerschleuders',
@@ -354,6 +514,53 @@ window.imperium_ships = {
 			},
 		],
 	},
+
+	volsung: {
+		name: 'Volsung',
+		type: 'Strike Cruiser',
+		points: 123,
+		traits: 'Imperium, Teutonic, Strike Cruiser, Surface Unit, Volsung-Class',
+		mass: '2/2',
+		speed: '9/6',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '12/11',
+		adv: '4/3',
+		sdv: '3/2',
+		fray: '8/7',
+		hull: '4/4',
+		rules: [
+			'Disciplined',
+			'Elite Crew',
+			'Focused Gunnery',
+			'Inductorium',
+			'Voltaic Decksweepers',
+			{
+				name: 'Freya Array',
+				option: '360 Weapon'
+			}
+		],
+		weapons: [
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Sturmbringer',
+				arc: 'F',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+				option: '360 Weapon',
+				default: true
+			},
+			{
+				name: 'Speerschleuders',
+				arc: 'F',
+			},
+		]
+	},	
 
 	augustus: {
 		name: 'Augustus',
@@ -450,6 +657,10 @@ window.imperium_ships = {
 				name: 'Heavy Speerschleuders',
 				arc: 'F',
 			},
+			{
+				name: 'Lightning Strike',
+				arc: '360',
+			},
 		],
 		generators: [
 			'Storm Generator',
@@ -466,6 +677,178 @@ window.imperium_ships = {
 				option: 'A Weapon',
 				optionCost: -5,
 			},
+		],
+	},
+
+	konig: {
+		name: 'Konig',
+		type: 'Generator Ship',
+		points: 260,
+		traits: 'Imperium, Teutonic, Surface Unit, Generator Ship, Konig-class, Flagship',
+		mass: '3/3',
+		speed: '6/5',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/15',
+		adv: '9/3',
+		sdv: '7/3',
+		fray: '13/12',
+		hull: '7/4',
+		rules: [
+			'Advanced Sturmcoils',
+			'Auto-Firing Solutions',
+			'Disciplined',
+			'Haddingjar Projector',
+			'Heavy Firepower',
+			'Inductorium',
+			'Tempermental Design',
+			'Veteran Voltmeisters',
+			'Voltaic Decksweepers'
+		],
+		weapons: [
+			{
+				name: 'Sturmbringer',
+				arc: 'F',
+				option: 'F Weapon',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+				option: 'F Weapon',
+				multiple: 2
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'F/P',
+				option: 'F/P Weapon'
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'F/S',
+				option: 'F/S Weapon'
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Heavy Speerschleuders',
+				arc: 'F',
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Fury Generator',
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'Generator 1',
+			},
+			{
+				name: 'Generator',
+				choices: [
+					'Fury Generator',
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'Generator 2',
+			},
+			{
+				name: 'Generator',
+				choices: [
+					'Fury Generator',
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'Generator 3',
+			},
+		],
+	},
+
+	brandenburg: {
+		name: 'SMS Brandenburg',
+		type: 'War Criminal',
+		points: 250,
+		traits: 'Imperium, Prussian, Surface Unit, Battleship, Elector-class, Flagship, Unique',
+		mass: '3/3',
+		speed: '6/4',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/15',
+		adv: '9/3',
+		sdv: '7/3',
+		fray: '13/12',
+		hull: '9/3',
+		rules: [
+			'Coastal Bombardment',
+			'Disciplined',
+			'Fortunes of War',
+			'Heavy Firepower',
+			'Inductorium',
+			'Monster of Nassau',
+			'Spotter',
+			'Voltaic Decksweepers',
+			'Phosphor Shells'
+		],
+		weapons: [
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F',
+				option: 'F Weapon',
+			},
+			{
+				name: 'Bertha Heavy Bombard',
+				arc: 'F',
+				option: 'F Weapon',
+				optionCost: 3,
+			},
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'A',
+				option: 'A Weapon',
+			},
+			{
+				name: 'Bertha Heavy Bombard',
+				arc: 'A',
+				option: 'A Weapon',
+				optionCost: 3,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Heavy Speerschleuders',
+				arc: 'F',
+			},
+			{
+				name: 'Lightning Strike',
+				arc: '360'
+			}
+		],
+		generators: [
+			'Storm Generator'
 		],
 	},
 
@@ -503,4 +886,66 @@ window.imperium_ships = {
 			},
 		],
 	},
+
+	einherjar: {
+		name: 'Einherjar',
+		type: 'Vitruvian Colossus',
+		points: 167,
+		traits: 'Imperium, Scandinavian, Surface Unit, Vitruvian Colossus, Einherjar-class',
+		mass: '3/3',
+		speed: '3/1',
+		turnLimit: '3/1',
+		armour: '8/7',
+		citadel: '14/13',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '9/9',
+		hull: '5/4',
+		rules: [
+			'Amphibious',
+			'Blitzschlag',
+			'Colossus',
+			'Inductorium',
+			'Submarauder',
+			'Wolves of the Sea',
+			'Zornhau'
+		],
+		weapons: [
+			{
+				name: 'Colossal Melee Weapon',
+				arc: '360'
+			},
+			{
+				name: 'Uber Volt Vierling',
+				arc: '360'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon'
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon',
+				optionCost: 3
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+				optionCost: 3
+			},
+		],
+		generators: [
+			{
+				name: 'Shield Generator'
+			},
+		],
+	}
 };

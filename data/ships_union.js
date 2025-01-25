@@ -1,0 +1,2 @@
+window.union_ships = {
+};
