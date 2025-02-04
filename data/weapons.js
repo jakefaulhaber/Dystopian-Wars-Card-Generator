@@ -106,5 +106,10 @@ window.weapons = {
 	'Vengeance Keel Saw': {
 		pb: '12/10',
 		qualities: 'Ramming, Piercing, Sustained',
-	}	
+	},
+	'Rudiger Autokanone': {
+		pb: '4(3)/3(2)',
+		closing: '3(1)/-',
+		qualities: 'Gunnery, Voltaic, Sustained'
+	}
 };

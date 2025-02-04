@@ -325,10 +325,6 @@ h1 div {
 	width: 100%;
 }
 
-.weapons.mass_1 td:nth-child(n+7), .weapons.mass_1 th:nth-child(n+7) {
-	display: none;
-}
-
 .weapons th {
 	padding: 0 .5rem;
 	text-transform: uppercase;

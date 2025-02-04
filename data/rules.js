@@ -32,6 +32,11 @@ window.general_rules = {
 		type: 'Shooting',
 		description: 'Sturmklaue and Heavy Sturmklaue gain Sustained',
 	},
+	'Agile': {
+		type: 'Movement',
+		description:
+			'Unless suffering from a Navigation Lock Critical Damage Marker, Models in this Unit with this rule may make turns during Drift movement in the same way as it usually would during normal Movement',
+	},
 	'Anti-Air Specialist': {
 		type: 'Shooting',
 		description:
@@ -61,6 +66,11 @@ window.general_rules = {
 		type: 'SRS',
 		description:
 			'Launch SRS Tokens in the First Round (to a max of Crippled Capacity) with infinite range.',
+	},
+	'Command Codes': {
+		type: 'Misc',
+		description:
+			`Once per Round reroll all your dice from a friendly pool generated within 15". Do this before any other dice manipulation.`,
 	},
 	'Deep Dive': {
 		type: 'Movement',
@@ -144,6 +154,11 @@ window.general_rules = {
 		description:
 			'Upon Ranged Attack or Assault with Voltaic/Arc, after all dice are rolled/exploded: If Exploding Hits >= # of target models, roll additional dice = # of target models.',
 	},
+	'Ivaldi Shroud Generator': {
+		type: 'Defense/Movement',
+		description: `Obscured to Shooting Attacks. As a Special Operations Action, this Model may be removed from Play and replaced at a new point completely within 5" of its original position with the same facing.`
+
+	},
 	'Landing Vessel': {
 		type: 'Misc',
 		description:
@@ -158,6 +173,11 @@ window.general_rules = {
 		type: 'Assault',
 		description:
 			'Assaults within 6". Assault gains the Voltaic. This rule does not apply to Supporting Assaults.',
+	},
+	'Maritime Patrol': {
+		type: 'Shooting',
+		description:
+			'Ignore the Submerged Unit Position Trait when making Attacks on any Initial Targets within 10", or against Initial Targets with at least one friendly SRS Token in base contact.',
 	},
 	'Mine Layer': {
 		type: 'Misc',
@@ -178,6 +198,11 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 			'Gustav Twin Bombards or Bertha Heavy Bombard has the Hazardous Quality.',
+	},
+	'Powerslide': {
+		type: 'Movement',
+		description:
+			'may make Drift Movement in a direction up to 90 degrees to Port or Starboard. Maintain heading.',
 	},
 	'Pycrete Construction': {
 		type: 'Misc/Weakness',
@@ -213,6 +238,11 @@ window.general_rules = {
 		type: 'Misc',
 		description:
 			`At the start of the Maintenance Step of the End Phase, unless one or more Models in the Unit has Navigation Lock Critical Damage, this Unit may be placed back into Reserves. If so, Crippled Models in the Unit are immediately destroyed.`,
+	},
+	'Vali Midget Subs': {
+		type: 'SRS',
+		description:
+			'Place Vali Midget Sub Tokens up to 20" from this Model like SRS. Like SRS, but with 5 Action Dice, Homing, Piercing and Submerged. Cannot be intercepted. Cannot attack Aerial.',
 	},
 	Vanguard: {
 		type: 'Deployment',

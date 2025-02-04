@@ -233,6 +233,11 @@ window.imperium_ships = {
 			'Focused Gunnery',
 			'Inductorium',
 			'Voltaic Decksweepers',
+			{
+				option: 'Optional Upgrades',
+				name: 'Veteran Voltmeister',
+				optionCost: 3,
+			}
 		],
 		weapons: [
 			{
@@ -680,6 +685,63 @@ window.imperium_ships = {
 		],
 	},
 
+	tirpitz: {
+		name: 'SMS Tirpitz',
+		type: 'Heavy Battleship',
+		points: 303,
+		traits: 'Imperium, Prussian, Surface Unit, Heavy Battleship, Elector-class, Kaiser Pattern, Flagship, Unique',
+		mass: '3/3',
+		speed: '6/4',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/15',
+		adv: '9/3',
+		sdv: '7/3',
+		fray: '14/13',
+		hull: '9/3',
+		rules: [
+			'Ablative Armour',
+			'Command Codes',
+			'Disciplined',
+			'Elite Crew',
+			'Heavy Firepower',
+			'Inductorium',
+			'Ivaldi Shroud Generator',
+			'Maritime Patrol',
+			'Storm Generator',
+			'Voltaic Decksweepers'
+		],
+		weapons: [
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'A/P/S',
+			},
+			{
+				name: 'Heavy Speerschleuders',
+				arc: 'F',
+			},
+			{
+				name: 'Lightning Strike',
+				arc: '360',
+			},
+		],
+		generators: [
+			'Storm Generator',
+		],
+	},
+
 	konig: {
 		name: 'Konig',
 		type: 'Generator Ship',
@@ -947,5 +1009,146 @@ window.imperium_ships = {
 				name: 'Shield Generator'
 			},
 		],
-	}
+	},
+
+	valhalla: {
+		name: 'Valhalla',
+		type: 'Fast Dreadnought',
+		points: 338,
+		traits: 'Imperium, Scandinavian, Surface Unit, Fast Dreadnought, Valhalla-class, Flagship',
+		mass: '4/4',
+		speed: '6/4',
+		turnLimit: '3/2',
+		armour: '8/6',
+		citadel: '15/14',
+		adv: '10/5',
+		sdv: '6/3',
+		fray: '15/16',
+		hull: '9/5',
+		rules: [
+			'Hammer Sweep',
+			'Heavy Firepower',
+			'Inductorium',
+			{
+				name: 'Vali Midget Subs',
+				value: '4/2',
+			},
+			'Voltaic Decksweepers',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Sturmbringer',
+				arc: 'F'
+			},
+			{
+				name: 'Sturmbringer',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon'
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P/S',
+			},
+		],
+		generators: [
+			'Fury Generator',
+			{
+				name: 'Generator',
+				choices: [
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'F/P/S Weapon',
+				optionCost: -5,
+			},
+		],
+	},
+
+	valkyrie: {
+		name: 'Valkyrie',
+		type: 'Hunt Rotor',
+		points: 84,
+		traits: 'Imperium, Scandinavian, Aerial Unit, Hunt Rotor, Valkyrie-class',
+		mass: '1/1',
+		speed: '12',
+		turnLimit: '10',
+		armour: '5',
+		citadel: '11',
+		adv: '2',
+		sdv: '0',
+		fray: '7',
+		hull: '3',
+		rules: [
+			'Agile',
+			'Inductorium',
+			'Powerslide',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F',
+				option: 'Main weapon'
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F',
+				option: 'Main weapon'
+			},
+			{
+				name: 'Rudiger Autokanone',
+				arc: 'F'
+			}
+		],
+	},
+
+	fenrir: {
+		name: 'Fenrir',
+		type: 'Hunter Submarine',
+		points: 60,
+		traits: 'Imperium, Prussian, Scandinavian, Submerged Unit, Hunter Submarine, Fenrir-class',
+		mass: '1/1',
+		speed: '9',
+		turnLimit: '7',
+		armour: '4',
+		citadel: '10',
+		adv: '1',
+		sdv: '2',
+		fray: '3',
+		hull: '2',
+		rules: [
+			'Agile',
+			'Pack Hunter',
+			'Vanguard'
+		],
+		weapons: [
+			{
+				name: 'Speerschleuders',
+				arc: 'F'
+			},
+		],
+	},
 };

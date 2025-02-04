@@ -288,13 +288,13 @@
 					console.log('rule', rule, fullRule)
 					let type = fullRule ? fullRule.type : 'Missing'
 
-					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1 || type.indexOf('Ramming') > -1) {
+					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1) {
 						offensiveRules.push(rule)
 					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
 						defensiveRules.push(rule)
 					} else if (type.indexOf('SRS') > -1) {
 						srsRules.push(rule)
-					} else if (type.indexOf('Movement') > -1) {
+					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
 						movementRules.push(rule)
 					} else {
 						miscRules.push(rule)
@@ -360,8 +360,6 @@
 				if (parseInt(ship.mass) == 1) {
 					card.find('.stats').parentNode.classList.add('mass_1')
 					card.find('.stats').classList.add('mass_1')
-					weaponsWrapper.classList.add('mass_1')
-
 				}
 
 				ship.weapons.map((weapon, weaponId) => {
