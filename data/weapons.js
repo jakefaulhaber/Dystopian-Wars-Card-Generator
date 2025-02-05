@@ -111,5 +111,53 @@ window.weapons = {
 		pb: '4(3)/3(2)',
 		closing: '3(1)/-',
 		qualities: 'Gunnery, Voltaic, Sustained'
+	},
+	'Apocalyps Cannon': {
+		closing: '12(4)/12(4)',
+		long: '22(1)/22(1)',
+		qualities: 'Gunnery, Devastating, Extreme Range, Hazardous',
+	},
+	'Cryogenic Blast': {
+		pb: '7(-)',
+		closing: '7(-)',
+		qualities: 'Blast, Hazardous, Devastating',
+	},
+	'Furnace Cascade': {
+		pb: '12(5)/6(3)',
+		qualities: 'Torrent, Devastating, Hazardous',
+	},
+	'Katyusha Rocket Salvo': {
+		closing: '9(4)/6(3)',
+		long: '9(4)/6(3)',
+		qualities: 'Aerial, Sustained, Extreme Range, Limited',
+	},
+	'Railgun': {
+		pb: '5(2)/3(1)',
+		closing: '5(2)/3(1)',
+		long: '5(2)/3(1)',
+		qualities: 'Rail, Gunnery, Extreme Range',
+	},
+	'Seismic Mortar': {
+		closing: '5(2)/3(2)',
+		long: '5(2)/3(2)',
+		qualities: 'Hazardous, Valour Effect: Devastating',
+	},
+	'Tri-Railgun': {
+		pb: '8(3)/5(2)',
+		closing: '8(3)/5(2)',
+		long: '8(3)/5(2)',
+		qualities: 'Rail, Gunnery, Extreme Range',
+	},
+	'Yastreb Missile Battery': {
+		pb: '7(1)/5(-)',
+		closing: '9(4)/6(3)',
+		long: '10(4)/6(4)',
+		qualities: 'Aerial',
+	},
+	'Zhalo Rocket Battery': {
+		pb: '5(1)/4(-)',
+		closing: '5(3)/4(3)',
+		long: '5(3)/7(3)',
+		qualities: 'Aerial',
 	}
 };
