@@ -126,6 +126,17 @@ window.weapons = {
 		pb: '12(5)/6(3)',
 		qualities: 'Torrent, Devastating, Hazardous',
 	},
+	'Gun Battery': {
+		pb: '3(2)/2(1)',
+		closing: '5(3)/4(2)',
+		qualities: 'Gunnery',
+	},
+	'Heavy Gun Battery': {
+		pb: '6(3)/4(1)',
+		closing: '9(4)/6(3)',
+		long: '6(3)/4(1)',
+		qualities: 'Gunnery',
+	},
 	'Katyusha Rocket Salvo': {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
@@ -141,6 +152,10 @@ window.weapons = {
 		closing: '5(2)/3(2)',
 		long: '5(2)/3(2)',
 		qualities: 'Hazardous, Valour Effect: Devastating',
+	},
+	'Shockwave Pulse': {
+		pb: '6(4)/-',
+		qualities: 'Small Torrent, Hazardous'
 	},
 	'Tri-Railgun': {
 		pb: '8(3)/5(2)',

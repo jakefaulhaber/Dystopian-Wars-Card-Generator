@@ -54,3 +54,5 @@ Rules are generally entered as strings, but if they have a value in brackets lik
 ```
 
 To run locally you need a web server of some kind, and then just open index.html. If you don't already have a web server set up like Laragon or whatever, you can do "npm install" and "npm run start" to open it with http-server. There are no dependencies for it to run, and it simply uses cookies to store option choices.
+
+Q: Why don't I see my additions/changes?  A: hard refresh your web browser to load the new Javascript files
