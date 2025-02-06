@@ -72,6 +72,10 @@ window.general_rules = {
 		description:
 			`Once per Round reroll all your dice from a friendly pool generated within 15". Do this before any other dice manipulation.`,
 	},
+	'Corvette Duty': {
+		type: 'Defense',
+		description: 'This Model may add +1 Defense Dice on any friendly Models within 5". This bonus is in addition to Attached.'
+	},
 	'Deep Dive': {
 		type: 'Movement',
 		description: `In the Special Operations phase of the round, while Battle Ready and in Open Water this Unit may declare it is going to Deep Dive. For the remainder of that Round, the Unit doubles its Drift Movement but cannot make any other Movement. The Unit also cannot launch SRS or make any Action that does not have the Submerged Quality. Furthermore, while it carries out a Deep Dive Special Operation, this Unit cannot be the Initial Target of any Action that does not have the Submerged Quality. A Unit cannot be part of an Attached Unit if it carries out a Deep Dive Special Operation, unless both Units have this rule. A Unit cannot carry out a Deep Dive Special Operation if it has already done so the previous Round.`
@@ -98,6 +102,11 @@ window.general_rules = {
 		type: 'SRS',
 		description:
 			'At the start of the End Phase, before SRS Resolution, Roll a number of Action Dice indicated by the rule. Remove one SRS Token that is in contact with this Unit or Friendly Units within 15" for each Exploding Hit.',
+	},
+	'Focused Fire (Gunnery)': {
+		type: 'Shooting',
+		description:
+			'One attack with Gunnery per Activation gets +2 dice and may re-roll Blanks.',
 	},
 	'Focused Gunnery': {
 		type: 'Shooting',
@@ -209,9 +218,21 @@ window.general_rules = {
 		description:
 			'Drift = 1". No Disorder from Collisions. Gunnery targeting this Unit may re-roll Blanks. 4+ Disorder are ignored rather than causing damage. Can extend outside Deployment Zone if touching back edge.',
 	},
+	'Shallow Draught': {
+		type: 'Movement',
+		description: 'This Unit treats Treacherous Water as Open Water'
+	},
+	'Shockwave Generator': {
+		type: 'Shooting',
+		description: 'Used in Shooting Phase to fire a single Shockwave Pulse by the Unit at a Target model using the Point-Blank Shockwave Pulse weapon profile. Each additional Generator of this type in the unit adds +4 Dice. Template may be placed over an Initial Target in Line of Sight anywhere within 15" of a Model in this unit, narrow end pointing to this unit. If there are three or more generators contributing to the Attack Pool, use larger Torrent.'
+	},
 	'Silent Stalker': {
 		type: 'Deployment/Shooting',
 		description: `Deploy at the start of an Encounter as a Silent Stalker. Units that do so are deployed at the same time as Vanguard moves and may be deployed anywhere at least 20" from the enemy deployment zone. Deploying with Silent Stalker gives Torpedo attacks Homing this round.`
+	},
+	'Sonic Amplifier': {
+        type: 'Shooting',
+		description: 'Shockwave Pulses by this model gain +3 to their Attack Dice Pool, the Devastating Quality. And always use the larger Torrent template.'
 	},
 	Spotter: {
 		type: 'Shooting',
