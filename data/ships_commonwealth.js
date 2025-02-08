@@ -25,20 +25,71 @@ window.commonwealth_ships = {
 		weapons: [
 			{
 				name: 'Heavy Gun Battery',
-				arc: 'F/P/S'
+				arc: 'F/P/S & F/P & F/S',
+				option: 'Heavy Gun Batteries'
 			},
 			{
-				name: 'Heavy Gun Battery',
-				arc: 'F/P'
+				name: 'Tri-Railgun',
+				arc: 'F/P/S & F/P & F/S',
+				option: 'Heavy Gun Batteries',
+				optionCost: 15,
 			},
 			{
-				name: 'Heavy Gun Battery',
-				arc: 'F/S'
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S & F/P & F/S',
+				option: 'Heavy Gun Batteries',
+				optionCost: 15,
 			},
 			{
 				name: 'Heavy Broadside',
 				arc: 'P&S'
-			}
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 10,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'Heavy Gun Batteries',
+				optionCost: -5,
+			},
 		],
 	},
 	krykun: {
@@ -74,6 +125,23 @@ window.commonwealth_ships = {
 				name: 'Gun Battery',
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
 			},
 		],
 	}

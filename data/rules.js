@@ -22,7 +22,7 @@ window.weapon_rules = {
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
 	Ramming: 'Adds dice when ramming.'
 };
-
+JPF add rail, hazardous, and  Valour Effect: Devastating
 window.general_rules = {
 	'Ablative Armour': {
 		type: 'Defense',
