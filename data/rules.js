@@ -9,6 +9,7 @@ window.weapon_rules = {
 	Fusillade:
 		'Re-roll Counter and Heavy Counter results. No effect on Aerial/Submerged without matching Quality.',
 	Aerial: 'Cannot Shoot Submerged Units. Target may use Aerial Defences.',
+	'High Velocity': 'Heavy Counter results add a single Counter rather than two.',
 	Homing: 'Models cannot be considered Obscured from Actions with the Homing Quality. Furthermore, Actions made with this Quality may re-roll Blanks and ignore Shroud Generators.',
 	Piercing:
 		'Target suffers Critical Damage roll if it receives one or more Points of Damage. This is in addition to any Critical Damage rolls caused by the Action. Mass 1 Targets lower their Citadel by -3 for the Action.',
@@ -76,6 +77,10 @@ window.general_rules = {
 		type: 'Defense',
 		description: 'This Model may add +1 Defense Dice on any friendly Models within 5". This bonus is in addition to Attached.'
 	},
+	'Crimson Privateers': {
+		type: 'Assault',
+		description: 'Loses Jannissary Assault Deck. Ignores Counter Assault results when making Assault. Assaults led by this model gains Hazardous',
+	},
 	'Deep Dive': {
 		type: 'Movement',
 		description: `In the Special Operations phase of the round, while Battle Ready and in Open Water this Unit may declare it is going to Deep Dive. For the remainder of that Round, the Unit doubles its Drift Movement but cannot make any other Movement. The Unit also cannot launch SRS or make any Action that does not have the Submerged Quality. Furthermore, while it carries out a Deep Dive Special Operation, this Unit cannot be the Initial Target of any Action that does not have the Submerged Quality. A Unit cannot be part of an Attached Unit if it carries out a Deep Dive Special Operation, unless both Units have this rule. A Unit cannot carry out a Deep Dive Special Operation if it has already done so the previous Round.`
@@ -128,6 +133,15 @@ window.general_rules = {
 		description:
 			'Can Ram Surface Units. +1 Victory Point for each Surface Unit destroyed by Assault or Ramming. Re-roll Blanks in Attacks and Assault against Mass 3+.',
 	},
+	'Giant Slayer': {
+		type: 'Shooting',
+		description:
+		'Each Model in ths unit may re-roll Blank Results in Attacks against an Initial Target with a Mass of 3 or more',
+	},
+	'Gun Runner': {
+		type: 'Movement/Shooting',
+		description: 'Battle-ready models gain +2 speed if it makes no turns. If model moves at least 7", a single attack per activation with Gunnery or Broadside gains +1 dice per contributing battle-ready model',
+	}, 
 	'Hammer Sweep': {
 		type: 'Movement/Ramming',
 		description:
@@ -153,6 +167,10 @@ window.general_rules = {
 		description:
 			'The Citadel of Targets that are in LoS of a Valkyrie receives a -2 against Attacks from this Model.',
 	},
+	'Hydrophone Relay': {
+		type: 'Phone',
+		description: 'attacks against enemy models within 10" of this model ignore the Obscured rule',
+	},
 	Inspirational: {
 		type: 'Shooting/Assault',
 		description:
@@ -168,6 +186,10 @@ window.general_rules = {
 		description: `Obscured to Shooting Attacks. As a Special Operations Action, this Model may be removed from Play and replaced at a new point completely within 5" of its original position with the same facing.`
 
 	},
+	'Janissary Assault Deck': {
+		type: 'Assault',
+		description: 'Ignores Counter Assault results when making Assault. Assaults led by this model gains Devastating',
+	},
 	'Landing Vessel': {
 		type: 'Misc',
 		description:
@@ -177,6 +199,11 @@ window.general_rules = {
 		type: 'Weakness',
 		description:
 			'Can be declared to be in more than one Fire Arc when shot.',
+	},
+	'Linear Dash': {
+		type: 'Movement',
+		description:
+		'Models gain +2 speed during Movement Step provided it makes no turns',
 	},
 	'Luftlancer Assault': {
 		type: 'Assault',
