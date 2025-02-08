@@ -65,6 +65,19 @@ window.sultanate_ships = {
 			{
 				name: 'Gun Battery',
 				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 3,	
+			},
+			{
+				name: 'Aetheric Lance',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
 			},
             {
                 name: 'Light Broadside',

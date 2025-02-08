@@ -191,5 +191,11 @@ window.weapons = {
 		pb: '6(3)/4(2)',
 		closing: '5(3)/3(2)',
 		qualities: 'Sustained, Gunnery',
-	}
+	},
+	'Rocket Battery': {
+		pb: '5(1)/4(-)',
+		closing: '5(2)/4(2)',
+		long: '5(2)/4(2)',
+		qualities: 'Aerial',
+	},
 };
