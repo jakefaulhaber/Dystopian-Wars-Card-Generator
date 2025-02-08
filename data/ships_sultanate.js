@@ -59,13 +59,17 @@ window.sultanate_ships = {
 		],
 		weapons: [
 			{
-				name: 'Aerial Barbette Launcher',
+				name: 'Aerial Torpedo Salvo',
 				arc: 'F',
 			},
 			{
-				name: 'Aetheric Lance',
-				arc: 'F',
+				name: 'Gun Battery',
+				arc: 'F/P/S',
 			},
+            {
+                name: 'Light Broadside',
+                arc: 'P&S',
+            },
 		],
 	}
 }
