@@ -192,6 +192,23 @@ window.weapons = {
 		closing: '5(3)/3(2)',
 		qualities: 'Sustained, Gunnery',
 	},
+	'D-Cannon Battery': {
+		closing: '8(4)/6(3)',
+		long: '8(4)/6(3)',
+		qualities: 'Indirect, Piercing',
+	},
+	'Heavy Rocket Battery': {
+		pb: '9(2)/6(-)',
+		closing: '9(4)/6(3)',
+		long: '9(4)/6(3)',
+		qualities: 'Aerial',
+	},
+	'Particle Beamer': {
+		pb: '7(5)/6(4)',
+		closing: '6(4)/3(2)',
+		long: '6(4)/3(2)',
+		qualities: 'Sustained, Gunnery',
+	} ,
 	'Rocket Battery': {
 		pb: '5(1)/4(-)',
 		closing: '5(2)/4(2)',
