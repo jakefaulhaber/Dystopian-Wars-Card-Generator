@@ -153,6 +153,10 @@ window.weapons = {
 		long: '5(2)/3(2)',
 		qualities: 'Hazardous, Valour Effect: Devastating',
 	},
+	'Semyenov Assault Bore': {
+		pb: '12/10',
+		qualities: 'Ramming, Piercing, Devastating'
+	},
 	'Shockwave Pulse': {
 		pb: '6(4)/-',
 		qualities: 'Small Torrent, Hazardous'

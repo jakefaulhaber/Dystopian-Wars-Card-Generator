@@ -400,6 +400,111 @@ window.commonwealth_ships = {
 
 		],
 	},
+	khatanga: {
+		name: 'Khatanga Cryo Assault Cruiser',
+		type: 'Cryo Assault Cruiser',
+		points: '130',
+		traits: 'Commonwealth, Cryo Assault Cruiser, Surface Unit, Khatanga-Class, Russian',
+		mass: '2/2',
+		speed: '8/5',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '13/10',
+		adv: '5/3',
+		sdv: '3/2',
+		fray: '10/9',
+		hull: '5/4',
+		rules: [
+			'Ablative Armour',
+            'Cryo Generator',
+            'Hammer Sweep',
+		],
+		weapons: [
+			{
+				name: 'Cryogenic Blast',
+				arc: '360'
+			}, 
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Semyenov Assault Bore',
+				arc: 'F',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A/P/S Batteries',
+				optionCost: -5,
+			},
+		],
+	},
 	krykun: {
 		name: 'Krykun Shockwave Frigate',
 		type: 'Shockwave Frigate',
@@ -456,5 +561,163 @@ window.commonwealth_ships = {
 				arc: '360'
 			}
 		],
-	}
+	},
+	norilsk: {
+		name: 'Norilsk Heavy Cruiser',
+		type: 'Heavy Cruiser',
+		points: '121',
+		traits: 'Commonwealth, Heavy Cruiser, Surface Unit, Norilsk-Class, Russian',
+		mass: '2/2',
+		speed: '7/5',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '13/10',
+		adv: '5/3',
+		sdv: '4/2',
+		fray: '9/8',
+		hull: '5/4',
+		rules: [
+			'Ablative Armour',
+			'Focused Fire (Gunnery)',
+            'Hammer Sweep',
+			'Quantity is a Quality',
+		],
+		weapons: [
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A/P/S Batteries',
+				optionCost: -5,
+			},
+		],
+	},
+	oleg: {
+		name: 'Oleg Monitor',
+		type: 'Monitor',
+		points: '65',
+		traits: 'Commonwealth, Monitor, Surface Unit, Oleg-Class, Russian',
+		mass: '2/2',
+		speed: '7/5',
+		turnLimit: '4/3',
+		armour: '6/6',
+		citadel: '12/10',
+		adv: '5/3',
+		sdv: '4/2',
+		fray: '9/8',
+		hull: '4/4',
+		rules: [
+			'Ablative Armour',
+            'Hammer Sweep',
+			'Maritime Patrol',
+			'Quantity is a Quality',
+			'Shallow Draught',
+		],
+		weapons: [
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A/P/S Batteries',
+				optionCost: -5,
+			},
+		],
+	},	
 };
