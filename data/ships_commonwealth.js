@@ -1,4 +1,107 @@
 window.commonwealth_ships = {
+	borodino: {
+		name: 'Borodino Battleship',
+		type: 'Battleship',
+		points: 248,
+		traits: 'Commonwealth, Russian, Surface Ship, Battleship, Borodino-class, Flagship',
+		mass: '3/3',
+		speed: '5/3',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/14',
+		adv: '6/4',
+		sdv: '5/3',
+		fray: '14/13',
+		hull: '8/5',
+		rules: [
+            'Ablative Armour',
+            'Cryo Generator',
+			'Cryo-Capacitors',
+            'Hammer Sweep',
+            'Heavy Firepower',
+            'Quantity is a Quality',
+		],
+		weapons: [
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Cryogenic Blast',
+				arc: '360'
+			}
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'F/P Batteries',
+				optionCost: -5,
+			},
+		],
+	},
 	moskva: {
 		name: 'Moskva Heavy Battleship',
 		type: 'Heavy Battleship',
@@ -11,7 +114,7 @@ window.commonwealth_ships = {
 		citadel: '16/14',
 		adv: '6/4',
 		sdv: '5/3',
-		fray: '14/10',
+		fray: '14/13',
 		hull: '10/6',
 		rules: [
             'Ablative Armour',
@@ -128,6 +231,173 @@ window.commonwealth_ships = {
 				option: 'F/P Batteries',
 				optionCost: -5,
 			},
+		],
+	},
+	prezidium: {
+		name: 'Prezidium Command Ship',
+		type: 'Command Ship',
+		points: 298,
+		traits: 'Commonwealth, Russian, Surface Ship, Command Ship, Prezidium-class, Flagship',
+		mass: '3/3',
+		speed: '5/3',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/14',
+		adv: '6/4',
+		sdv: '5/3',
+		fray: '14/13',
+		hull: '10/6',
+		rules: [
+            'Ablative Armour',
+			'Command Codes',
+            'Elite Crew',
+            'Hammer Sweep',
+            'Heavy Firepower',
+			'Hydrophone Relay',
+            'Inspirational',
+			'Logistical Support',
+			'Supply Depot'
+		],
+		generators: [
+			'Shield Generator',
+		],
+		weapons: [
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 10,
+			},
+		],
+	},
+	rikhter: {
+		name: 'Rikhter Artillery Dreadnought',
+		type: 'Artillery Dreadnought',
+		points: 271,
+		traits: 'Commonwealth, Russian, Surface Ship, Artillery Dreadnought, Rikhter-class, Flagship',
+		mass: '3/3',
+		speed: '4/3',
+		turnLimit: '3/2',
+		armour: '8/8',
+		citadel: '16/14',
+		adv: '6/4',
+		sdv: '5/3',
+		fray: '14/13',
+		hull: '10/6',
+		rules: [
+            'Ablative Armour',
+            'Hammer Sweep',
+            'Kinetic Dampers',
+            'Void Engine Magazine',
+		],
+		generators: [
+			'Shield Generator',
+			'Magnetic Generator'
+		],
+		weapons: [
+			{
+				name: 'Apokalyps Cannon',
+				arc: 'F',
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P & F/S',
+				option: 'F/P & F/S Weapon',
+				optionCost: 10,
+			},
+
 		],
 	},
 	krykun: {

@@ -26,7 +26,8 @@ window.weapon_rules = {
 	Ramming: 'Adds dice when ramming.',
 	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating',
 	Torrent: 'Use the big flamer template',
-	'Small Torrent': 'use the small flamer template'
+	'Small Torrent': 'use the small flamer template',
+	'No Damage to Aerial': 'never causes damage to Aerial Units',
 };
  
 window.general_rules = {
@@ -96,6 +97,15 @@ window.general_rules = {
 	'Crimson Privateers': {
 		type: 'Assault',
 		description: 'Loses Jannissary Assault Deck. Ignores Counter Assault results when making Assault. Assaults led by this model gains Hazardous',
+	},
+	'Cryo Generator': {
+		type: 'Shooting/Misc',
+		description:
+		'Can fire Cryogenic Blast. Or, roll 1 action dice:explode:2" Mass2 25" away, Hits:1" M1 20", Counters:1" M1 15".'
+	},
+	'Cryo-Capacitors': {
+		type: 'Shooting',
+		description: 'This Unit adds 1 Action Dice and Sustained to its Cyrogenic Blasts'
 	},
 	'Deep Dive': {
 		type: 'Movement',
@@ -210,6 +220,10 @@ window.general_rules = {
 		type: 'Assault',
 		description: 'Ignores Counter Assault results when making Assault. Assaults led by this model gains Devastating',
 	},
+	'Kinetic Dampers': {
+		type: 'Movement/Defense',
+		description: 'May make a Full Reverse! SpecOp Action without receiving Disorder. Any additional levels of Disorder once at Chaos & Disarray are ignored.'
+	},
 	'Landing Vessel': {
 		type: 'Misc',
 		description:
@@ -224,6 +238,11 @@ window.general_rules = {
 		type: 'Movement',
 		description:
 		'Models gain +2 speed during Movement Step provided it makes no turns',
+	},
+	'Logistical Support': {
+		type: 'Misz',
+		description:
+		'+1 to Victory and Valour Cards in hand. If ship lost, bonus lost at end of Round. Does not stack.'
 	},
 	'Luftlancer Assault': {
 		type: 'Assault',
@@ -280,6 +299,11 @@ window.general_rules = {
 		description:
 			'Drift = 1". No Disorder from Collisions. Gunnery targeting this Unit may re-roll Blanks. 4+ Disorder are ignored rather than causing damage. Can extend outside Deployment Zone if touching back edge.',
 	},
+	'Quantity is a Quality': {
+		type: 'Misc',
+		description:
+		'After this unit is destoryed, roll number of Action Dice equal to Round. Each Exploding hit is one Kutsov or three Ruriks, pleace in Reserve. One guaranteed success if destroyed unit was within 7" of a Flagship'
+	},
 	'Shallow Draught': {
 		type: 'Movement',
 		description: 'This Unit treats Treacherous Water as Open Water'
@@ -322,6 +346,11 @@ window.general_rules = {
 		description:
 			`At the start of the Maintenance Step of the End Phase, unless one or more Models in the Unit has Navigation Lock Critical Damage, this Unit may be placed back into Reserves. If so, Crippled Models in the Unit are immediately destroyed.`,
 	},
+	'Supply Depot': {
+		type: 'Misc',
+		description:
+		'Any Friendly Model within 7" may remove a single level of Disorder at start of their activation. Friendly Units within 7" regain weapons lost due to Limited Quality'
+	},
 	'Tracer Fire (Aerial)': {
 		type: 'Shooting',
 		description:
@@ -341,6 +370,11 @@ window.general_rules = {
 		type: 'Assault',
 		description:
 			'If has Voltaic Decksweepers, when Assaulting, +1 dice. Assault gains the Voltaic Quality. No effect when Supporting.',
+	},
+	'Void Engine Magazine': {
+		type: 'Weakness',
+		description:
+		'If unit is Crippled or has Generator Shutdown, its Cannon loses Extreme Range and gains Limited Quality'
 	},
 	'Voltaic Decksweepers': {
 		type: 'Assault',

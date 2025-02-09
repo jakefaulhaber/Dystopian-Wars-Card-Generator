@@ -112,15 +112,15 @@ window.weapons = {
 		closing: '3(1)/-',
 		qualities: 'Gunnery, Voltaic, Sustained'
 	},
-	'Apocalyps Cannon': {
+	'Apokalyps Cannon': {
 		closing: '12(4)/12(4)',
 		long: '22(1)/22(1)',
 		qualities: 'Gunnery, Devastating, Extreme Range, Hazardous',
 	},
 	'Cryogenic Blast': {
-		pb: '7(-)',
-		closing: '7(-)',
-		qualities: 'Blast, Hazardous, Devastating',
+		pb: '7(-)/-',
+		closing: '7(-)/-',
+		qualities: 'Blast, Hazardous, Devastating, No Damage to Aerial',
 	},
 	'Furnace Cascade': {
 		pb: '12(5)/6(3)',
