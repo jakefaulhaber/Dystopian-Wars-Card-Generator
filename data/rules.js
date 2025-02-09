@@ -24,7 +24,9 @@ window.weapon_rules = {
 		'Long Range Band 20" - 40". Not required to match when Supporting a Lead weapon.',
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
 	Ramming: 'Adds dice when ramming.',
-	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating'
+	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating',
+	Torrent: 'Use the big flamer template',
+	'Small Torrent': 'use the small flamer template'
 };
  
 window.general_rules = {

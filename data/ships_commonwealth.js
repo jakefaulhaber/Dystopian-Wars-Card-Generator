@@ -25,20 +25,54 @@ window.commonwealth_ships = {
 		weapons: [
 			{
 				name: 'Heavy Gun Battery',
-				arc: 'F/P/S & F/P & F/S',
-				option: 'Heavy Gun Batteries'
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
 			},
 			{
 				name: 'Tri-Railgun',
-				arc: 'F/P/S & F/P & F/S',
-				option: 'Heavy Gun Batteries',
-				optionCost: 15,
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
 			},
 			{
 				name: 'Yastreb Missile Battery',
-				arc: 'F/P/S & F/P & F/S',
-				option: 'Heavy Gun Batteries',
-				optionCost: 15,
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
 			},
 			{
 				name: 'Heavy Broadside',
@@ -75,6 +109,10 @@ window.commonwealth_ships = {
 				option: 'F/P & F/S Weapon',
 				optionCost: 10,
 			},
+			{
+				name: 'Shockwave Pulse',
+				arc: '360'
+			}
 		],
 		generators: [
 			{
@@ -87,7 +125,7 @@ window.commonwealth_ships = {
 					'Shield Generator',
 					'Shroud Generator',
 				],
-				option: 'Heavy Gun Batteries',
+				option: 'F/P Batteries',
 				optionCost: -5,
 			},
 		],
@@ -143,6 +181,10 @@ window.commonwealth_ships = {
 				option: 'F/P/S Weapon',
 				optionCost: 5,
 			},
+			{
+				name: 'Shockwave Pulse',
+				arc: '360'
+			}
 		],
 	}
 };
