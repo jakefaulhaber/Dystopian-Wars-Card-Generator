@@ -3,6 +3,9 @@ window.weapon_rules = {
 	Devastating: 'Exploding Hits = 3 damage',
 	Gunnery: 'Target mass 1 treated as Obscured.',
 	Sustained: 'Re-roll any one result type before Exploding.',
+	Hazardous: 'Any damage = +1 Disorder',
+	Indirect: 'Does not require Line of Sight, may target any non-Aerial withing range and arc as an Initial Target. Target counts as Obscured for this attack.',
+	Rail: 'Citadel is -1 against this attack. Each weapon adds 1 dice vs Skimming/Aerial (max 3). Each weapon loses a dice against Submerged (max 3)',
 	Voltaic:
 		'On Critical add a Disorder. +1 dice vs active Generators',
 	Broadside: 'Can be fired in each direction.',
@@ -20,9 +23,10 @@ window.weapon_rules = {
 	'Extreme Range':
 		'Long Range Band 20" - 40". Not required to match when Supporting a Lead weapon.',
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
-	Ramming: 'Adds dice when ramming.'
+	Ramming: 'Adds dice when ramming.',
+	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating'
 };
-JPF add rail, hazardous, and  Valour Effect: Devastating
+ 
 window.general_rules = {
 	'Ablative Armour': {
 		type: 'Defense',
@@ -62,6 +66,11 @@ window.general_rules = {
 		type: 'Defense/Ramming',
 		description:
 			'Ignore the effects of Emergency Disorder. No Disorder when Ramming. +2 Repair dice.',
+	},
+	'Cloud Dive': {
+		type: 'Deployment',
+		description: `May be deployed at start of Encounter in a Cloud Dive. Deploy at same time as Vanguard moves, may be deployed anywhere at least 20" from enemy deployment zone. Unit is Obscured until end of first round`
+
 	},
 	'Combat Air Patrol': {
 		type: 'SRS',
@@ -162,6 +171,10 @@ window.general_rules = {
 		description:
 			'Once per Activation, before declaring an Initial Target, perform Valour Effect: On Attack, Models in the Unit may support with the Lead value of a Bombard to the Action Dice Pool.',
 	},
+	'Heavy Lander': {
+		type: 'Misc',
+		description: 'While Battle-ready and making a Landing Action, deploy double Mass number of Ground Attack Tokens'
+	},
 	'Huginn and Muninn': {
 		type: 'Shooting',
 		description:
@@ -225,6 +238,16 @@ window.general_rules = {
 		description:
 			'In the Special Operations step of its Operations Phase, a Unit with this rule may remove a Minefield Marker within 5" of a Model in this Unit.',
 	},
+	'Optional SRS': {
+		type: 'Misc',
+		description:
+			'Sultanate Sky Cruisers may add 1/0 SRS Capacity for 10 points. Sultante Flagship Fliers may add 4/0 SRS Capacity for 30 points'
+	},
+	'Orichalcite Construction': {
+		type: 'Defense',
+		description:
+			'Battle-Ready models do not suffer Catastrophic Explosion from Attacks exceeding double Citadel'
+	},
 	'Pack Hunter': {
 		type: 'Shooting/Assault',
 		description:
@@ -286,6 +309,11 @@ window.general_rules = {
 		type: 'Misc',
 		description:
 			`At the start of the Maintenance Step of the End Phase, unless one or more Models in the Unit has Navigation Lock Critical Damage, this Unit may be placed back into Reserves. If so, Crippled Models in the Unit are immediately destroyed.`,
+	},
+	'Tracer Fire (Aerial)': {
+		type: 'Shooting',
+		description:
+			'Models with weapons that have Aerial Quality may re-roll blanks'
 	},
 	'Vali Midget Subs': {
 		type: 'SRS',
