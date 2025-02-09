@@ -62,6 +62,11 @@ window.general_rules = {
 		description:
 			'Blitzen SRS Tokens contribute 5 Dice to Attack Runs. Can be combined with other SRS Tokens. A Blitzen Bomber is removed for every two successes in Interception. Can only be Intercepted after normal SRS Tokens have all been Intercepted. If majority of stack is Blitzen, gain Sustained, Bomb and Voltaic. If more Blitzen than Mass of Target, gain Devastating. No SRS Recon or SRS Mine Clearance. No Attack Runs on Aerial Units',
 	},
+	'Callimachus Chrono-Lathe': {
+		type: 'Misc',
+		description:
+		'This is a generator. During Special Operations Step of this unit, may remove a point of damage from each Battle-Ready model in a single unit within 15". May remove additional damage of that same unit, at the cost of one card per point. May bring a unit out of Reserves, as a Valour Effect, deploy within 3" of this model.'
+	},
 	'Chowkidar Crew': {
 		type: 'Defense/Ramming',
 		description:
@@ -223,6 +228,11 @@ window.general_rules = {
 		description:
 			'Assaults within 6". Assault gains the Voltaic. This rule does not apply to Supporting Assaults.',
 	},
+	'Luminiferous Defences': {
+		type: 'Defense',
+		description: 
+		'An attack on a model with this rule that is not Obscured, count Heavy Hits as Hits. This rule allows Defense Roll against Gunnery and Broadside types, using Crippled ADV as the quantity (max 6). Crippled Models or Shredded Defense models cannot use Luminiferous Defenses'
+	}, 
 	'Maritime Patrol': {
 		type: 'Shooting',
 		description:

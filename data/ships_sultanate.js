@@ -255,7 +255,6 @@ window.sultanate_ships = {
 			'Optional SRS'
 		],
 		weapons: [
-
 			{
 				name: 'Heavy Gun Battery',
 				arc: 'F/P/S',
@@ -316,6 +315,180 @@ window.sultanate_ships = {
 			{
 				name: 'Broadside',
 				arc: 'P&S',
+			},
+		],
+	},
+	lyceum: {
+		name: 'Lyceum Aerial Dreadnought',
+		type: 'Aerial Dreadnought',
+		points: '300',
+		traits: 'Sultanate, Turkish, Aerial Unit, Aerial Dreadnought, Lyceum-Class, Flagship',
+		mass: '4/4',
+		speed: '6/5',
+		turnLimit: '5/4',
+		armour: '7/7',
+		citadel: '14/13',
+		adv: '8/7',
+		sdv: '5/3',
+		fray: '10/9',
+		hull: '7/6',
+		rules: [
+			'Callimachus Chrono-Lathe',
+			{
+				name: 'Flak Barrage',
+				value: 6
+			},
+			'Focused Fire (Gunnery)',
+			'Heavy Firepower',
+			'Orichalcite Construction',
+			'Janissary Assault Deck',
+            'Crimson Privateers',
+            'Powerslide',
+			'Optional SRS'
+		],
+		weapons: [
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S&A'
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',	
+			},
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+				optionCost: 4,	
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+				optionCost: 7,	
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',	
+			},
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+				optionCost: 4,	
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+				optionCost: 7,	
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'A/P',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'A/S',
+			},
+		],
+	},
+	Badroulbadour: {
+		name: 'Badroulbadour',
+		type: 'Aerial Dreadnought',
+		points: '340',
+		traits: 'Crimson League, Aerial Unit, Aerial Dreadnought, Lyceum-Class, Flagship, Unique',
+		mass: '4/4',
+		speed: '6/5',
+		turnLimit: '5/4',
+		armour: '7/7',
+		citadel: '15/43',
+		adv: '6/6',
+		sdv: '5/3',
+		fray: '10/9',
+		hull: '7/6',
+		rules: [
+			'Callimachus Chrono-Lathe',
+			'Crimson Privateers',
+			'Devil\'s Own Luck',
+			{
+				name: 'Flak Barrage',
+				value: 6
+			},
+			'Focused Fire (Gunnery)',
+			'Heavy Firepower',
+			'Inspirational',
+			'Luminiferous Defences',
+			'Orichalcite Construction',
+            'Powerslide',
+		],		
+		generators: [
+			'Shield Generator',
+		],
+		weapons: [
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S&A'
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/P',
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/P',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F/S',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'A/P',
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'A/S',
 			},
 		],
 	},
