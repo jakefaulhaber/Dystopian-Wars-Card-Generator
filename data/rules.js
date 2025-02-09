@@ -22,7 +22,8 @@ window.weapon_rules = {
 	'Extreme Range':
 		'Long Range Band 20" - 40". Not required to match when Supporting a Lead weapon.',
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
-	Ramming: 'Adds dice when ramming.'
+	Ramming: 'Adds dice when ramming.',
+	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating'
 };
  
 window.general_rules = {
@@ -293,10 +294,6 @@ window.general_rules = {
 		type: 'SRS',
 		description:
 			'Place Vali Midget Sub Tokens up to 20" from this Model like SRS. Like SRS, but with 5 Action Dice, Homing, Piercing and Submerged. Cannot be intercepted. Cannot attack Aerial.',
-	},
-	'Valour Effect: Devastating': {
-		type: 'Shooting',
-		description: 'Discard a card: attack gains Devastating'
 	},
 	Vanguard: {
 		type: 'Deployment',
