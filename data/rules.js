@@ -3,6 +3,8 @@ window.weapon_rules = {
 	Devastating: 'Exploding Hits = 3 damage',
 	Gunnery: 'Target mass 1 treated as Obscured.',
 	Sustained: 'Re-roll any one result type before Exploding.',
+	Hazardous: 'Any damage = +1 Disorder',
+	Rail: 'Citadel is -1 against this attack. Each weapon adds 1 dice vs Skimming/Aerial (max 3). Each weapon loses a dice against Submerged (max 3)',
 	Voltaic:
 		'On Critical add a Disorder. +1 dice vs active Generators',
 	Broadside: 'Can be fired in each direction.',
@@ -22,7 +24,7 @@ window.weapon_rules = {
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
 	Ramming: 'Adds dice when ramming.'
 };
-JPF add rail, hazardous, and  Valour Effect: Devastating
+ 
 window.general_rules = {
 	'Ablative Armour': {
 		type: 'Defense',
@@ -291,6 +293,10 @@ window.general_rules = {
 		type: 'SRS',
 		description:
 			'Place Vali Midget Sub Tokens up to 20" from this Model like SRS. Like SRS, but with 5 Action Dice, Homing, Piercing and Submerged. Cannot be intercepted. Cannot attack Aerial.',
+	},
+	'Valour Effect: Devastating': {
+		type: 'Shooting',
+		description: 'Discard a card: attack gains Devastating'
 	},
 	Vanguard: {
 		type: 'Deployment',
