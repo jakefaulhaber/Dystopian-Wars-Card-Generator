@@ -16,7 +16,7 @@ function slugify(text) {
 }
 
 function getImage(string) {
-	const images = ['Imperium', 'Commonwealth', 'Flagship', 'Surface Unit', 'Submerged Unit', 'Skimming Unit', 'Aerial Unit'] 
+	const images = ['Imperium', 'Commonwealth', 'Sultanate', 'Flagship', 'Surface Unit', 'Submerged Unit', 'Skimming Unit', 'Aerial Unit'] 
 
 	if (images.indexOf(string) > -1) {
 		return `images/trait_${slugify(string)}.png`

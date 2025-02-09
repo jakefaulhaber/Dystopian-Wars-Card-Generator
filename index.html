@@ -7,6 +7,7 @@
 	<script src="data/ships_imperium.js"></script>
 	<script src="data/ships_crown.js"></script>
 	<script src="data/ships_commonwealth.js"></script>
+	<script src="data/ships_sultanate.js"></script>
 	<script src="data/ships_union.js"></script>
 	<script src="data/rules.js"></script>
 	<script src="data/weapons.js"></script>
@@ -221,7 +222,7 @@
 					}
 				})
 
-				const iconsToShow = ['assault', 'shooting', 'ramming', 'movement', 'srs', 'defense', 'weakness', 'valour', 'deployment']
+				const iconsToShow = ['assault', 'shooting', 'ramming', 'movement', 'srs', 'phone', 'defense', 'weakness', 'valour', 'deployment']
 
 				function initOptionalRule(rule) {
 					if (rule.option) {
@@ -297,6 +298,8 @@
 						srsRules.push(rule)
 					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
 						movementRules.push(rule)
+					} else if (type.indexOf('Phone') > -1) {
+						offensiveRules.push(rule)
 					} else {
 						miscRules.push(rule)
 					}
@@ -574,6 +577,7 @@
 			<option value="union">Union</option>
 			<option value="crown">Crown</option>
 			<option value="commonwealth">Commonwealth</option>
+			<option value="sultanate">Sultanate</option>
 		</select>
 	</div>
 

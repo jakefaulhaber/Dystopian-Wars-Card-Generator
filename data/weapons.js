@@ -174,5 +174,28 @@ window.weapons = {
 		closing: '5(3)/4(3)',
 		long: '5(3)/7(3)',
 		qualities: 'Aerial',
-	}
+	},
+	'Aerial Barbette Launcher': {
+		pb: '3(1)/2(-)',
+		closing: '3(2)/2(1)',
+		long: '3(2)/2(1)',
+		qualities: 'Aerial, Torpedo, High Velocity',
+	},
+	'Aerial Torpedo Salvo': {
+		pb: '7(2)/5(-)',
+		closing: '7(4)/4(3)',
+		long: '7(4)/4(3)',
+		qualities:'Aerial, Torpedo, High Velocity',
+	},
+	'Aetheric Lance': {
+		pb: '6(3)/4(2)',
+		closing: '5(3)/3(2)',
+		qualities: 'Sustained, Gunnery',
+	},
+	'Rocket Battery': {
+		pb: '5(1)/4(-)',
+		closing: '5(2)/4(2)',
+		long: '5(2)/4(2)',
+		qualities: 'Aerial',
+	},
 };
