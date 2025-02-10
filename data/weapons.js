@@ -128,6 +128,11 @@ window.weapons = {
 		closing: '7(-)/-',
 		qualities: 'Blast, Hazardous, Devastating, No Damage to Aerial',
 	},
+	'Flak Broadside': {
+		pb: '5(3)/4(2)',
+		closing: '4(2)/3(1)',
+		qualities: 'Broadside, Sustained (Aerial Units)',
+	},
 	'Furnace Cascade': {
 		pb: '12(5)/6(3)',
 		qualities: 'Torrent, Devastating, Hazardous',

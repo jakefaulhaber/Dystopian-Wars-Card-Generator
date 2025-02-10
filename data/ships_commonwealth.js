@@ -1213,4 +1213,116 @@ window.commonwealth_ships = {
 			},
 		],
 	},
+	yak: {
+		name: 'Yak Transport Hovercraft',
+		type: 'Transport Hovercraft',
+		points: '44',
+		traits: 'Commonwealth, Transport Hovercraft, Skimming Unit, Yak-Class, Russian',
+		mass: '1',
+		speed: '8',
+		turnLimit: '6',
+		armour: '5',
+		citadel: '13',
+		adv: '2',
+		sdv: '2',
+		fray: '10',
+		hull: '4',
+		rules: [
+			'Ablative Armour',
+			'Agile',
+			'Azhdaya Berserkers',
+			'Landing Vessel',
+			'Powerslide',
+		],
+		weapons: [
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+				optionCost: 3,
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+				optionCost: 3,
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/S',
+				option: 'F/S Weapon',
+				optionCost: 5,
+			},
+		],
+	},
+	saransk: {
+		name: 'Saransk Skyfurnace',
+		type: 'Skyfurnace',
+		points: '120',
+		traits: 'Commonwealth, Skyfurnace, Aerial Unit, Saransk-Class, Russian',
+		mass: '2/2',
+		speed: '7/5',
+		turnLimit: '4/3',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '3/2',
+		sdv: '3/2',
+		fray: '8/7',
+		hull: '4/3',
+		rules: [
+			'Ablative Armour',
+			'Azhdaya Berserkers',
+			{
+				name: 'Flak Barrage',
+				value: '7',
+			},
+			'Linear Dash',
+			'Low-Level Strike',
+			'Vulnerable Stern',
+		],
+		weapons: [
+			{
+				name: 'Katyusha Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Katyusha Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Flak Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Furnace Cascade',
+				arc: 'A',
+			},
+		],
+	},
 };

@@ -28,6 +28,8 @@ window.weapon_rules = {
 	Torrent: 'Use the big flamer template',
 	'Small Torrent': 'use the small flamer template',
 	'No Damage to Aerial': 'never causes damage to Aerial Units',
+	'Sustained (Aerial Units)': 'If targeting Aerial Units, re-roll any one result type before Exploding.',
+	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again',
 };
  
 window.general_rules = {
@@ -69,6 +71,10 @@ window.general_rules = {
 		type: 'List',
 		description:
 			'When Building a Force, this Unit may become a Joining Unit. Select a Partner Unit that has the Traits indicated. The Partner Unit cannot have any other Attached Units.',
+	},
+	'Azhdaya Berserkers': {
+		type: 'Assault',
+		description: 'Assaults have Hazardous and Devastating qualities'
 	},
 	'Blitzen SRS Capacity': {
 		type: 'SRS',
@@ -258,6 +264,10 @@ window.general_rules = {
 		type: 'Misc',
 		description:
 		'+1 to Victory and Valour Cards in hand. If ship lost, bonus lost at end of Round. Does not stack.'
+	},
+	'Low-Level Strike': {
+		type: 'Movement',
+		description: 'In SpecOps phase, Battle Ready unit may use this ability. Unit doubles its Drift, stops being Aerial and becomes Skimming. Unit has +1 Armour. Cannot use if did so in pervious Round. Can begin game in Low-Level Strike',
 	},
 	'Luftlancer Assault': {
 		type: 'Assault',
