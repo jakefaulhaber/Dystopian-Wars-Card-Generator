@@ -103,6 +103,12 @@ window.weapons = {
 		long: '11(6)/7(5)',
 		qualities: 'Submerged, Torpedo, Extreme Range',
 	},
+	'Torpedo Salvo': {
+		pb: '7(2)/5(-)',
+		closing: '7(5)/5(3)',
+		long: '6(4)/4(3)',
+		qualities: 'Submerged, Torpedo,Extreme Range',
+	},
 	'Vengeance Keel Saw': {
 		pb: '12/10',
 		qualities: 'Ramming, Piercing, Sustained',
@@ -137,7 +143,7 @@ window.weapons = {
 		long: '6(3)/4(1)',
 		qualities: 'Gunnery',
 	},
-	'Katyusha Rocket Salvo': {
+	'Katyusha Salvo': {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
 		qualities: 'Aerial, Sustained, Extreme Range, Limited',

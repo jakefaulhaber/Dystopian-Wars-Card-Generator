@@ -60,6 +60,11 @@ window.general_rules = {
 		description:
 			'Attacks by Volt Gun Batteries and Heavy Volt Gun Batteries on this Model may re-roll blank results',
 	},
+	'Auxiliary Mine Layer': {
+		type: 'Misc',
+		description:
+		'Before Submerged Unit Deployment, place a single Minefield Marker anywhere in Play that is at least 10" from any Deployment Zone.'
+	},
 	'Attached Unit': {
 		type: 'List',
 		description:
@@ -69,6 +74,11 @@ window.general_rules = {
 		type: 'SRS',
 		description:
 			'Blitzen SRS Tokens contribute 5 Dice to Attack Runs. Can be combined with other SRS Tokens. A Blitzen Bomber is removed for every two successes in Interception. Can only be Intercepted after normal SRS Tokens have all been Intercepted. If majority of stack is Blitzen, gain Sustained, Bomb and Voltaic. If more Blitzen than Mass of Target, gain Devastating. No SRS Recon or SRS Mine Clearance. No Attack Runs on Aerial Units',
+	},
+	'Bombardment (Aerial)':{
+		type: 'Shooting',
+		description:
+		'May re-roll blanks when shooting at Ground or Surface Units with weapons that have Aerial Quality'
 	},
 	'Callimachus Chrono-Lathe': {
 		type: 'Misc',
@@ -288,6 +298,11 @@ window.general_rules = {
 		type: 'Defense',
 		description:
 			'Battle-Ready models do not suffer Catastrophic Explosion from Attacks exceeding double Citadel'
+	},
+	'Overthruster': {
+		type: 'Movement/Defense',
+		description:
+		'May increase Speed by number of inches in Rule. May not make any turns. If moved at least 10" (incl Drift) the Model is Obscured. Cannot use if Model is Crippled of Navigation Locked.'
 	},
 	'Pack Hunter': {
 		type: 'Shooting/Assault',

@@ -815,6 +815,82 @@ window.commonwealth_ships = {
 			},
 		],
 	},
+	kutsov: {
+		name: 'Kutsov Cruiser',
+		type: 'Cruiser',
+		points: '90',
+		traits: 'Commonwealth, Cruiser, Surface Unit, Kutsov-Class, Russian',
+		mass: '2/2',
+		speed: '8/6',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '13/10',
+		adv: '4/3',
+		sdv: '3/2',
+		fray: '8/7',
+		hull: '4/4',
+		rules: [
+			'Ablative Armour',
+            'Hammer Sweep',
+			'Quantity is a Quality',
+		],
+		weapons: [
+
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A/P/S Batteries',
+				optionCost: -5,
+			},
+		],
+	},
 	krykun: {
 		name: 'Krykun Shockwave Frigate',
 		type: 'Shockwave Frigate',
@@ -1029,5 +1105,112 @@ window.commonwealth_ships = {
 				optionCost: -5,
 			},
 		],
-	},	
+	},
+	rurik: {
+		name: 'Rurik Frigate',
+		type: 'Frigate',
+		points: '31',
+		traits: 'Commonwealth, Frigate, Surface Unit, Rurik-Class, Russian',
+		mass: '1',
+		speed: '10',
+		turnLimit: '6',
+		armour: '5',
+		citadel: '12',
+		adv: '2',
+		sdv: '2',
+		fray: '5',
+		hull: '3',
+		rules: [
+			'Ablative Armour',
+			{
+				name: 'Attached Unit',
+				value: 'Russian, Flagship',
+			},
+			'Shallow Draught',
+			'Shockwave Generator',
+		],
+		weapons: [
+			{
+				name: 'Light Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+		],
+	},
+	stoletov: {
+		name: 'Stoletov Ekranoplan Harrier',
+		type: 'Ekranoplan Harrier',
+		points: '50',
+		traits: 'Commonwealth, Ekranoplan Harrier, Skimming Unit, Rurik-Class, Russian',
+		mass: '1',
+		speed: '10',
+		turnLimit: '6',
+		armour: '5',
+		citadel: '12',
+		adv: '2',
+		sdv: '2',
+		fray: '5',
+		hull: '3',
+		rules: [
+			'Auxiliary Mine Layer',
+			'Bombardment (Aerial)',
+			{
+				name: 'Overthruster',
+				value: '8',
+			},
+			'Spotter',
+		],
+		weapons: [
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 2,
+			},
+			{
+				name: 'Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Katyusha Salvo',
+				arc: 'F'
+			},
+		],
+	},
 };
