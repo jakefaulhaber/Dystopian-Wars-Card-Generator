@@ -1101,7 +1101,7 @@ window.commonwealth_ships = {
 					'Shield Generator',
 					'Shroud Generator',
 				],
-				option: 'A/P/S Batteries',
+				option: 'F/P/S Batteries',
 				optionCost: -5,
 			},
 		],
