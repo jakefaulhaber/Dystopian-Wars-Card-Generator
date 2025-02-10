@@ -36,6 +36,11 @@ window.general_rules = {
 		description:
 			'Exploding Hit results equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
 	},
+	'Advanced Repair Facilities': {
+		type: 'Misc',
+		description:
+		'Battle-Ready Models in this unit may add number of Dice to their Repair Tests equal to the value of this ability. May also make Repair Tests for Disorder Levels and/or Damage Markers on friendly Models within 4". One or more Exploding Hits may be used to remove a single point of damage from itself or a Friendly Model within 4". A Model cannot remove more than a single point of damage per Repair Test.'
+	},
 	'Advanced Sturmcoils': {
 		type: 'Shooting',
 		description: 'Sturmklaue and Heavy Sturmklaue gain Sustained',
@@ -240,7 +245,7 @@ window.general_rules = {
 		'Models gain +2 speed during Movement Step provided it makes no turns',
 	},
 	'Logistical Support': {
-		type: 'Misz',
+		type: 'Misc',
 		description:
 		'+1 to Victory and Valour Cards in hand. If ship lost, bonus lost at end of Round. Does not stack.'
 	},
@@ -248,6 +253,11 @@ window.general_rules = {
 		type: 'Assault',
 		description:
 			'Assaults within 6". Assault gains the Voltaic. This rule does not apply to Supporting Assaults.',
+	},
+	'Lumbering': {
+		type: 'Movement/Weakness',
+		description:
+		'Cannot Drift greater than 3", no Disorder from Collisions. All Gunnery targeting this Unit may re-roll Blank results. Full Reverse SpecOp does not add Disorder. Any additional levels of Disorder once at Chaos & Disarray are ignored.',
 	},
 	'Luminiferous Defences': {
 		type: 'Defense',
@@ -355,6 +365,11 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 			'Models with weapons that have Aerial Quality may re-roll blanks'
+	},
+	'Unexpected Arrival': {
+		type: 'Movement',
+		description:
+		'May be held in Reserves. Roll as normal in Round one. All other rounds, may immediately deploy from Reserves, before any friendly In Play Units. Place at any point at least 2" from nearest terrain feature. On Round it enters play, may only fire weapons or Ram using weapon\'s crippled profile.',
 	},
 	'Vali Midget Subs': {
 		type: 'SRS',

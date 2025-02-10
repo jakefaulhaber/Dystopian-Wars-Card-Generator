@@ -233,6 +233,116 @@ window.commonwealth_ships = {
 			},
 		],
 	},
+	murmansk: {
+		name: 'Murmansk Mobile Stronghold',
+		type: 'Mobile Stronghold',
+		points: 290,
+		traits: 'Commonwealth, Russian, Surface Ship, Mobile Stronghold, Murmansk-class, Flagship',
+		mass: '5/5',
+		speed: '2/2',
+		turnLimit: '2/2',
+		armour: '7/7',
+		citadel: '13/11',
+		adv: '8/5',
+		sdv: '8/5',
+		fray: '12/10',
+		hull: '10/10',
+		rules: [
+			'Ablative Armour',
+			{
+				name: 'Advanced Repair Facilities',
+				value: 5,
+			},
+            'Heavy Firepower',
+            'Large Target',
+			'Logistical Support',
+			'Lumbering',
+			'Supply Depot',
+			'Unexpected Arrival',
+		],
+		weapons: [
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P',
+				option: 'A/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P',
+				option: 'A/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P',
+				option: 'A/P Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/S',
+				option: 'A/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/S',
+				option: 'A/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/S',
+				option: 'A/S Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'F&A'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+		],
+	},
 	prezidium: {
 		name: 'Prezidium Command Ship',
 		type: 'Command Ship',
@@ -398,6 +508,206 @@ window.commonwealth_ships = {
 				optionCost: 10,
 			},
 
+		],
+	},
+	tobolsk: {
+		name: 'Tobolsk Mobile Stronghold',
+		type: 'Mobile Stronghold',
+		points: 400,
+		traits: 'Commonwealth, Russian, Surface Ship, Mobile Stronghold, Tobolsk-class, Flagship',
+		mass: '5/5',
+		speed: '2/2',
+		turnLimit: '2/2',
+		armour: '7/7',
+		citadel: '13/11',
+		adv: '8/5',
+		sdv: '8/5',
+		fray: '12/10',
+		hull: '12/10',
+		rules: [
+			'Ablative Armour',
+			'Cryo Generator',
+			'Cryo-Capacitors',
+            'Heavy Firepower',
+            'Large Target',
+			'Lumbering',
+			{
+				name: 'SRS Capacity',
+				value: '5/3',
+			},
+			'SRS Mine Clearance',
+			'SRS Recon',
+			'Unexpected Arrival',
+		],
+		generators: [
+			'Magnetic Generator',
+			'Shield Generator',
+		],
+		weapons: [
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P',
+				option: 'F/P Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/S',
+				option: 'F/S Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P',
+				option: 'A/P Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P',
+				option: 'A/P Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P',
+				option: 'A/P Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/S',
+				option: 'A/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/S',
+				option: 'A/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/S',
+				option: 'A/S Batteries',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'F&A'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P One',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P',
+				option: 'F/P One',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P',
+				option: 'F/P One',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P',
+				option: 'F/P One',
+				optionCost: 3,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P Two',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P',
+				option: 'F/P Two',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Two',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P',
+				option: 'F/P Two',
+				optionCost: 3,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S One',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/S',
+				option: 'F/S One',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/S',
+				option: 'F/S One',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/S',
+				option: 'F/S One',
+				optionCost: 3,
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S Two',
+			},			
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/S',
+				option: 'F/S Two',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Two',
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/S',
+				option: 'F/S Two',
+				optionCost: 3,
+			},
 		],
 	},
 	khatanga: {
