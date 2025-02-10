@@ -204,6 +204,10 @@ window.general_rules = {
 		description:
 			"Once per Activation, before declaring target, Each Model in this Unit with this rule may make the following Valour Effect. When making an Attack, up to three of that Model's weapons may contribute their Lead value to the Action Dice Pool, rather than the normal single Lead weapon value. Other Models may support this Attack but cannot benefit from this rule.",
 	},
+	'Heavy Firepower (simple)': {
+		type: 'Shooting',
+		description:'Valour Effect: Up to three weapons use their Lead Value'
+	},
 	'Heavy Bombardment': {
 		type: 'Shooting',
 		description:
@@ -345,7 +349,7 @@ window.general_rules = {
 	},
 	'Shockwave Generator': {
 		type: 'Shooting',
-		description: 'Used in Shooting Phase to fire a single Shockwave Pulse by the Unit at a Target model using the Point-Blank Shockwave Pulse weapon profile. Each additional Generator of this type in the unit adds +4 Dice. Template may be placed over an Initial Target in Line of Sight anywhere within 15" of a Model in this unit, narrow end pointing to this unit. If there are three or more generators contributing to the Attack Pool, use larger Torrent.'
+		description: 'Shoot using template, place over Initial Target in Line of Sight within 15" of a Model in this unit. If 3+ generators, use larger Torrent.'
 	},
 	'Silent Stalker': {
 		type: 'Deployment/Shooting',
@@ -353,7 +357,7 @@ window.general_rules = {
 	},
 	'Sonic Amplifier': {
         type: 'Shooting',
-		description: 'Shockwave Pulses by this model gain +3 to their Attack Dice Pool, the Devastating Quality. And always use the larger Torrent template.'
+		description: 'Shockwave Pulses gain +3 to their Dice Pool, the Devastating Quality. Use large Torrent.'
 	},
 	Spotter: {
 		type: 'Shooting',

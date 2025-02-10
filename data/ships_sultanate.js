@@ -339,7 +339,7 @@ window.sultanate_ships = {
 				value: 6
 			},
 			'Focused Fire (Gunnery)',
-			'Heavy Firepower',
+			'Heavy Firepower (simple)',
 			'Orichalcite Construction',
 			'Janissary Assault Deck',
             'Crimson Privateers',
@@ -444,7 +444,7 @@ window.sultanate_ships = {
 				value: 6
 			},
 			'Focused Fire (Gunnery)',
-			'Heavy Firepower',
+			'Heavy Firepower (simple)',
 			'Inspirational',
 			'Luminiferous Defences',
 			'Orichalcite Construction',
