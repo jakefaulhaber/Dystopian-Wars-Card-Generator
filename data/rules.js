@@ -24,7 +24,12 @@ window.weapon_rules = {
 		'Long Range Band 20" - 40". Not required to match when Supporting a Lead weapon.',
 	Blast: 'Use the Blast Template. The centre point of the template must be placed over any part of the Initial Target. Hits are applied to all Models under the template.',
 	Ramming: 'Adds dice when ramming.',
-	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating'
+	'Valour Effect: Devastating': 'Discard a card: attack gains Devastating',
+	Torrent: 'Use the big flamer template',
+	'Small Torrent': 'use the small flamer template',
+	'No Damage to Aerial': 'never causes damage to Aerial Units',
+	'Sustained (Aerial Units)': 'If targeting Aerial Units, re-roll any one result type before Exploding.',
+	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again',
 };
  
 window.general_rules = {
@@ -32,6 +37,11 @@ window.general_rules = {
 		type: 'Defense',
 		description:
 			'Exploding Hit results equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
+	},
+	'Advanced Repair Facilities': {
+		type: 'Misc',
+		description:
+		'Battle-Ready Models in this unit may add number of Dice to their Repair Tests equal to the value of this ability. May also make Repair Tests for Disorder Levels and/or Damage Markers on friendly Models within 4". One or more Exploding Hits may be used to remove a single point of damage from itself or a Friendly Model within 4". A Model cannot remove more than a single point of damage per Repair Test.'
 	},
 	'Advanced Sturmcoils': {
 		type: 'Shooting',
@@ -52,15 +62,34 @@ window.general_rules = {
 		description:
 			'Attacks by Volt Gun Batteries and Heavy Volt Gun Batteries on this Model may re-roll blank results',
 	},
+	'Auxiliary Mine Layer': {
+		type: 'Misc',
+		description:
+		'Before Submerged Unit Deployment, place a single Minefield Marker anywhere in Play that is at least 10" from any Deployment Zone.'
+	},
 	'Attached Unit': {
 		type: 'List',
 		description:
 			'When Building a Force, this Unit may become a Joining Unit. Select a Partner Unit that has the Traits indicated. The Partner Unit cannot have any other Attached Units.',
 	},
+	'Azhdaya Berserkers': {
+		type: 'Assault',
+		description: 'Assaults have Hazardous and Devastating qualities'
+	},
 	'Blitzen SRS Capacity': {
 		type: 'SRS',
 		description:
 			'Blitzen SRS Tokens contribute 5 Dice to Attack Runs. Can be combined with other SRS Tokens. A Blitzen Bomber is removed for every two successes in Interception. Can only be Intercepted after normal SRS Tokens have all been Intercepted. If majority of stack is Blitzen, gain Sustained, Bomb and Voltaic. If more Blitzen than Mass of Target, gain Devastating. No SRS Recon or SRS Mine Clearance. No Attack Runs on Aerial Units',
+	},
+	'Bombardment (Aerial)':{
+		type: 'Shooting',
+		description:
+		'May re-roll blanks when shooting at Ground or Surface Units with weapons that have Aerial Quality'
+	},
+	'Callimachus Chrono-Lathe': {
+		type: 'Misc',
+		description:
+		'This is a generator. During Special Operations Step of this unit, may remove a point of damage from each Battle-Ready model in a single unit within 15". May remove additional damage of that same unit, at the cost of one card per point. May bring a unit out of Reserves, as a Valour Effect, deploy within 3" of this model.'
 	},
 	'Chowkidar Crew': {
 		type: 'Defense/Ramming',
@@ -89,6 +118,15 @@ window.general_rules = {
 	'Crimson Privateers': {
 		type: 'Assault',
 		description: 'Loses Jannissary Assault Deck. Ignores Counter Assault results when making Assault. Assaults led by this model gains Hazardous',
+	},
+	'Cryo Generator': {
+		type: 'Shooting/Misc',
+		description:
+		'Can fire Cryogenic Blast. Or, roll 1 action dice:explode:2" Mass2 25" away, Hits:1" M1 20", Counters:1" M1 15".'
+	},
+	'Cryo-Capacitors': {
+		type: 'Shooting',
+		description: 'This Unit adds 1 Action Dice and Sustained to its Cyrogenic Blasts'
 	},
 	'Deep Dive': {
 		type: 'Movement',
@@ -203,6 +241,10 @@ window.general_rules = {
 		type: 'Assault',
 		description: 'Ignores Counter Assault results when making Assault. Assaults led by this model gains Devastating',
 	},
+	'Kinetic Dampers': {
+		type: 'Movement/Defense',
+		description: 'May make a Full Reverse! SpecOp Action without receiving Disorder. Any additional levels of Disorder once at Chaos & Disarray are ignored.'
+	},
 	'Landing Vessel': {
 		type: 'Misc',
 		description:
@@ -218,11 +260,30 @@ window.general_rules = {
 		description:
 		'Models gain +2 speed during Movement Step provided it makes no turns',
 	},
+	'Logistical Support': {
+		type: 'Misc',
+		description:
+		'+1 to Victory and Valour Cards in hand. If ship lost, bonus lost at end of Round. Does not stack.'
+	},
+	'Low-Level Strike': {
+		type: 'Movement',
+		description: 'In SpecOps phase, Battle Ready unit may use this ability. Unit doubles its Drift, stops being Aerial and becomes Skimming. Unit has +1 Armour. Cannot use if did so in pervious Round. Can begin game in Low-Level Strike',
+	},
 	'Luftlancer Assault': {
 		type: 'Assault',
 		description:
 			'Assaults within 6". Assault gains the Voltaic. This rule does not apply to Supporting Assaults.',
 	},
+	'Lumbering': {
+		type: 'Movement/Weakness',
+		description:
+		'Cannot Drift greater than 3", no Disorder from Collisions. All Gunnery targeting this Unit may re-roll Blank results. Full Reverse SpecOp does not add Disorder. Any additional levels of Disorder once at Chaos & Disarray are ignored.',
+	},
+	'Luminiferous Defences': {
+		type: 'Defense',
+		description: 
+		'An attack on a model with this rule that is not Obscured, count Heavy Hits as Hits. This rule allows Defense Roll against Gunnery and Broadside types, using Crippled ADV as the quantity (max 6). Crippled Models or Shredded Defense models cannot use Luminiferous Defenses'
+	}, 
 	'Maritime Patrol': {
 		type: 'Shooting',
 		description:
@@ -248,6 +309,11 @@ window.general_rules = {
 		description:
 			'Battle-Ready models do not suffer Catastrophic Explosion from Attacks exceeding double Citadel'
 	},
+	'Overthruster': {
+		type: 'Movement/Defense',
+		description:
+		'May increase Speed by number of inches in Rule. May not make any turns. If moved at least 10" (incl Drift) the Model is Obscured. Cannot use if Model is Crippled of Navigation Locked.'
+	},
 	'Pack Hunter': {
 		type: 'Shooting/Assault',
 		description:
@@ -267,6 +333,11 @@ window.general_rules = {
 		type: 'Misc/Weakness',
 		description:
 			'Drift = 1". No Disorder from Collisions. Gunnery targeting this Unit may re-roll Blanks. 4+ Disorder are ignored rather than causing damage. Can extend outside Deployment Zone if touching back edge.',
+	},
+	'Quantity is a Quality': {
+		type: 'Misc',
+		description:
+		'After this unit is destoryed, roll number of Action Dice equal to Round. Each Exploding hit is one Kutsov or three Ruriks, pleace in Reserve. One guaranteed success if destroyed unit was within 7" of a Flagship'
 	},
 	'Shallow Draught': {
 		type: 'Movement',
@@ -310,10 +381,20 @@ window.general_rules = {
 		description:
 			`At the start of the Maintenance Step of the End Phase, unless one or more Models in the Unit has Navigation Lock Critical Damage, this Unit may be placed back into Reserves. If so, Crippled Models in the Unit are immediately destroyed.`,
 	},
+	'Supply Depot': {
+		type: 'Misc',
+		description:
+		'Any Friendly Model within 7" may remove a single level of Disorder at start of their activation. Friendly Units within 7" regain weapons lost due to Limited Quality'
+	},
 	'Tracer Fire (Aerial)': {
 		type: 'Shooting',
 		description:
 			'Models with weapons that have Aerial Quality may re-roll blanks'
+	},
+	'Unexpected Arrival': {
+		type: 'Movement',
+		description:
+		'May be held in Reserves. Roll as normal in Round one. All other rounds, may immediately deploy from Reserves, before any friendly In Play Units. Place at any point at least 2" from nearest terrain feature. On Round it enters play, may only fire weapons or Ram using weapon\'s crippled profile.',
 	},
 	'Vali Midget Subs': {
 		type: 'SRS',
@@ -329,6 +410,11 @@ window.general_rules = {
 		type: 'Assault',
 		description:
 			'If has Voltaic Decksweepers, when Assaulting, +1 dice. Assault gains the Voltaic Quality. No effect when Supporting.',
+	},
+	'Void Engine Magazine': {
+		type: 'Weakness',
+		description:
+		'If unit is Crippled or has Generator Shutdown, its Cannon loses Extreme Range and gains Limited Quality'
 	},
 	'Voltaic Decksweepers': {
 		type: 'Assault',

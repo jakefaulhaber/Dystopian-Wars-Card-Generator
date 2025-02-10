@@ -103,6 +103,12 @@ window.weapons = {
 		long: '11(6)/7(5)',
 		qualities: 'Submerged, Torpedo, Extreme Range',
 	},
+	'Torpedo Salvo': {
+		pb: '7(2)/5(-)',
+		closing: '7(5)/5(3)',
+		long: '6(4)/4(3)',
+		qualities: 'Submerged, Torpedo,Extreme Range',
+	},
 	'Vengeance Keel Saw': {
 		pb: '12/10',
 		qualities: 'Ramming, Piercing, Sustained',
@@ -112,15 +118,20 @@ window.weapons = {
 		closing: '3(1)/-',
 		qualities: 'Gunnery, Voltaic, Sustained'
 	},
-	'Apocalyps Cannon': {
+	'Apokalyps Cannon': {
 		closing: '12(4)/12(4)',
 		long: '22(1)/22(1)',
 		qualities: 'Gunnery, Devastating, Extreme Range, Hazardous',
 	},
 	'Cryogenic Blast': {
-		pb: '7(-)',
-		closing: '7(-)',
-		qualities: 'Blast, Hazardous, Devastating',
+		pb: '7(-)/-',
+		closing: '7(-)/-',
+		qualities: 'Blast, Hazardous, Devastating, No Damage to Aerial',
+	},
+	'Flak Broadside': {
+		pb: '5(3)/4(2)',
+		closing: '4(2)/3(1)',
+		qualities: 'Broadside, Sustained (Aerial Units)',
 	},
 	'Furnace Cascade': {
 		pb: '12(5)/6(3)',
@@ -137,7 +148,7 @@ window.weapons = {
 		long: '6(3)/4(1)',
 		qualities: 'Gunnery',
 	},
-	'Katyusha Rocket Salvo': {
+	'Katyusha Salvo': {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
 		qualities: 'Aerial, Sustained, Extreme Range, Limited',
@@ -152,6 +163,10 @@ window.weapons = {
 		closing: '5(2)/3(2)',
 		long: '5(2)/3(2)',
 		qualities: 'Hazardous, Valour Effect: Devastating',
+	},
+	'Semyenov Assault Bore': {
+		pb: '12/10',
+		qualities: 'Ramming, Piercing, Devastating'
 	},
 	'Shockwave Pulse': {
 		pb: '6(4)/-',
