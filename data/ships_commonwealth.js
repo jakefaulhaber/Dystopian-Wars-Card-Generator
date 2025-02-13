@@ -948,6 +948,109 @@ window.commonwealth_ships = {
 			}
 		],
 	},
+	morozko: {
+		name: 'Morozko Heavy Cryo Cruiser',
+		type: 'Heavy Cryo Cruiser',
+		points: '131',
+		traits: 'Commonwealth, Heavy Cryo Cruiser, Surface Unit, Morozko-Class, Russian',
+		mass: '2/2',
+		speed: '7/5',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '13/10',
+		adv: '5/3',
+		sdv: '4/3',
+		fray: '9/8',
+		hull: '5/4',
+		rules: [
+			'Ablative Armour',
+            'Cryo Generator',
+			'Cryo-Capacitors',
+            'Hammer Sweep',
+			'Quantity is a Quality',
+		],
+		weapons: [
+			{
+				name: 'Cryogenic Blast',
+				arc: '360'
+			}, 
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries'
+			},
+			{
+				name: 'Tri-Railgun',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+			{
+				name: 'Yastreb Missile Battery',
+				arc: 'A/P/S',
+				option: 'A/P/S Batteries',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'A/P/S Batteries',
+				optionCost: -5,
+			},
+		],
+	},
 	norilsk: {
 		name: 'Norilsk Heavy Cruiser',
 		type: 'Heavy Cruiser',
@@ -1103,6 +1206,60 @@ window.commonwealth_ships = {
 				],
 				option: 'F/P/S Batteries',
 				optionCost: -5,
+			},
+		],
+	},
+	pravda: {
+		name: 'Pravda Support Carrier',
+		type: 'Support Carrier',
+		points: '125',
+		traits: 'Commonwealth, Support Carrier, Surface Unit, Pravda-Class, Russian',
+		mass: '2/2',
+		speed: '7/5',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '12/9',
+		adv: '5/3',
+		sdv: '3/2',
+		fray: '8/7',
+		hull: '3/5',
+		rules: [
+			'Ablative Armour',
+			{
+				name: 'SRS Capacity',
+				value: '4/2',
+			},
+			'Combat Air Patrol',
+			'SRS Mine Clearance',
+			'SRS Recon',
+		],
+		weapons: [
+			{
+				name: 'Light Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: '360',
+				option: '360 Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: '360',
+				option: '360 Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Gun Battery',
+				arc: '360',
+				option: '360 Weapon',
+
+			},
+			{
+				name: 'Railgun',
+				arc: '360',
+				option: '360 Weapon',
+				optionCost: 5,
 			},
 		],
 	},
