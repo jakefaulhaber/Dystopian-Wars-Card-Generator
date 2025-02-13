@@ -1284,7 +1284,7 @@ window.commonwealth_ships = {
 				value: 'Russian, Flagship',
 			},
 			'Shallow Draught',
-			'Shockwave Generator',
+			'Quantity is a Quality',
 		],
 		weapons: [
 			{
