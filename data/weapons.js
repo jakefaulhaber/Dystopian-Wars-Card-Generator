@@ -123,6 +123,10 @@ window.weapons = {
 		long: '22(1)/22(1)',
 		qualities: 'Gunnery, Devastating, Extreme Range, Hazardous',
 	},
+	'Claw Arc Projector': {
+		pb: '10/8',
+		qualities: 'Ramming, Arc',
+	},
 	'Cryogenic Blast': {
 		pb: '7(-)/-',
 		closing: '7(-)/-',
@@ -152,6 +156,16 @@ window.weapons = {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
 		qualities: 'Aerial, Sustained, Extreme Range, Limited',
+	},
+	'Mag-Rail Axe (Ram)' :{
+		pb: '12/12',
+		qualities: 'Ramming, Sustained',
+	},
+	'Mag-Rail Axe (Shooting)' :{
+		pb: '10(4)/5(2)',
+		closing: '10(4)/5(2)',
+		long: '10(4)/5(2)',
+		qualities: 'Rail, Gunnery, Extreme Range',
 	},
 	'Railgun': {
 		pb: '5(2)/3(1)',

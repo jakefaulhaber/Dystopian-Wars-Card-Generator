@@ -47,6 +47,10 @@ window.general_rules = {
 		type: 'Shooting',
 		description: 'Sturmklaue and Heavy Sturmklaue gain Sustained',
 	},
+	'Aggressive Crew': {
+		type: 'Assault',
+		description: 'While Assaulting, re-roll Blank dice results'
+	},
 	'Agile': {
 		type: 'Movement',
 		description:
@@ -127,6 +131,11 @@ window.general_rules = {
 	'Cryo-Capacitors': {
 		type: 'Shooting',
 		description: 'This Unit adds 1 Action Dice and Sustained to its Cyrogenic Blasts'
+	},
+	'Davka': {
+		type: 'Ramming',
+		description:
+		'Instead of Ramming, may Valour Effect an Initial Target within 3", Ram with Assault Bore, +10 dice bonus instead of any distance moved'
 	},
 	'Deep Dive': {
 		type: 'Movement',
@@ -343,9 +352,18 @@ window.general_rules = {
 		description:
 		'After this unit is destoryed, roll number of Action Dice equal to Round. Each Exploding hit is one Kutsov or three Ruriks, pleace in Reserve. One guaranteed success if destroyed unit was within 7" of a Flagship'
 	},
+	'Razrez': {
+		type: 'Shooting',
+		description:
+		'Valour Effect: Card of at least 30, any Claw Arc Projectors may be used in the Fore Arc within 10" as the Furnace Cascade'
+	},
 	'Shallow Draught': {
 		type: 'Movement',
 		description: 'This Unit treats Treacherous Water as Open Water'
+	},
+	'Sharpshooter': {
+		type: 'Shooting',
+		description: 'Citadel is -2 during action with Gunnery weapon'
 	},
 	'Shockwave Generator': {
 		type: 'Shooting',
@@ -454,6 +472,10 @@ window.general_rules = {
 		No Submarauder Model can be deployed touching another Model. When a Submarauder is deployed it uses the Crippled profile of their weapons for 
 		that Round. Unless one or more Models in the Unit has Navigation Lock, at the end of round this Unit may be removed from Play and become a Submarauder 
 		again. Leave a 50mm Submarauder Marker in the position of any one Model in this Unit.`
+	},
+	'Submarauder (simple)': {
+		type: 'Movement',
+		description: 'May instead be held in Reserve as a Submarauder. First activation of fleet is Submarauders. Deploy within 10" of any Submarauder Marker or Wreck Marker',
 	},
 	'Zornhau': {
 		type: 'Shooting/Ramming',
