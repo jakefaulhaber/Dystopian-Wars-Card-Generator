@@ -1438,6 +1438,180 @@ window.commonwealth_ships = {
 			},
 		],
 	},
+	kostroma: {
+		name: 'Kostroma Vitruvian Colossus',
+		type: 'Vitruvian Colossus',
+		points: 149,
+		traits: 'Commonwealth, Russian, Surface Unit, Vitruvian Colossus, Kostroma-class',
+		mass: '3/3',
+		speed: '3/1',
+		turnLimit: '3/1',
+		armour: '7/7',
+		citadel: '14/12',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '7/6',
+		hull: '5/4',
+		rules: [
+			'Ablative Armour',
+			'Amphibious',
+			'Colossus',
+			'Cryo Generator',
+			'Giant Slayer',
+			'Razrez',
+			'Sharpshooter',
+			'Submarauder (simple)',
+		],
+		weapons: [
+			{
+				name: 'Cryogenic Blast',
+				arc: '360'
+			}, 
+			{
+				name: 'Mag-Rail Axe (Shooting)',
+				arc: 'F/P/S'
+			},
+			{
+				name: 'Mag-Rail Axe (Ram)',
+				arc: 'F/P/S'
+			},
+			{
+				name: 'Claw Arc Projector',
+				arc: 'F/P/S'
+			},
+			{
+				name: 'Furnace Cascade',
+				arc: 'F'
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+			},
+		],
+		generators: [
+			{
+				name: 'Magnetic Generator'
+			},
+		],
+	},
+	marena: {
+		name: 'Marena Vitruvian Colossus',
+		type: 'Vitruvian Colossus',
+		points: 136,
+		traits: 'Commonwealth, Russian, Surface Unit, Vitruvian Colossus, Marena-class',
+		mass: '3/3',
+		speed: '3/1',
+		turnLimit: '3/1',
+		armour: '7/7',
+		citadel: '14/12',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '7/6',
+		hull: '5/4',
+		rules: [
+			'Ablative Armour',
+			'Aggressive Crew',
+			'Amphibious',
+			'Colossus',
+			'Cryo Generator',
+			'Davka',
+			'Inspirational',
+			'Submarauder (simple)',
+		],
+		weapons: [
+			{
+				name: 'Semyenov Assault Bore',
+				arc: 'F/P/S'
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Gun Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+
+			},
+			{
+				name: 'Railgun',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+				optionCost: 5,
+			},
+			{
+				name: 'Seismic Mortar',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+			},
+			{
+				name: 'Zhalo Rocket Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon',
+				optionCost: 5,
+			},
+		],
+		generators: [
+			{
+				name: 'Magnetic Generator'
+			},
+		],
+	},
 	saransk: {
 		name: 'Saransk Skyfurnace',
 		type: 'Skyfurnace',

@@ -1,5 +1,6 @@
 window.weapon_rules = {
 	Arc: 'Ignore Shield Generators. On Critical add a Disorder',
+	Bomb: 'Cannot be used against Aerial Units. Ignore Shield Generators',
 	Devastating: 'Exploding Hits = 3 damage',
 	Gunnery: 'Target mass 1 treated as Obscured.',
 	Sustained: 'Re-roll any one result type before Exploding.',
@@ -47,6 +48,10 @@ window.general_rules = {
 		type: 'Shooting',
 		description: 'Sturmklaue and Heavy Sturmklaue gain Sustained',
 	},
+	'Aggressive Crew': {
+		type: 'Assault',
+		description: 'While Assaulting, re-roll Blank dice results'
+	},
 	'Agile': {
 		type: 'Movement',
 		description:
@@ -56,6 +61,11 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 			'Can choose not to count Aerial Units as being a Range Band further away. Attacks with the Aerial Quality against Aerial Units gain Homing.',
+	},
+	'Armoured Decking': {
+		type: 'Defense',
+		description: 
+			'Aerial Attacks gain a Single Hit from Heavy Hit Result. Exploding hits unaffected. Piercing attacks ignore this rule.'
 	},
 	'Auto-Firing Solutions': {
 		type: 'Shooting',
@@ -91,6 +101,11 @@ window.general_rules = {
 		description:
 		'This is a generator. During Special Operations Step of this unit, may remove a point of damage from each Battle-Ready model in a single unit within 15". May remove additional damage of that same unit, at the cost of one card per point. May bring a unit out of Reserves, as a Valour Effect, deploy within 3" of this model.'
 	},
+	'Celerity': {
+		type: 'Assault/Ramming',
+		description:
+		'Once per Activation, discard a Valour card >= 40. Each Model that has caused at least one point of damage in a Ramming Action this Activation, may make a second Ramming Action within 3" of the first. The Action Dice Pool for the 2nd is same as the 1st. May not use Vigour with this rule, may not move after using this rule.'
+	},
 	'Chowkidar Crew': {
 		type: 'Defense/Ramming',
 		description:
@@ -111,6 +126,16 @@ window.general_rules = {
 		description:
 			`Once per Round reroll all your dice from a friendly pool generated within 15". Do this before any other dice manipulation.`,
 	},
+	'Cor Caroli': {
+		type: 'Assault/Defense',
+		description:
+		'Ignore effect of Emergency Condition. Re-roll Blank dice in Assaults. While Supporting Assault, models within 3" of the Assaulting model gain +3 (rather than +2).'
+	},
+	'Cor Carolus Icon': {
+		type: 'Misc',
+		description: 
+			'May not Assault. Ignore effects of Emergency Condition. Any other friendly model within 10" may either reduce a single Disorder Level, or may re-roll all their action dice once per activation'
+	},
 	'Corvette Duty': {
 		type: 'Defense',
 		description: 'This Model may add +1 Defense Dice on any friendly Models within 5". This bonus is in addition to Attached.'
@@ -118,6 +143,11 @@ window.general_rules = {
 	'Crimson Privateers': {
 		type: 'Assault',
 		description: 'Loses Jannissary Assault Deck. Ignores Counter Assault results when making Assault. Assaults led by this model gains Hazardous',
+	},
+	'Cruor': {
+		type: 'Valour',
+		description: 
+			'Once per Activation, discard a Valour card >= 40, all models in enemy units within 7" immediately gain a level of Disorder'
 	},
 	'Cryo Generator': {
 		type: 'Shooting/Misc',
@@ -127,6 +157,16 @@ window.general_rules = {
 	'Cryo-Capacitors': {
 		type: 'Shooting',
 		description: 'This Unit adds 1 Action Dice and Sustained to its Cyrogenic Blasts'
+	},
+	'Davka': {
+		type: 'Ramming',
+		description:
+		'Instead of Ramming, may Valour Effect an Initial Target within 3", Ram with Assault Bore, +10 dice bonus instead of any distance moved'
+	},
+	'Dark Hand': {
+		type: 'Valour',
+		description:
+		'Once per round, may automatically Cancel a Valour Effect without discarding a card from hand, if this Unit is in play area. This Unit gains a level of disorder.'
 	},
 	'Deep Dive': {
 		type: 'Movement',
@@ -226,6 +266,11 @@ window.general_rules = {
 		type: 'Phone',
 		description: 'attacks against enemy models within 10" of this model ignore the Obscured rule',
 	},
+	'Ikili Hull': {
+		type: 'Movement',
+		description: 
+		'+3 Speed if no turns (in Movement Step). Extra die to Repair Test. JuryRigged repair, Hit or H.Hit is same as Exploding Hit.'
+	},
 	Inspirational: {
 		type: 'Shooting/Assault',
 		description:
@@ -258,6 +303,10 @@ window.general_rules = {
 		type: 'Weakness',
 		description:
 			'Can be declared to be in more than one Fire Arc when shot.',
+	},
+	'Limited Generation': {
+		type: 'Weakness',
+		description:'May use one Generator type per Round.'
 	},
 	'Linear Dash': {
 		type: 'Movement',
@@ -293,6 +342,10 @@ window.general_rules = {
 		description:
 			'Ignore the Submerged Unit Position Trait when making Attacks on any Initial Targets within 10", or against Initial Targets with at least one friendly SRS Token in base contact.',
 	},
+	'Master Portal Generation': {
+		type: 'Misc',
+		description: 'May place any Portal Tokens it creates up to 20" away.'
+	},
 	'Mine Layer': {
 		type: 'Misc',
 		description:
@@ -312,6 +365,11 @@ window.general_rules = {
 		type: 'Defense',
 		description:
 			'Battle-Ready models do not suffer Catastrophic Explosion from Attacks exceeding double Citadel'
+	},
+	'Orichalcite Crafted': {
+		type: 'Defense',
+		description:
+			'Mass 1 Models with this rule are not destroyed if their Citadel is exceeded in an Attack. They suffere critical damage instead.'
 	},
 	'Overthruster': {
 		type: 'Movement/Defense',
@@ -343,9 +401,18 @@ window.general_rules = {
 		description:
 		'After this unit is destoryed, roll number of Action Dice equal to Round. Each Exploding hit is one Kutsov or three Ruriks, pleace in Reserve. One guaranteed success if destroyed unit was within 7" of a Flagship'
 	},
+	'Razrez': {
+		type: 'Shooting',
+		description:
+		'Valour Effect: Card of at least 30, any Claw Arc Projectors may be used in the Fore Arc within 10" as the Furnace Cascade'
+	},
 	'Shallow Draught': {
 		type: 'Movement',
 		description: 'This Unit treats Treacherous Water as Open Water'
+	},
+	'Sharpshooter': {
+		type: 'Shooting',
+		description: 'Citadel is -2 during action with Gunnery weapon'
 	},
 	'Shockwave Generator': {
 		type: 'Shooting',
@@ -358,6 +425,11 @@ window.general_rules = {
 	'Sonic Amplifier': {
         type: 'Shooting',
 		description: 'Shockwave Pulses gain +3 to their Dice Pool, the Devastating Quality. Use large Torrent.'
+	},
+	'Soul Gnawing Dirge': {
+		type: 'Misc',
+		description:
+			'Enemy Models within 7" have -2 to their Citadel Attribute'
 	},
 	Spotter: {
 		type: 'Shooting',
@@ -455,6 +527,10 @@ window.general_rules = {
 		that Round. Unless one or more Models in the Unit has Navigation Lock, at the end of round this Unit may be removed from Play and become a Submarauder 
 		again. Leave a 50mm Submarauder Marker in the position of any one Model in this Unit.`
 	},
+	'Submarauder (simple)': {
+		type: 'Movement',
+		description: 'May instead be held in Reserve as a Submarauder. First activation of fleet is Submarauders. Deploy within 10" of any Submarauder Marker or Wreck Marker',
+	},
 	'Zornhau': {
 		type: 'Shooting/Ramming',
 		description: 'Re-roll Blank Results in Ranged Attacks and Ramming against Surface/Ground Units >= 2 mass.'
@@ -498,6 +574,11 @@ window.general_rules = {
 	'Veteran Voltmeisters': {
 		type: 'Assault',
 		description: '+1 dice when Assaulting. Assault gains Voltaic. No effect when Supporting.'
+	},
+	'Vigour': {
+		type: 'Assault/Ramming',
+		description:
+		'Valour Effect: Ramming gains Sustained. +6 dice if Initial Target has the Colossus rule.'
 	},
 	'Unstoppable': {
 		type: 'Ramming',

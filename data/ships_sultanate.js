@@ -1,4 +1,95 @@
 window.sultanate_ships = {
+	retaj: {
+		name: 'Retaj Portalship',
+		type: 'Portalship',
+		points: 300,
+		traits: 'Sultanate, Order, Surface Ship, Portalship, Retaj-class, Flagship',
+		mass: '3/3',
+		speed: '8/7',
+		turnLimit: '4/3',
+		armour: '7/7',
+		citadel: '14/14',
+		adv: '8/6',
+		sdv: '8/6',
+		fray: '14/14',
+		hull: '7/7',
+		rules: [
+            'Agile',
+            'Armoured Decking',
+			'Cor Caroli',
+			'Dark Hand',
+			'Heavy Firepower (simple)',
+			'Ikili Hull',
+			'Master Portal Generation',
+			'Orichalcite Construction',
+			'Powerslide',
+		],
+		generators: [
+			'Portal Generator (2)',
+		],
+		weapons: [
+			{
+				name: 'Twin Judgement Lances',
+				arc: 'F'
+			},
+			{
+				name: 'Twin Judgement Lances',
+				arc: 'F'
+			},
+			{
+				name: 'Helio Blast',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Torpedo Salvo',
+				arc: 'F'
+			},
+		],
+	},
+	carolus: {
+		name: 'Carolus Destroyer',
+		type: 'Destroyer',
+		points: '55',
+		traits: 'Sultanate, Order, Surface Unit, Destoryer, Carlous-Class',
+		mass: '1',
+		speed: '11',
+		turnLimit: '8',
+		armour: '6',
+		citadel: '12',
+		adv: '3',
+		sdv: '3',
+		fray: '6',
+		hull: '3',
+		rules: [
+			'Agile',
+			'Armoured Decking',
+			{
+				name: 'Attached Unit',
+				value: 'Order',
+			},
+			'Cor Caroli',
+			'Orichalcite Crafted',
+			'Powerslide',
+		],
+		weapons: [
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Judgement Lance',
+				arc: 'F',
+			}
+		],
+	},
     skybarques: {
 		name: 'Alsaqr Skybarques',
 		type: 'Skybarque',
@@ -490,6 +581,83 @@ window.sultanate_ships = {
 				name: 'Rocket Battery',
 				arc: 'A/S',
 			},
+		],
+	},
+	qualor: {
+		name: 'Qualor Vitruvian Colossus',
+		type: 'Vitruvian Colossus',
+		points: 175,
+		traits: 'Sultanate, Order, Aerial Unit, Vitruvian Colossus, Qualor-class',
+		mass: '2/2',
+		speed: '8/7',
+		turnLimit: '6/5',
+		armour: '7/7',
+		citadel: '14/13',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '0/0',
+		hull: '5/2',
+		rules: [
+			'Agile',
+			'Colossus',
+			'Cor Carolus Icon',
+			'Cruor',
+			'Limited Generation',
+			'Master Portal Generation',
+			'Orichalcite Construction',
+            'Powerslide',
+			'Soul Gnawing Dirge'
+		],
+		weapons: [
+			{
+				name: 'Helio Blast',
+				arc: 'F'
+			},
+		],
+		generators: [
+			'Portal Generator (1)',
+			'Mirage Generator',
+		],
+	},
+	chaska: {
+		name: 'Chaska Vitruvian Colossus',
+		type: 'Vitruvian Colossus',
+		points: 165,
+		traits: 'Sultanate, Order, Aerial Unit, Vitruvian Colossus, Chaska-class',
+		mass: '2/2',
+		speed: '8/7',
+		turnLimit: '6/5',
+		armour: '7/7',
+		citadel: '14/13',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '0/0',
+		hull: '5/2',
+		rules: [
+			'Agile',
+			'Celerity',
+			'Colossus',
+			'Cor Carolus Icon',
+			'Limited Generation',
+			'Orichalcite Construction',
+            'Powerslide',
+			'Strategic Withdrawal',
+			'Unexpected Arrival',
+			'Vigour'
+		],
+		weapons: [
+			{
+				name: 'Chaska Starblade',
+				arc: 'F'
+			},
+			{
+				name: 'Twin Judgement Lances',
+				arc: 'F/P/S'
+			},
+		],
+		generators: [
+			'Portal Generator (1)',
+			'Mirage Generator',
 		],
 	},
 }

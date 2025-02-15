@@ -123,6 +123,10 @@ window.weapons = {
 		long: '22(1)/22(1)',
 		qualities: 'Gunnery, Devastating, Extreme Range, Hazardous',
 	},
+	'Claw Arc Projector': {
+		pb: '10/8',
+		qualities: 'Ramming, Arc',
+	},
 	'Cryogenic Blast': {
 		pb: '7(-)/-',
 		closing: '7(-)/-',
@@ -152,6 +156,16 @@ window.weapons = {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
 		qualities: 'Aerial, Sustained, Extreme Range, Limited',
+	},
+	'Mag-Rail Axe (Ram)' :{
+		pb: '12/12',
+		qualities: 'Ramming, Sustained',
+	},
+	'Mag-Rail Axe (Shooting)' :{
+		pb: '10(4)/5(2)',
+		closing: '10(4)/5(2)',
+		long: '10(4)/5(2)',
+		qualities: 'Rail, Gunnery, Extreme Range',
 	},
 	'Railgun': {
 		pb: '5(2)/3(1)',
@@ -187,7 +201,7 @@ window.weapons = {
 	'Zhalo Rocket Battery': {
 		pb: '5(1)/4(-)',
 		closing: '5(3)/4(3)',
-		long: '5(3)/7(3)',
+		long: '5(3)/4(3)',
 		qualities: 'Aerial',
 	},
 	'Aerial Barbette Launcher': {
@@ -207,6 +221,10 @@ window.weapons = {
 		closing: '5(3)/3(2)',
 		qualities: 'Sustained, Gunnery',
 	},
+	'Chaska Starblade': {
+		pb: '12/10',
+		qualities: 'Ramming, Arc',
+	},
 	'D-Cannon Battery': {
 		closing: '8(4)/6(3)',
 		long: '8(4)/6(3)',
@@ -217,6 +235,16 @@ window.weapons = {
 		closing: '9(4)/6(3)',
 		long: '9(4)/6(3)',
 		qualities: 'Aerial',
+	},
+	'Helio Blast': {
+		pb: '18(0)/18(0)',
+		qualities: 'Arc, Blast, Hazardous, Bomb'
+	},
+	'Judgement Lance':{
+		pb: '5(5)/4(3)',
+		closing: '5(5)/3(3)',
+		long: '5(5)/3(3)',
+		qualities: 'Arc, Gunnery, Hazardous',
 	},
 	'Particle Beamer': {
 		pb: '7(5)/6(4)',
@@ -229,5 +257,11 @@ window.weapons = {
 		closing: '5(2)/4(2)',
 		long: '5(2)/4(2)',
 		qualities: 'Aerial',
+	},
+	'Twin Judgement Lances':{
+		pb: '8(8)/6(5)',
+		closing: '8(8)/6(5)',
+		long: '8(8)/6(5)',
+		qualities: 'Arc, Sustained, Gunnery, Hazardous',
 	},
 };
