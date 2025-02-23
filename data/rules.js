@@ -30,7 +30,7 @@ window.weapon_rules = {
 	'Small Torrent': 'use the small flamer template',
 	'No Damage to Aerial': 'never causes damage to Aerial Units',
 	'Sustained (Aerial Units)': 'If targeting Aerial Units, re-roll any one result type before Exploding.',
-	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again',
+	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again'
 };
  
 window.general_rules = {
@@ -51,6 +51,10 @@ window.general_rules = {
 	'Aggressive Crew': {
 		type: 'Assault',
 		description: 'While Assaulting, re-roll Blank dice results'
+	},
+	'Aerial Repair Platform': {
+		type: 'Defense',
+		description: `Aerial Unit within 7" survive on 1 Hull on Counter/Heavy counter save roll.`,
 	},
 	'Agile': {
 		type: 'Movement',
@@ -186,9 +190,17 @@ window.general_rules = {
 		description:
 			'Uneffected by Emergency Disorder Condition, No Disorder from Ramming',
 	},
+	Draugr: {
+		type: 'Defense',
+		description: `Ignores Emergency Disorder. Support within 3" of Assaulting model. One or more Critical Damage Markers = Cannot remove Levels of Disorder.`,
+	},
 	'Elite Crew': {
 		type: 'Assault',
 		description: 'Re-roll blanks during Assaults',
+	},
+	'Fechtbuch': {
+		type: 'Assault',
+		description: 'Once per Activation Valour Effect. +4 Assault, or +6 against Colossi.'
 	},
 	'Flak Barrage': {
 		type: 'SRS',
@@ -289,6 +301,10 @@ window.general_rules = {
 	'Janissary Assault Deck': {
 		type: 'Assault',
 		description: 'Ignores Counter Assault results when making Assault. Assaults led by this model gains Devastating',
+	},
+	'Kanzler Great Maul': {
+		type: 'Ramming/Assault',
+		description: 'Devastating when Ramming. Once per Activation Valour Effect: +2 Assault Dice Pool when making an Assault, or +4 vs Surface/Ground',
 	},
 	'Kinetic Dampers': {
 		type: 'Movement/Defense',
@@ -508,7 +524,7 @@ window.general_rules = {
 			"Always use Battle-Ready value of weapons. When making an Assault, gain dice equal to this Model's mass. If all Assaulting models have this rule, re-roll blank results and gain Devastating. No Damage or Disorder when ramming.",
 	},
 	'Blitzschlag': {
-		type: 'Assault',
+		type: 'Ramming',
 		description:
 			'Once per Activation, discard a Valour card >= 40. Each Model that has caused at least one point of damage in a Ramming Action this Activation, may make a second Ramming Action within 3" of the first. No further movement if you do.',
 	},
@@ -570,6 +586,14 @@ window.general_rules = {
 	'Terror From Below': {
 		type: 'Ramming',
 		description: `This Unit may Ram Surface Units even if it moved less than 3" in the Movement Phase. +3 when Ramming Surface Units.`
+	},
+	'Teutonic Construct': {
+		type: 'Defense',
+		description: `While Battle Ready and making a Repair roll, any Exploding Hits results remove a point of damage from this Model.`
+	},
+	'Valkyrie Support': {
+		type: 'Misc/Shooting',
+		description: `May be a Partner to a Valkyrie Unit. While Attached, Valkyrie gain Advanced Sturmcoils.`
 	},
 	'Veteran Voltmeisters': {
 		type: 'Assault',

@@ -1086,6 +1086,65 @@ window.imperium_ships = {
 		],
 	},
 
+	skjalden: {
+		name: 'Skjalden',
+		type: '',
+		points: 325,
+		traits: 'Imperium, Scions of Jutland, Command Ship, Skjalden-Class, Surface Unit, Flagship, Unique',
+		mass: '4/4',
+		speed: '6/4',
+		turnLimit: '3/2',
+		armour: '8/6',
+		citadel: '15/14',
+		adv: '10/5',
+		sdv: '6/3',
+		fray: '16/17',
+		hull: '9/5',
+		rules: [
+			'Hammer Sweep',
+			'Heavy Firepower',
+			'Freya Array',
+			'Inductorium',
+			{
+				name: 'Advanced Repair Facilities',
+				value: '2',
+			},
+			'Voltaic Decksweepers',
+			'Vulnerable Stern',
+			'Valkyrie Support',
+			'Draugr',
+			'Wolves of the Sea',
+			'Aerial Repair Platform'
+		],
+
+		weapons: [
+			{
+				name: 'Sturmbringer',
+				arc: 'F'
+			},
+			{
+				name: 'Sturmbringer',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P/S',
+			},
+		],
+	},
+
 	valkyrie: {
 		name: 'Valkyrie',
 		type: 'Hunt Rotor',
@@ -1148,6 +1207,110 @@ window.imperium_ships = {
 			{
 				name: 'Speerschleuders',
 				arc: 'F'
+			},
+		],
+	},
+	bogmaor: {
+		name: 'Bogmaor',
+		type: 'Flak Raider',
+		points: 72,
+		traits: 'Imperium, Scandinavian, Surface Unit, Flak Raider, Bogmaor-class',
+		mass: '2/2',
+		speed: '9/7',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '4/3',
+		sdv: '3/2',
+		fray: '8/8',
+		hull: '3/3',
+		rules: [
+			'Anti-Air Specialist',
+			{
+				name: 'Flak Barrage',
+				value: 5
+			},
+			'Freya Array',
+			'Hammer Sweep',
+			'Inductorium',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F'
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			}
+		],
+	},
+
+	hochmeister: {
+		name: 'Hochmeister',
+		type: 'Vitruvian Colossus',
+		points: 175,
+		traits: 'Imperium, Teutonic, Surface Unit, Vitruvian Colossus, Hochmeister-class',
+		mass: '3/3',
+		speed: '3/1',
+		turnLimit: '3/1',
+		armour: '8/7',
+		citadel: '14/13',
+		adv: '2/1',
+		sdv: '2/1',
+		fray: '9/9',
+		hull: '5/4',
+		rules: [
+			'Amphibious',
+			'Blitzschlag',
+			'Colossus',
+			'Disciplined',
+			'Inductorium',
+			'Submarauder',
+			'Inspirational',
+			'Teutonic Construct',
+			'Zornhau',
+			'Fechtbuch',
+			'Kanzler Great Maul'
+		],
+		weapons: [
+			{
+				name: 'Zweihander Great Sword',
+				arc: '360',
+				option: 'melee weapon'
+			},
+			{
+				name: 'Colossal Melee Weapon',
+				arc: '360',
+				option: 'melee weapon'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/A',
+				option: 'F/P/A Weapon'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/S/A',
+				option: 'F/S/A Weapon'
+			},
+		],
+		generators: [
+			{
+				name: 'Generator',
+				choices: [
+					'Magnetic Generator',
+					'Shield Generator',
+					'Shroud Generator',
+					'Fury Generator'
+				],
+				option: 'F/P/A Weapon',
 			},
 		],
 	},

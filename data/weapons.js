@@ -3,6 +3,10 @@ window.weapons = {
 		pb: '14/9',
 		qualities: 'Voltaic, Ramming'
 	},
+	'Zweihander Great Sword': {
+		pb: '12/10',
+		qualities: 'Voltaic, Ramming'
+	},
 	Sturmbringer: {
 		pb: '12(7)/8(5)',
 		closing: '8(4)/5(3)',
