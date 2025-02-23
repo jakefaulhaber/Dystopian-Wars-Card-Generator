@@ -69,17 +69,7 @@ window.imperium_ships = {
 				option: 'F/P Weapon',
 			},
 			{
-				name: 'Volt Gun Battery',
-				arc: 'F/P',
-				option: 'F/P Weapon',
-			},
-			{
 				name: 'Sturmklaue',
-				arc: 'F/S',
-				option: 'F/S Weapon',
-			},
-			{
-				name: 'Volt Gun Battery',
 				arc: 'F/S',
 				option: 'F/S Weapon',
 			},
@@ -87,6 +77,16 @@ window.imperium_ships = {
 				name: 'Sturmklaue',
 				arc: 'P/S',
 				option: 'P/S Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/P',
+				option: 'F/P Weapon',
+			},
+			{
+				name: 'Volt Gun Battery',
+				arc: 'F/S',
+				option: 'F/S Weapon',
 			},
 			{
 				name: 'Volt Gun Battery',
@@ -488,8 +488,11 @@ window.imperium_ships = {
 			{
 				name: 'Heavy Volt Gun Battery',
 				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
-				multiple: 2
 			},
 			{
 				name: 'Heavy Shock Rocket Battery',
@@ -969,6 +972,7 @@ window.imperium_ships = {
 			'Colossus',
 			'Inductorium',
 			'Submarauder',
+			'Submarauder (simple)',			
 			'Wolves of the Sea',
 			'Zornhau'
 		],
@@ -1273,6 +1277,7 @@ window.imperium_ships = {
 			'Disciplined',
 			'Inductorium',
 			'Submarauder',
+			'Submarauder (simple)',
 			'Inspirational',
 			'Teutonic Construct',
 			'Zornhau',

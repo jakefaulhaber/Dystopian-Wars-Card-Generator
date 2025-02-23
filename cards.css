@@ -40,12 +40,11 @@ body {
 
 .card {
 	padding: 1rem;
-	max-width: 62rem;
+	max-width: 35rem;
 	position: relative;
 	border: 5px solid #eee;
 	border-width: 5px;
-	margin-bottom: 1rem;
-	margin: 0 auto;
+	margin: 1rem auto;
 }
 
 .card::after {
@@ -95,6 +94,16 @@ body {
 
 
 
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header .right {
+	display: flex;
+	align-items: center;
+}
 
 
 h1, h2 {
@@ -104,13 +113,11 @@ h1, h2 {
 
 h1 {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	font-size: 1.7rem;
+	font-size: 1.2rem;
 }
 
 h2 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	color: #333;
 	margin-top: 0;
 }
@@ -121,12 +128,6 @@ h3 {
 	display: flex;
 	align-items: center;
 
-}
-
-h1 .right {
-	margin-top: -0.4rem;
-	display: flex;
-	align-items: center;
 }
 
 h1 div {
@@ -141,20 +142,16 @@ h1 div {
 
 
 .rules {
-	padding: 0 0 0 1rem;
+	padding: 0 0 0 0;
 }
 
-.rules.left, .rules.right {
-	width: calc(50% - 124px);
+.rules.main, .rules.secondary {
+	width: 100%;
 }
 
-.mass_1 .rules.left, .mass_1 .rules.right {
-	width: calc(50% - 76px);
-}
-
-.rules.below {
-	margin-top: 1rem;
-	padding: 0;
+.rules.common {
+	display: flex;
+	gap: 1.2rem;
 }
 
 .rules p {
@@ -163,9 +160,13 @@ h1 div {
 }
 
 .rules.generator_rules {
-	padding-left: 0;
-	padding-bottom: 0;
-	padding-top: .5rem;
+	padding: .3rem .5rem .3rem .5rem;
+	margin-bottom: 1rem;
+	background-color: #c3deed;
+}
+
+.rules.generator_rules div:first-child h3 {
+	margin-top: 0;
 }
 
 .rules img {
@@ -179,6 +180,11 @@ h1 div {
 
 .rules h2 {
 	border-bottom: 2px dotted #333;
+	margin-top: 1.5rem;
+}
+
+.rules h2:first-child {
+	margin-top: 0;
 }
 
 .missing_rule {
@@ -204,34 +210,23 @@ h1 div {
 	display: flex;
 	margin-top: .5rem;
 	align-items: flex-start;
-	width: 248px;
-}
-
-.stats.mass_1 {
-	width: 142px;
+	width: 100%;
 }
 
 .stats table {
-	width: 50%;
+	width: 100%;
 	border-spacing: 0;
     border-collapse: collapse;
 }
 
 .stats tr:first-child td {
+	padding-left: .5rem;
+	padding-right: .5rem;
 	padding-top: .5rem;
-	border-top: 2px dotted #333;
 }
 
 .stats .battle_ready {
 	background-color: #daeaf3;
-}
-
-.stats .battle_ready.mass_1 td:first-child {
-	padding-left: 1rem!important;
-}
-
-.stats .battle_ready.mass_1 td:last-child {
-	padding-right: 1rem!important;
 }
 
 .stats .crippled {
@@ -239,41 +234,19 @@ h1 div {
 	color: white;
 }
 
-.stats .battle_ready td:first-child {
-	text-align: right;
-	padding-left: .5rem;
-}
-
-.stats .battle_ready td:last-child {
-	text-align: center;
-	padding-right: .5rem;
-	padding-left: .7rem;
-}
-
-.stats .crippled td:first-child {
-	text-align: center;
-	padding-left: .5rem;
-	padding-right: .7rem;
-}
-
-.stats .crippled td:last-child {
-	text-align: left;
-	padding-right: .5rem;
+.stats tr {
+	border-bottom: 2px dotted #333;
+	border-top: 2px dotted rgba(255, 255, 255, 0);
 }
 
 .stats td {
-	/* font-family: Bitter, serif; */
 	font-family: 'Special Elite', serif;
 	font-optical-sizing: auto;
 	font-weight: 500;
 	font-size: 1.2rem;
-	text-align: left;
-	border-bottom: 2px dotted #333;
-	border-top: 2px dotted rgba(255, 255, 255, 0);
-	height: 2rem;
-	vertical-align: center;
-	padding-top: .2rem;
-	/* background-color: #bfb19d; */
+	padding: .5rem 0 .1rem 0;
+	line-height: 1.2rem;
+	text-align: center;
 }
 
 
@@ -281,13 +254,13 @@ h1 div {
 
 
 
-
+.traits_wrapper {
+	display: flex;
+}
 
 .trait_images {
 	display: flex;
 	align-items: center;
-	margin-left: .5rem;
-	margin-top: .4rem;
 }
 
 .trait_images img {
@@ -326,36 +299,43 @@ h1 div {
 }
 
 .weapons th {
-	padding: 0 .5rem;
+	padding: 0 .2rem;
 	text-transform: uppercase;
 	font-size: .8rem;
 	padding-bottom: .5rem;
+	text-align: center
 }
 
-.weapons th:nth-child(-n+2) {
+.weapons th:first-child {
 	text-align: left;
 }
 
 .weapons td {
-	padding: .2rem .5rem;
-	border-bottom: 2px dotted #333;
+	padding: .2rem .2rem;
 	height: 34px;
 	font-size: .9rem;
-}
-
-.weapons td:nth-child(n+3) {
 	text-align: center;
+	border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
-.weapons td:nth-child(-n+6) {
-	background-color: #e7ecee;
+.weapons tr.merged td {
+	border-bottom: 0;
+}
+
+.weapons td:first-child {
+	text-align: left;
+}
+
+.weapons tr:last-child td {
+	border-bottom: 0;
 }
 
 /* .weapons td:nth-child(6) {
 	border-right: 2px solid #333;
 } */
 
-.weapons td:nth-child(n+7) {
+
+.weapons td:nth-child(n+6) {
 	background-color: #ad4f35;
 	color: white;
 }
@@ -364,18 +344,22 @@ h1 div {
 	border-top: 2px dotted #333;
 }
 
-.weapons tr.odd td:nth-child(-n+6) {
+/* .weapons tr.odd td:nth-child(-n+5) {
 	background-color: #daeaf3;
 	color: black;
-}
+} */
 
-.weapons tr.odd td:nth-child(n+7) {
+/* .weapons tr.odd td:nth-child(n+6) {
 	background-color: #913f28;
 	color: white;
-}
+} */
 
-.w_qualities {
+.weapons td.w_qualities {
 	font-size: .8rem;
+	font-style: italic;
+	text-align: right;
+	height: 24px;
+	padding-bottom: 1rem;
 }
 
 .w_name {
@@ -383,19 +367,23 @@ h1 div {
 	white-space: nowrap;
 }
 
+.w_name.long {
+	font-size: .9rem;
+}
 
 
 
-.weapon_rules {
+
+.common_rules {
 	position: relative;
 	padding: 1rem;
-	max-width: 52rem;
+	max-width: 35rem;
 	margin-top: 1rem;
 	border: 5px solid #eee;
 	margin: 1rem auto;
 }
 
-.weapon_rules::after {
+.common_rules::after {
 	content: ' ';
 	position: absolute;
 	pointer-events: none;
@@ -423,17 +411,42 @@ h1 div {
 	}
 	body {
 		margin: 0;
+		padding: 0;
+	}
+	.output {
+		/* display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between; */
+
+		/* display: grid;
+		grid-template-columns: 1fr 1fr; */
 	}
 	html {
 		font-size: 70%;
 	}
-	.card, .weapon_rules {
+	.card, .common_rules {
 		page-break-inside: avoid;
 		margin: 0;
-		width: 95%;
-		max-width: 100%;
+		width: 50%;
+		box-sizing: border-box;
+		float: left;
+		/* width: 35rem; */
+
 	}
 	.options {
 		display: none;
+	}
+
+	.rules h2 {
+		border-bottom: 1px dotted #333;
+	}
+
+	.stats td {
+		border-bottom: 1px dotted #333;
+		border-top: 1px dotted rgba(255, 255, 255, 0);
+	}
+
+	.weapons tr:first-child td {
+		border-top: 1px dotted #333;
 	}
 }

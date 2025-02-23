@@ -15,7 +15,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Special+Elite&display=swap" rel="stylesheet">
+	<link defer href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Special+Elite&display=swap" rel="stylesheet">
 
 
 	<script>
@@ -93,6 +93,41 @@
 						tr.classList.add('odd')
 					}
 				})
+
+
+				// Hide or show weapon qualities based on the visible weapons.
+				const weaponRows = [...card.querySelectorAll('.weapons tr.weapon_row')].filter(tr => tr.style.display != 'none');
+				const weaponGroups = {}
+				let currentWeaponName = weaponRows[0]?.dataset?.weaponName
+				weaponRows.forEach((weaponRow, i) => {
+					const nextWeaponRow = weaponRows[i+1]
+					if (nextWeaponRow && nextWeaponRow.dataset.weaponName != currentWeaponName) {
+						weaponGroups[currentWeaponName] = weaponRow
+						currentWeaponName = nextWeaponRow.dataset.weaponName
+					} else if (!nextWeaponRow) {
+						weaponGroups[currentWeaponName] = weaponRow
+					}
+				})
+
+				const qualitiesRows = card.querySelectorAll('.weapons tr.qualities_row')
+				qualitiesRows.forEach((qualitiesRow) => {
+					qualitiesRow.style.display = 'none'
+				})
+
+				Object.values(weaponGroups).forEach((weaponRow) => {
+					weaponRow.nextElementSibling.style.display = ''
+				})
+
+				const generatorRules = card.querySelector('.generator_rules')
+				if (generatorRules) {
+					const generatorRulesVisible = Array.from(generatorRules.children).filter(child => child.style.display != 'none')
+					if (generatorRulesVisible.length == 0) {
+						generatorRules.style.display = 'none'
+					} else {
+						generatorRules.style.display = ''
+					}
+				}
+
 			})
 		}
 
@@ -153,6 +188,7 @@
 			const ships = savedList.length ? savedList.split(',') : []
 
 			let weaponRules = []
+			let separateOutputRules = []
 
 			const optionIds = {}
 			function getOptionId(shipKey, optionName) {
@@ -243,7 +279,9 @@
 					}
 
 					if (window.general_rules[ruleName]) {
-						const icons = window.general_rules[ruleName].type.toLowerCase().split('/').map((type) => {
+						const ruleObj = window.general_rules[ruleName]
+
+						const icons = ruleObj.type.toLowerCase().split('/').map((type) => {
 							if (iconsToShow.indexOf(type) > -1) {
 								return `<img src="images/${type}.png" title="${type}">`
 							}
@@ -259,25 +297,27 @@
 						} else {
 							ruleText = rule
 						}
-						
-						element.innerHTML += `<div class="rule type_${window.general_rules[ruleName].type}" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
-							<h3>${icons.join('')}${ruleText}</h3>
-							<p>${window.general_rules[ruleName].description}</p>
+
+						element.innerHTML += `<div class="rule type_${ruleObj.type}" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
+							<h3>${!ruleObj.common ? icons.join('') : '• '}${ruleText}</h3>
+							${ruleObj.common ? '' : '<p>' + ruleObj.description + '</p>'}
 						</div>`
 					} else {
 						element.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
 					}
 				}
 
-				const leftRulesElement = card.find('.rules.left')
-				const rightRulesElement = card.find('.rules.right')
-				const belowRulesElement = card.find('.rules.below')
+				const mainRulesElement = card.find('.rules.main')
+				const secondaryRulesElement = card.find('.rules.secondary')
+				const commonRulesElement = card.find('.rules.common')
 
 				const offensiveRules = []
 				const defensiveRules = []
 				const movementRules = []
 				const srsRules = []
 				const miscRules = []
+				const minimalOutputRules = []
+				const commonRules = []
 
 				ship.rules.map((rule) => {
 					let fullRule
@@ -287,10 +327,16 @@
 						fullRule = window.general_rules[rule]
 					}
 
-					console.log('rule', rule, fullRule)
+					// console.log('rule', rule, fullRule)
 					let type = fullRule ? fullRule.type : 'Missing'
+					let common = fullRule ? fullRule.common : false
 
-					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1) {
+					if (common) {
+						commonRules.push(rule)
+						if (separateOutputRules.indexOf(rule) == -1) {
+							separateOutputRules.push(rule)
+						}
+					} else if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1) {
 						offensiveRules.push(rule)
 					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
 						defensiveRules.push(rule)
@@ -309,34 +355,23 @@
 
 				offensiveRules.map((rule) => {
 					initOptionalRule(rule)
-					renderRule(rule, rightRulesElement)
+					renderRule(rule, mainRulesElement)
 				})
 
 				defensiveRules.map((rule) => {
 					initOptionalRule(rule)
-					renderRule(rule, leftRulesElement)
+					renderRule(rule, mainRulesElement)
+				})
+
+				movementRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, mainRulesElement)
 				})
 
 				srsRules.map((rule) => {
 					initOptionalRule(rule)
-					renderRule(rule, belowRulesElement)
+					renderRule(rule, secondaryRulesElement)
 				})
-
-				if (movementRules.length) {
-					// Use left column for movement rules if no/few defensive rules.
-					let useLeft = false
-					if (defensiveRules.length < 3) {
-						useLeft = true
-					}
-					movementRules.map((rule) => {
-						initOptionalRule(rule)
-						if (useLeft) {
-							renderRule(rule, leftRulesElement)
-						} else {
-							renderRule(rule, belowRulesElement)
-						}
-					})
-				}
 
 				// Sort miscRules by type
 				miscRules.sort((a, b) => {
@@ -350,11 +385,14 @@
 					return aType.localeCompare(bType)
 				})
 
-				
-
 				miscRules.map((rule) => {
 					initOptionalRule(rule)
-					renderRule(rule, belowRulesElement)
+					renderRule(rule, secondaryRulesElement)
+				})
+
+				commonRules.map((rule) => {
+					initOptionalRule(rule)
+					renderRule(rule, commonRulesElement)
 				})
 				
 
@@ -400,8 +438,10 @@
 							longCrippled = weaponData.long.split('/')[1]
 						}
 
-						let weaponHtml = `<tr ${weapon.option ? `data-option-choice-id="${getOptionId(shipKey, weapon.option)}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
-							<td class="w_name">${name}</td><td class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td><td>${weapon.arc}</td><td>${pb}</td><td>${closing}</td><td>${long}</td>
+						const weaponOptionId = getOptionId(shipKey, weapon.option)
+
+						let weaponHtml = `<tr class="weapon_row" data-weapon-name="${name}" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
+							<td class="w_name ${name.length > 16 ? 'long' : ''}">${name}</td><td>${weapon.arc}</td><td>${pb}</td><td>${closing}</td><td>${long}</td>
 							<td>${pbCrippled}</td><td>${closingCrippled}</td><td>${longCrippled}</td>
 						</tr>`
 
@@ -413,6 +453,20 @@
 							weaponsElement.innerHTML +=  weaponHtml
 						}
 
+						const nextWeapon = ship?.weapons?.[weaponId+1]
+
+						weaponsElement.innerHTML += `<tr class="qualities_row" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
+							<td colspan="9" class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td>
+						</tr>`
+						// if (!nextWeapon || (nextWeapon && nextWeapon?.name != weapon.name)) {
+						// 	console.log(weapon)
+						// }
+
+						// 	weaponsElement.innerHTML += `<tr class="qualities_row" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
+						// 		<td colspan="9" class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td>
+						// 	</tr>`
+						// }
+
 					}
 
 					const weaponData = window.weapons[weapon.name]
@@ -423,38 +477,42 @@
 
 
 
-				ship?.generators?.map((generator, i) => {
-					if (generator?.option) {
-						if (options[generator.option]) {
-							options[generator.option].push(generator)
-						} else {
-							options[generator.option] = [generator]
-						}
-					}
-
-					function renderGenerator(generator) {
-						const generatorDescription = window.generators[generator?.name || generator]
-						
+				if (ship?.generators?.length) {
+					ship?.generators?.map((generator, i) => {
 						if (generator?.option) {
-							const choicesOptionId = getOptionId(shipKey, generator.option)
-							generator.choices.map((choice) => {
-								const generatorDescription = window.generators[choice] || 'Missing rules'
-								generatorElement.innerHTML += `<div ${generator.option ? `data-option-choice-id="${choicesOptionId}_${choice}"` : ''} data-option="${generator.option ? generator.option : ''}">
-									<h3>${choice}</h3>
+							if (options[generator.option]) {
+								options[generator.option].push(generator)
+							} else {
+								options[generator.option] = [generator]
+							}
+						}
+
+						function renderGenerator(generator) {
+							const generatorDescription = window.generators[generator?.name || generator]
+
+							if (generator?.option) {
+								const choicesOptionId = getOptionId(shipKey, generator.option)
+								generator.choices.map((choice) => {
+									const generatorDescription = window.generators[choice] || 'Missing rules'
+									generatorElement.innerHTML += `<div ${generator.option ? `data-option-choice-id="${choicesOptionId}_${choice}"` : ''} data-option="${generator.option ? generator.option : ''}">
+										<h3>${choice}</h3>
+										<p>${generatorDescription}</p>
+									</div>`
+								})
+
+							} else {
+								generatorElement.innerHTML += `<div>
+									<h3>${generator?.name || generator}</h3>
 									<p>${generatorDescription}</p>
 								</div>`
-							})
-
-						} else {
-							generatorElement.innerHTML += `<div>
-								<h3>${generator?.name || generator}</h3>
-								<p>${generatorDescription}</p>
-							</div>`
+							}
 						}
-					}
 
-					renderGenerator(generator)
-				})
+						renderGenerator(generator)
+					})
+				} else {
+					generatorElement.style.display = 'none'
+				}
 
 
 
@@ -534,13 +592,13 @@
 			})
 			weaponRules = weaponRules.map((rule) => rule.trim()).filter((rule, index, self) => self.indexOf(rule.trim()) === index)
 
-			const weaponRulesElement = document.createElement('section')
-			weaponRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
-			weaponRulesElement.classList.add('weapon_rules', 'rules')
-			output.append(weaponRulesElement)
+			const separateRulesElement = document.createElement('section')
+			separateRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
+			separateRulesElement.classList.add('common_rules', 'rules')
+			output.append(separateRulesElement)
 
 			if (!weaponRules.length) {
-				weaponRulesElement.innerHTML += '<p>No weapon rules found</p>'
+				separateRulesElement.innerHTML += '<p>No weapon rules found</p>'
 			}
 
 			weaponRules.map((quality) => {
@@ -551,10 +609,21 @@
 
 				const ruleText = window.weapon_rules[quality]
 				if (ruleText) {
-					weaponRulesElement.innerHTML += `<h3>${quality}</h3>`
-					weaponRulesElement.innerHTML += `<p>${ruleText}</p>`
+					separateRulesElement.innerHTML += `<h3>${quality}</h3>`
+					separateRulesElement.innerHTML += `<p>${ruleText}</p>`
 				} else {
-					weaponRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
+					separateRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
+				}
+			})
+
+			separateRulesElement.innerHTML += '<h2>Common Rules</h2>'
+			separateOutputRules.map((rule) => {
+				console.log({rule})
+				if (rule) {
+					separateRulesElement.innerHTML += `<h3>${rule}</h3>`
+					separateRulesElement.innerHTML += `<p>${window.general_rules[rule].description}</p>`
+				} else {
+					separateRulesElement.innerHTML += `<p class="missing_rule">${rule}</p>`
 				}
 			})
 
@@ -590,125 +659,78 @@
 			<form class="options"></form>
 			<div class="header">
 				<h1>
-					<div>
-						<span class="name"></span><span class="points"></span>
-					</div>
-					<div class="right">
+					<span class="name"></span>
+				</h1>
+
+				<div class="right">
+					<h2 class="type"></h2>
+					<span class="points"></span>
+					<div class="traits_wrapper" style="display: none;">
 						<div class="trait_images"></div>
 						<div class="traits"></div>
 					</div>
-				</h1>
-				<h2 class="type"></h2>
-			</div>
-			<div class="row">
-				<div class="stats">
-					<table class="battle_ready">
-						<tr>
-							<td>Mass</td>
-							<td class="mass"></td>
-						</tr>
-						<tr>
-							<td>Speed</td>
-							<td class="speed"></td>
-						</tr>
-						<tr>
-							<td>Turn</td>
-							<td class="turn"></td>
-						</tr>
-						<tr>
-							<td>Armor</td>
-							<td class="armor"></td>
-						</tr>
-						<tr>
-							<td>Citadel</td>
-							<td class="citadel"></td>
-						</tr>
-						<tr>
-							<td>ADV</td>
-							<td class="adv"></td>
-						</tr>
-						<tr>
-							<td>SDV</td>
-							<td class="sdv"></td>
-						</tr>
-						<tr>
-							<td>Fray</td>
-							<td class="fray"></td>
-						</tr>
-						<tr>
-							<td>Hull</td>
-							<td class="hull"></td>
-						</tr>
-					</table>
-					<table class="crippled">
-						<tr>
-							<td class="mass_crippled"></td>
-							<td>Mass</td>
-						</tr>
-						<tr>
-							<td class="speed_crippled"></td>
-							<td>Speed</td>
-						</tr>
-						<tr>
-							<td class="turn_crippled"></td>
-							<td>Turn</td>
-						</tr>
-						<tr>
-							<td class="armor_crippled"></td>
-							<td>Armor</td>
-						</tr>
-						<tr>
-							<td class="citadel_crippled"></td>
-							<td>Citadel</td>
-						</tr>
-						<tr>
-							<td class="adv_crippled"></td>
-							<td>ADV</td>
-						</tr>
-						<tr>
-							<td class="sdv_crippled"></td>
-							<td>SDV</td>
-						</tr>
-						<tr>
-							<td class="fray_crippled"></td>
-							<td>Fray</td>
-						</tr>
-						<tr>
-							<td class="hull_crippled"></td>
-							<td>Hull</td>
-						</tr>
-					</table>
 				</div>
-
-				<div class="rules left"></div>
-				<div class="rules right"></div>
 			</div>
-
-			<div class="rules below"></div>
-
+			<div class="stats">
+				<table class="">
+					<tr>
+						<td>Mass</td>
+						<td>Spd</td>
+						<td>Turn</td>
+						<td>Arm</td>
+						<td>Cit</td>
+						<td>ADV</td>
+						<td>SDV</td>
+						<td>Fray</td>
+						<td>Hull</td>
+					</tr>
+					<tr class="battle_ready">
+						<td class="mass"></td>
+						<td class="speed"></td>
+						<td class="turn"></td>
+						<td class="armor"></td>
+						<td class="citadel"></td>
+						<td class="adv"></td>
+						<td class="sdv"></td>
+						<td class="fray"></td>
+						<td class="hull"></td>
+					</tr>
+					<tr class="crippled">
+						<td class="mass_crippled"></td>
+						<td class="speed_crippled"></td>
+						<td class="turn_crippled"></td>
+						<td class="armor_crippled"></td>
+						<td class="citadel_crippled"></td>
+						<td class="adv_crippled"></td>
+						<td class="sdv_crippled"></td>
+						<td class="fray_crippled"></td>
+						<td class="hull_crippled"></td>
+					</tr>
+				</table>
+			</div>
+			
 			<table class="weapons">
 				<thead>
 					<tr>
 						<th>Weapon</th>
-						<th>Qualities</th>
 						<th>Arc</th>
 						<th>PB</th>
-						<th>Closing</th>
+						<th>Mid</th>
 						<th>Long</th>
 						<th>PB</th>
-						<th>Closing</th>
+						<th>Mid</th>
 						<th>Long</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
 			</table>
 
-			<div class="row">
-				
-			</div>
-			
 			<div class="rules generator_rules"></div>
 
+			<div class="rules main"></div>
+			<div class="rules secondary"></div>
+			<div class="rules common"></div>
+			
 		</div>
 	</div>
 </html>

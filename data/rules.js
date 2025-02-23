@@ -187,6 +187,7 @@ window.general_rules = {
 	},
 	Disciplined: {
 		type: 'Defense',
+		common: true,
 		description:
 			'Uneffected by Emergency Disorder Condition, No Disorder from Ramming',
 	},
@@ -253,6 +254,7 @@ window.general_rules = {
 	},
 	'Heavy Firepower': {
 		type: 'Shooting',
+		common: true,
 		description:
 			"Once per Activation, before declaring target, Each Model in this Unit with this rule may make the following Valour Effect. When making an Attack, up to three of that Model's weapons may contribute their Lead value to the Action Dice Pool, rather than the normal single Lead weapon value. Other Models may support this Attack but cannot benefit from this rule.",
 	},
@@ -290,6 +292,7 @@ window.general_rules = {
 	},
 	Inductorium: {
 		type: 'Shooting/Assault',
+		common: true,
 		description:
 			'Upon Ranged Attack or Assault with Voltaic/Arc, after all dice are rolled/exploded: If Exploding Hits >= # of target models, roll additional dice = # of target models.',
 	},
@@ -515,6 +518,7 @@ window.general_rules = {
 	},
 	'Vulnerable Stern': {
 		type: 'Weakness',
+		common: true,
 		description:
 			'Enemy gets Devastating when shooting from the rear. Inflict a Navigation Lock if damage is dealt. Attacks with the Blast, Bomb or Magnetic Qualities ignore this rule.',
 	},
@@ -535,6 +539,7 @@ window.general_rules = {
 	},
 	'Submarauder': {
 		type: 'Movement',
+		common: true,
 		description: `May instead be held in Reserve as a Submarauder. On each Round, Submarauders are Activated before all other Units in the Force. 
 		During the first Round, a 50mm Submarauder Marker is placed anywhere outside of either Player\'s deployment and at least 2” from Terrain. 
 		From the second Round onwards when a Submarauder Activates, it is immediately deployed. When a Submarauder is deployed, it must be placed 
@@ -552,7 +557,7 @@ window.general_rules = {
 		description: 'Re-roll Blank Results in Ranged Attacks and Ramming against Surface/Ground Units >= 2 mass.'
 	},
 	'Amphibious': {
-		type: 'Movement',
+		type: 'Misc',
 		description: 'This Unit is a Surface Unit after deployment. The Unit can move across Land and Obstacle terrain at normal Speed without suffering damage or collision. It has a Drift of zero when on Land. While this Unit is on Land or Obstacle Terrain, that Terrain is ignored for LOS purposes to and from this Unit'
 	},
 	'Freya Array': {
