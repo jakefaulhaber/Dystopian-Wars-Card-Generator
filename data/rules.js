@@ -122,6 +122,7 @@ window.general_rules = {
 	},
 	'Combat Air Patrol': {
 		type: 'SRS',
+		common: true,
 		description:
 			'Launch SRS Tokens in the First Round (to a max of Crippled Capacity) with infinite range.',
 	},
@@ -458,11 +459,13 @@ window.general_rules = {
 	'SRS Capacity': { type: 'SRS', description: '' },
 	'SRS Mine Clearance': {
 		type: 'SRS',
+		common: true,
 		description:
 			'During its Operations Step, while placing SRS Tokens, may place tokens touching Minefield Markers within 20". At the end of the Special Operations Step discard an SRS Token and roll an Action Die. On an Exploding Hit, the Minefield is discarded. Repeat as desired. If Minefield discarded, remaining SRS Tokens in stack may be placed on another Minefield Marker within 5" and continue clearing. If no remaining Minefield within 5", SRS Tokens remain in place.',
 	},
 	'SRS Recon': {
 		type: 'SRS',
+		common: true,
 		description:
 			'During Operations Step, spend SRS tokens to draw and discard V&V.',
 	},

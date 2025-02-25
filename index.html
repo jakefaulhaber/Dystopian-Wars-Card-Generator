@@ -216,6 +216,7 @@
 				}
 
 				const card = $('.template .card').cloneNode(true)
+				const cardRules = $('.rules.separate').cloneNode(true)
 				card.dataset.ship = shipKey
 
 				card.find('.name').innerHTML = ship.name
@@ -298,9 +299,9 @@
 							ruleText = rule
 						}
 
-						element.innerHTML += `<div class="rule type_${ruleObj.type}" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
-							<h3>${!ruleObj.common ? icons.join('') : '• '}${ruleText}</h3>
-							${ruleObj.common ? '' : '<p>' + ruleObj.description + '</p>'}
+						element.innerHTML += `<div class="rule ${ruleObj.common ? 'common_rule' : ''} type_${ruleObj.type}" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
+							<h3>${icons.join('')}<span>• </span>${ruleText}</h3>
+							<p>${ruleObj.description}</p>
 						</div>`
 					} else {
 						element.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
@@ -310,6 +311,7 @@
 				const mainRulesElement = card.find('.rules.main')
 				const secondaryRulesElement = card.find('.rules.secondary')
 				const commonRulesElement = card.find('.rules.common')
+				const separateOnCardElement = card.find('.rules.separate_on_card')
 
 				const offensiveRules = []
 				const defensiveRules = []
@@ -336,7 +338,7 @@
 						if (separateOutputRules.indexOf(rule) == -1) {
 							separateOutputRules.push(rule)
 						}
-					} else if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1) {
+					} else if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1 || type.indexOf('Phone') > -1) {
 						offensiveRules.push(rule)
 					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
 						defensiveRules.push(rule)
@@ -344,14 +346,12 @@
 						srsRules.push(rule)
 					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
 						movementRules.push(rule)
-					} else if (type.indexOf('Phone') > -1) {
-						offensiveRules.push(rule)
 					} else {
 						miscRules.push(rule)
 					}
 				})
 
-				console.log({offensiveRules, defensiveRules, movementRules, srsRules, miscRules})
+				// console.log({offensiveRules, defensiveRules, movementRules, srsRules, miscRules})
 
 				offensiveRules.map((rule) => {
 					initOptionalRule(rule)
@@ -394,7 +394,48 @@
 					initOptionalRule(rule)
 					renderRule(rule, commonRulesElement)
 				})
-				
+
+				ship.rules.map((rule) => {
+					renderRule(rule, separateOnCardElement)
+				})
+
+				const sortOrder = {
+					'Offensive': 1,
+					'Defensive': 2,
+					'Movement': 3,
+					'SRS': 4,
+					'Misc': 5,
+					'Missing': 6
+				}
+				const getRuleType = (rule) => {
+					let type = window.general_rules[rule] ? window.general_rules[rule].type : 'Missing'
+					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1 || type.indexOf('Phone') > -1) {
+						type = 'Offensive'
+					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
+						type = 'Defensive'
+					} else if (type.indexOf('SRS') > -1) {
+						type = 'SRS'
+					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
+						type = 'Movement'
+					} else {
+						type = 'Misc'
+					}
+					return type
+				}
+				const sortedRules = [...ship.rules].sort((a, b) => {
+					const aType = getRuleType(a)
+					const bType = getRuleType(b)
+					if (sortOrder[aType] < sortOrder[bType]) {
+						return -1
+					} else if (sortOrder[aType] > sortOrder[bType]) {
+						return 1
+					}
+				})
+
+				cardRules.innerHTML = ''
+				sortedRules.map((rule) => {
+					renderRule(rule, cardRules)
+				})
 
 				const weaponsWrapper = card.find('.weapons')
 				const weaponsElement = weaponsWrapper.find('tbody')
@@ -566,7 +607,7 @@
 							checked = true
 						}
 
-						console.log('option', option, savedOptionId, optionId)
+						// console.log('option', option, savedOptionId, optionId)
 
 						optionElement = `<label>
 							<input ${checked ? 'checked="checked"' : ''} onchange="saveOption(event)" type="${type}" data-ship="${shipKey}" name="${optionName}" value="${optionId}${optionIdSuffix}">
@@ -579,6 +620,7 @@
 				})
 
 				output.append(card)
+				output.append(cardRules)
 
 			})
 
@@ -592,13 +634,16 @@
 			})
 			weaponRules = weaponRules.map((rule) => rule.trim()).filter((rule, index, self) => self.indexOf(rule.trim()) === index)
 
-			const separateRulesElement = document.createElement('section')
-			separateRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
-			separateRulesElement.classList.add('common_rules', 'rules')
-			output.append(separateRulesElement)
+			const rulesCardsOutput = document.querySelector('.rules_cards')
+
+			const separateWeaponRulesElement = document.createElement('section')
+			separateWeaponRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
+			separateWeaponRulesElement.classList.add('common_rules', 'rules')
+			rulesCardsOutput.innerHTML = ''
+			rulesCardsOutput.append(separateWeaponRulesElement)
 
 			if (!weaponRules.length) {
-				separateRulesElement.innerHTML += '<p>No weapon rules found</p>'
+				separateWeaponRulesElement.innerHTML += '<p>No weapon rules found</p>'
 			}
 
 			weaponRules.map((quality) => {
@@ -609,16 +654,19 @@
 
 				const ruleText = window.weapon_rules[quality]
 				if (ruleText) {
-					separateRulesElement.innerHTML += `<h3>${quality}</h3>`
-					separateRulesElement.innerHTML += `<p>${ruleText}</p>`
+					separateWeaponRulesElement.innerHTML += `<h3>${quality}</h3>`
+					separateWeaponRulesElement.innerHTML += `<p>${ruleText}</p>`
 				} else {
-					separateRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
+					separateWeaponRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
 				}
 			})
 
-			separateRulesElement.innerHTML += '<h2>Common Rules</h2>'
+			const separateRulesElement = document.createElement('section')
+			separateRulesElement.innerHTML = '<h2>Common Rules</h2>'
+			separateRulesElement.classList.add('common_rules', 'rules')
+			rulesCardsOutput.append(separateRulesElement)
 			separateOutputRules.map((rule) => {
-				console.log({rule})
+				// console.log({rule})
 				if (rule) {
 					separateRulesElement.innerHTML += `<h3>${rule}</h3>`
 					separateRulesElement.innerHTML += `<p>${window.general_rules[rule].description}</p>`
@@ -634,7 +682,65 @@
 			const faction = getCookie('faction') || 'imperium'
 			setCookie('faction', faction, 365)
 			selectFaction(null, faction)
+			changePrintLayout(getCookie('print_layout') || 'layout_1')
 		})
+
+		function changePrintLayout(setLayout) {
+			const currentLayout = setLayout || document.querySelector('#print_layout').value
+			document.body.classList.remove('layout_1', 'layout_2', 'layout_3')
+			document.body.classList.add(currentLayout)
+			document.querySelector('#print_layout').value = currentLayout
+			setCookie('print_layout', currentLayout, 365)
+		}
+
+		function onChangePrintLayout(e) {
+			changePrintLayout(e.target.value)
+		}
+
+		window.addEventListener("beforeprint", (event) => {
+			const cards = document.querySelectorAll('.output .card')
+			const rulesCards = document.querySelectorAll('.output .rules_card')
+			cards.forEach((card) => {
+				const mainRules = card.querySelector('.rules.main')
+				const secondaryRules = card.querySelector('.rules.secondary')
+				const commonRules = card.querySelector('.rules.common')
+
+				card.mainRules = mainRules
+				card.secondaryRules = secondaryRules
+				card.commonRules = commonRules
+
+				const maxHeight = 400
+
+				if (mainRules.offsetHeight + commonRules.offsetHeight > maxHeight) {
+					card.classList.add('hide_card_rules')
+				} else if (mainRules.offsetHeight + secondaryRules.offsetHeight + commonRules.offsetHeight > maxHeight) {
+					card.classList.add('hide_card_rules')
+				} else {
+					// Hide separate rules card if we don't need it.
+					card.nextElementSibling.style.display = 'none'
+				}
+			})
+
+			rulesCards.forEach((card) => {
+				const maxHeight = 400
+
+				const displaySetting = card.style.display
+				card.style.display = 'block'
+				if (card.offsetHeight > maxHeight) {
+					card.classList.add('compact')
+				}
+				card.style.display = displaySetting
+			})
+		});
+
+		window.addEventListener('afterprint', (event) => {
+			const cards = document.querySelectorAll('.output .card')
+			cards.forEach((card) => {
+				card.classList.remove('hide_card_rules')
+				// card.nextElementSibling.style.display = ''
+			})
+		});
+
 
 	</script>    
 </head>
@@ -648,11 +754,19 @@
 			<option value="commonwealth">Commonwealth</option>
 			<option value="sultanate">Sultanate</option>
 		</select>
+
+		<select id="print_layout" onChange="onChangePrintLayout(event)" style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%);">
+			<option value="layout_1">Print 8.5" x 11" (Use landscape)</option>
+			<option value="layout_2">Print 4"x6" (Use portrait)</option>
+			<option value="layout_3">Print 4"x6" 1 per page</option>
+		</select>
 	</div>
 
 	<div class="list"></div>
 
 	<div class="output"></div>
+
+	<div class="rules_cards"></div>
 
 	<div class="template" style="display: none;">
 		<div class="card">
@@ -730,7 +844,10 @@
 			<div class="rules main"></div>
 			<div class="rules secondary"></div>
 			<div class="rules common"></div>
+			<div class="rules separate_on_card"></div>
 			
 		</div>
+
+		<div class="rules_card separate rules"></div>
 	</div>
 </html>
