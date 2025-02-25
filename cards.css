@@ -422,12 +422,8 @@ div.common .common_rule p {
 	position: relative;
 	padding: 1rem;
 	max-width: 35rem;
-	border: .5rem solid #ccc;
+	border: .4rem solid #ccc;
 	display: none;
-}
-
-.rules_card.compact {
-	font-size: .9rem;
 }
 
 .rules_card::after {
@@ -532,7 +528,7 @@ div.common .common_rule p {
 	.layout_2 .card, .layout_2 .common_rules, .layout_2 .rules_card {
 		page-break-inside: avoid;
 		margin: 0;
-		width: 40rem;
+		width: 35rem;
 		height: 60rem;
 		box-sizing: border-box;
 		max-width: none;
@@ -549,6 +545,10 @@ div.common .common_rule p {
 
 	.layout_2 .rules_card {
 		display: block;
+	}
+
+	.layout_2 .rules_card.compact {
+		font-size: .9rem;
 	}
 
 	.layout_3 .output {
