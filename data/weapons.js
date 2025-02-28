@@ -268,4 +268,14 @@ window.weapons = {
 		long: '8(8)/6(5)',
 		qualities: 'Arc, Sustained, Gunnery, Hazardous',
 	},
+	'Pulse Broadside': {
+		pb: '5(2)/3(2)',
+		qualities: 'Broadside, Fusillade',
+	},
+	'Weirding Torpedo Salvo': {
+		pb: '6(2)/4(-)',
+		closing: '6(4)/4(3)',
+		long: '6(4)/4(3)',
+		qualities:'Submerged, Torpedo, Sustained',
+	},
 };
