@@ -277,6 +277,11 @@ window.general_rules = {
 		description:
 			'The Citadel of Targets that are in LoS of a Valkyrie receives a -2 against Attacks from this Model.',
 	},
+	'Hunter (Surface Unit)': {
+		type: 'Shooting',
+		description: 
+		'Unit must be at least min size. Once per Activation, +1 to Assault or Attack for each Model with this rule that adds to pool, when targeting Surface Unit.'
+	},
 	'Hydrophone Relay': {
 		type: 'Phone',
 		description: 'attacks against enemy models within 10" of this model ignore the Obscured rule',
@@ -365,6 +370,10 @@ window.general_rules = {
 	'Master Portal Generation': {
 		type: 'Misc',
 		description: 'May place any Portal Tokens it creates up to 20" away.'
+	},
+	'Mechanical Soul': {
+		type: 'Misc',
+		description: 'This Unit ignores Emergency Conidition, but counts as having it. Only support Assault with +1 AD.'
 	},
 	'Mine Layer': {
 		type: 'Misc',
@@ -488,6 +497,11 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 			'Models with weapons that have Aerial Quality may re-roll blanks'
+	},
+	'Triangulated Solution': {
+		type: 'Shooting',
+		description:
+			'Once per activation, a single Torpedo attack by this Unit is +5 dice if target is within 15" of Model with Hydrophone Relay rule.'
 	},
 	'Unexpected Arrival': {
 		type: 'Movement',
