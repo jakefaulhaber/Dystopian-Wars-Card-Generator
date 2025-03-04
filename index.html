@@ -70,17 +70,23 @@
 							optionValueId = optionValue
 						}
 
-						const optionElements = Array.from(card.querySelectorAll(`[data-option="${optionName}"]`))
+						let optionElements = Array.from(card.querySelectorAll(`[data-option="${optionName}"]`))
+						optionElements = optionElements.concat(Array.from(card.nextElementSibling.querySelectorAll(`[data-option="${optionName}"]`)))
 
 						optionElements.map((optionElement) => {
 							optionElement.style.display = 'none'
 						})
 
+						console.log({optionName, optionValueId, optionChoice, optionElements})
+
 						if (optionValueId || optionValueId === 0) {
-							const matches = card.querySelectorAll(`[data-option="${optionName}"][data-option-choice-id="${optionValueId}${optionChoice ? '_' + optionChoice : ''}"]`)
+							const selector = `[data-option="${optionName}"][data-option-choice-id="${optionValueId}${optionChoice ? '_' + optionChoice : ''}"]`
+							let matches = Array.from(card.querySelectorAll(selector))
+							matches = matches.concat(Array.from(card.nextElementSibling.querySelectorAll(selector)))
 							matches.forEach((match) => {
 								match.style.display = ''
 							})
+
 						}
 					})
 				}
@@ -192,7 +198,15 @@
 			let separateOutputRules = []
 
 			const optionIds = {}
-			function getOptionId(shipKey, optionName) {
+			function getOptionId(shipKey, optionName, reuse = false) {
+
+				if (reuse) {
+					const existingId = optionIds?.[shipKey]?.[optionName]
+					if (existingId || existingId === 0) {
+						return existingId
+					}
+				}
+
 				if (!optionIds[shipKey]) {
 					optionIds[shipKey] = {}
 				}
@@ -273,7 +287,7 @@
 					}
 				}
 
-				function renderRule(rule, element) {
+				function renderRule(rule, element, reuseRuleId = false) {
 					
 					let ruleName = rule
 					if (typeof rule != 'string') {
@@ -300,7 +314,9 @@
 							ruleText = rule
 						}
 
-						element.innerHTML += `<div class="rule ${ruleObj.common ? 'common_rule' : ''} type_${ruleObj.type}" ${rule?.option ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option)}` : ''}>
+						const optionalRule = rule?.option && typeof rule?.option != 'undefined'
+
+						element.innerHTML += `<div class="rule ${ruleObj.common ? 'common_rule' : ''} type_${ruleObj.type}" ${optionalRule ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option, reuseRuleId)}` : ''}>
 							<h3>${icons.join('')}<span>• </span>${ruleText}</h3>
 							<p>${ruleObj.description}</p>
 						</div>`
@@ -397,7 +413,7 @@
 				})
 
 				ship.rules.map((rule) => {
-					renderRule(rule, separateOnCardElement)
+					renderRule(rule, separateOnCardElement, true)
 				})
 
 				const sortOrder = {
@@ -435,7 +451,7 @@
 
 				cardRules.innerHTML = ''
 				sortedRules.map((rule) => {
-					renderRule(rule, cardRules)
+					renderRule(rule, cardRules, true)
 				})
 
 				const weaponsWrapper = card.find('.weapons')
@@ -457,6 +473,8 @@
 					}
 
 					function renderWeapon(name, weapon, weaponData) {
+
+						weapon.option = weapon.option || null
 
 						if (!weaponData) {
 							weaponsElement.innerHTML += `<tr ${weapon.option ? `data-option-choice-id="${getOptionId(shipKey, weapon.option)}"` : ''} data-option="${weapon.option ? weapon.option : ''}"><td colspan="9">${name} (Missing)</td></tr>`
@@ -480,7 +498,7 @@
 							longCrippled = weaponData.long.split('/')[1]
 						}
 
-						const weaponOptionId = getOptionId(shipKey, weapon.option)
+						const weaponOptionId = weapon.option ? getOptionId(shipKey, weapon.option) : null
 
 						let weaponHtml = `<tr class="weapon_row" data-weapon-name="${name}" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
 							<td class="w_name ${name.length > 16 ? 'long' : ''}">${name}</td><td>${weapon.arc}</td><td>${pb}</td><td>${closing}</td><td>${long}</td>

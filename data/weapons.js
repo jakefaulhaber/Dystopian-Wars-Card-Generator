@@ -41,6 +41,11 @@ window.weapons = {
 		closing: '6(3)/4(2)',
 		qualities: 'Broadside, Fusillade',
 	},
+	'Heavy Flak Broadside': {
+		pb: '10(6)/7(4)',
+		closing: '8(4)/5(3)',
+		qualities: 'Broadside, Sustained (Aerial Units)',
+	},	
 	'Shock Rocket Battery': {
 		pb: '4(1)/3(-)',
 		closing: '5(2)/4(2)',
@@ -99,6 +104,11 @@ window.weapons = {
 	'Lightning Strike': {
 		pb: '10/8',
 		closing: '8/-',
+		qualities: 'Arc, Devastating',
+	},
+	'Lightning Strike (Storm Vanes)': {
+		pb: '8/-',
+		closing: '-/-',
 		qualities: 'Arc, Devastating',
 	},
 	'Heavy Torpedo Salvo': {
@@ -262,7 +272,7 @@ window.weapons = {
 		long: '5(2)/4(2)',
 		qualities: 'Aerial',
 	},
-	'Twin Judgement Lances':{
+	'Twin Judgement Lances': {
 		pb: '8(8)/6(5)',
 		closing: '8(8)/6(5)',
 		long: '8(8)/6(5)',
@@ -277,5 +287,10 @@ window.weapons = {
 		closing: '6(4)/4(3)',
 		long: '6(4)/4(3)',
 		qualities:'Submerged, Torpedo, Sustained',
+	},
+	'Uranium-Trialen Bombs': {
+		pb: '12(6)/-',
+		qualities: 'Blast, Bomb, Devastating, Limited',
+		
 	},
 };

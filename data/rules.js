@@ -39,6 +39,10 @@ window.general_rules = {
 		description:
 			'Exploding Hit results equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
 	},
+	'Acceptable Attrition': {
+		type: 'Misc',
+		description: 'Provided it numbers 4 Models or less at the start of the Encounter, Destroying this Unit does not confer a Squadron Killer Victory Point bonus.',
+	},
 	'Advanced Repair Facilities': {
 		type: 'Misc',
 		description:
@@ -186,6 +190,10 @@ window.general_rules = {
 		type: 'Valour',
 		description: `Once per Round, you may Cancel a Valour Effect. Discard a Victory & Valour card from your hand of any value.`
 	},
+	'Dirigible Construction': {
+		type: 'Weakness',
+		description: 'Magazine Exlosion causes 2 points of damage to self'
+	},
 	Disciplined: {
 		type: 'Defense',
 		common: true,
@@ -238,6 +246,10 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 		'Each Model in ths unit may re-roll Blank Results in Attacks against an Initial Target with a Mass of 3 or more',
+	},
+	'Gisela Shield Projector': {
+		type: 'Defense',
+		description: 'Friendly Aerial units within 7" gain a Shield Generator or +1 to their existing Shield Generator (max 3 as usual).'
 	},
 	'Gun Runner': {
 		type: 'Movement/Shooting',
@@ -295,6 +307,10 @@ window.general_rules = {
 		type: 'Shooting/Assault',
 		description:
 			'Friendly within 10" (not self) may reduce a single Disorder Level at the start of their Activation and may re-roll a single Action dice each step of their Activation.',
+	},
+	'In Treue Fest': {
+		type: 'Shooting/Assault',
+		description: `A single Attack or Assault each Activation by this Unit, gains +1 die to its Action Dice Pool per Model with the BAVARIAN Trait contributing to the Pool. All the models in the Unit must contribute.`
 	},
 	Inductorium: {
 		type: 'Shooting/Assault',
@@ -420,6 +436,10 @@ window.general_rules = {
 		description:
 			'may make Drift Movement in a direction up to 90 degrees to Port or Starboard. Maintain heading.',
 	},
+	'Priority Signals': {
+		type: 'Misc',
+		description: 'Can retry a cancelled Valour Effect once per round.'
+	},
 	'Pycrete Construction': {
 		type: 'Misc/Weakness',
 		description:
@@ -434,6 +454,10 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 		'Valour Effect: Card of at least 30, any Claw Arc Projectors may be used in the Fore Arc within 10" as the Furnace Cascade'
+	},
+	'Richtofen\'s Flying Circus': {
+		type: 'assault',
+		description: `Assaults led by this Unit have the Devastating and Voltaic Qualities. This Unit cannot Support Assaults.`
 	},
 	'Shallow Draught': {
 		type: 'Movement',
@@ -482,6 +506,10 @@ window.general_rules = {
 		type: 'Generator',
 		description:
 			'In the Shooting Phase, make a Shooting Attack using the Lightning Strike weapon profile. 360-degree LoS, Range 20". Ignores Shield/Shroud Generators. Incoming fire re-rolls Heavy Hits. +2 Assault when Battle-Ready.',
+	},
+	'Storm Vanes': {
+		type: 'Shooting',
+		description: 'A Model with Storm Vanes may make an Attack within 10" using the crippled Lightning Strike weapon profile. The Attack ignores Shield Generators and Shroud Generators. 360 Line of Sight.',
 	},
 	'Strategic Withdrawal': {
 		type: 'Misc',

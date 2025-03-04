@@ -212,6 +212,148 @@ window.imperium_ships = {
 		],
 	},
 
+	smls_prinz_eugen: {
+		name: 'SMLS Prinz Eugen',
+		type: '',
+		points: 309,
+		traits: 'Imperium, Prussian, Aerial Unit, Sky-Fortress, Stark Imperium-class, Flagship, Unique',
+		mass: '4/4',
+		speed: '5/4',
+		turnLimit: '4/3',
+		armour: '7/6',
+		citadel: '12/11',
+		adv: '8/6',
+		sdv: '0/0',
+		fray: '13/12',
+		hull: '8/8',
+		rules: [
+			{
+				name: 'SRS Capacity',
+				value: '8/4',
+			},
+			'Combat Air Patrol',
+			'Dirigible Construction',
+			'Disciplined',
+			'Elite Crew',
+			{
+				name: 'Flak Barrage',
+				value: 10,
+			},
+			'Heavy Firepower',
+			'Inductorium',
+			'Luftlancer Assault',
+			'Lumbering',
+			'Priority Signals',
+			'SRS Mine Clearance',
+			'SRS Recon',
+			'Richtofen\'s Flying Circus'
+		],
+		weapons: [
+			{
+				name: 'Sturmbringer',
+				arc: 'F',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Vierling Autokanone',
+				arc: '360',
+			},
+			{
+				name: 'Heavy Flak Broadside',
+				arc: 'P/S'
+			},
+			{
+				name: 'Lightning Strike',
+				arc: '360'
+			},
+		],
+		generators: [
+			'Storm Generator'
+		]
+	},
+
+	maximilian: {
+		name: 'Maximilian',
+		type: 'Aerial Linebreaker',
+		points: 320,
+		traits: 'Imperium, Bavarian, Teutonic, Aerial Unit, Aerial Linebreaker, Maximilian-class, Flagship',
+		mass: '4/4',
+		speed: '6/5',
+		turnLimit: '4/3',
+		armour: '7/6',
+		citadel: '13/12',
+		adv: '6/4',
+		sdv: '0/0',
+		fray: '11/10',
+		hull: '8/8',
+		rules: [
+			'Dirigible Construction',
+			'Disciplined',
+			'Focused Bombardment',
+			'Gisela Shield Projector',
+			'Heavy Firepower',
+			'In Treue Fest',
+			'Inductorium',
+			'Linear Dash',
+			'Lumbering',
+			'Storm Vanes',
+			{
+				option: 'Optional Upgrades',
+				name: 'Phosphor Shells',
+				optionCost: 5,
+			}			
+		],
+		weapons: [
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F',
+			},
+			{
+				name: 'Lightning Strike (Storm Vanes)',
+				arc: '360',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F',
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P/S'
+			},
+			{
+				name: 'Uranium-Trialen Bombs',
+				arc: 'A',
+				multiple: 2
+			},
+		],
+		generators: [
+			'Shield Generator'
+		]
+	},
+
 	toten: {
 		name: 'Toten',
 		type: 'Heavy Destroyer',
@@ -299,7 +441,45 @@ window.imperium_ships = {
 				option: '360 Weapon'
 			}
 		],
+	},
+
+	konrad: {
+		name: 'Konrad',
+		type: 'Support Carrier',
+		points: 135,
+		traits: 'Imperium, Prussian. Surface Unit, Support Carrier, Konrad-class',
+		mass: '2/2',
+		speed: '7/6',
+		turnLimit: '5/4',
+		armour: '6/6',
+		citadel: '12/11',
+		adv: '5/3',
+		sdv: '3/3',
+		fray: '8/7',
+		hull: '3/5',
+		rules: [
+			'Combat Air Patrol',
+			'Disciplined',
+			'Inductorium',
+			{
+				name: 'SRS Capacity',
+				value: '4/2',
+			},
+			'SRS Mine Clearance',
+			'SRS Recon'
+		],
+		weapons: [
+			{
+				name: 'Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Speerschleuders',
+				arc: 'F'
+			},
+		],
 	},	
+
 
 	arminius: {
 		name: 'Arminius',
@@ -318,7 +498,7 @@ window.imperium_ships = {
 		rules: ['Disciplined', 'Elite Crew', 'Inductorium', 'Pack Hunter'],
 		weapons: [
 			{
-				name: 'Broadside',
+				name: 'Light Broadside',
 				arc: 'P&S',
 			},
 			{
@@ -331,6 +511,42 @@ window.imperium_ships = {
 				arc: 'F/P/S',
 				option: 'F/P/S Weapon',
 				optionCost: 3,
+			},
+		],
+	},
+
+	hoth: {
+		name: 'Hoth',
+		type: 'Heavy Corvette',
+		points: '34',
+		traits: 'Imperium, Scandinavian, Frigate, Surface Unit, Hoth-Class, Heavy Corvette',
+		mass: '1',
+		speed: '12',
+		turnLimit: '10',
+		armour: '4',
+		citadel: '10',
+		adv: '3',
+		sdv: '3',
+		fray: '6',
+		hull: '3',
+		rules: [
+			'Acceptable Attrition',
+			'Advanced Sturmcoils',
+			'Attached Unit',
+			'Corvette Duty',
+			'Hammer Sweep',
+			'Inductorium',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Light Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Sturmklaue',
+				arc: 'F',
 			},
 		],
 	},
@@ -1090,6 +1306,82 @@ window.imperium_ships = {
 		],
 	},
 
+	ragnarok: {
+		name: 'Ragnarok',
+		type: 'Heavy Reaver',
+		points: 235,
+		traits: 'Imperium, Scandinavian, Surface Unit, Heavy Reaver, Ragnarok-class, Flagship',
+		mass: '3/3',
+		speed: '7/5',
+		turnLimit: '3/2',
+		armour: '8/6',
+		citadel: '14/13',
+		adv: '8/3',
+		sdv: '6/3',
+		fray: '13/14',
+		hull: '6/5',
+		rules: [
+			'Hammer Sweep',
+			'Heavy Firepower',
+			'Inductorium',
+			'Vulnerable Stern',
+			'Wolves of the Sea',
+			{
+				option: 'Optional Upgrades',
+				name: 'Voltaic Decksweepers',
+				optionCost: 5
+
+			}
+		],
+		weapons: [
+			{
+				name: 'Sturmbringer',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon 1',
+			},
+			{
+				name: 'Heavy Volt Gun Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon 2',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon 1',
+				optionCost: 3
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'F/P/S',
+				option: 'F/P/S Weapon 2',
+				optionCost: 3
+			},
+			{
+				name: 'Broadside',
+				arc: 'P/S',
+			},
+		],
+		generators: [
+			'Fury Generator',
+			{
+				name: 'Generator',
+				choices: [
+					'Langsam Generator',
+					'Magnetic Generator',
+					'Repulsion Field Generator',
+					'Shield Generator',
+					'Shroud Generator',
+				],
+				option: 'F/P/S Weapon 2',
+				optionCost: -5,
+			},
+		],
+	},
+
 	skjalden: {
 		name: 'Skjalden',
 		type: '',
@@ -1319,4 +1611,49 @@ window.imperium_ships = {
 			},
 		],
 	},
+
+	heidelberg_holtzendorff: {
+		name: 'Holtzendorff Pattern Heidelberg',
+		type: 'Logistics Battlecruiser',
+		points: 190,
+		traits: 'Imperium, Prussian, Surface Unit, Battlecruiser, Heidelberg-class',
+		mass: '3/3',
+		speed: '6/5',
+		turnLimit: '3/2',
+		armour: '8/7',
+		citadel: '15/14',
+		adv: '8/3',
+		sdv: '6/3',
+		fray: '10/9',
+		hull: '7/4',
+		rules: [
+			'Disciplined',
+			'Inductorium',
+			'Logistical Support',
+			'Mine Layer',
+			'Mine Sweeper',
+			'Phosphor Shells'
+		],
+		weapons: [
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Gustav Twin Bombard',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Speerschleuders',
+				arc: 'F',
+			},
+			{
+				name: 'Lightning Strike',
+				arc: '360',
+			},
+		],
+		generators: [
+			'Storm Generator',
+		],
+	},	
 };
