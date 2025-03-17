@@ -1285,6 +1285,10 @@ window.imperium_ships = {
 				option: 'F/P/S Weapon'
 			},
 			{
+				name: 'Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
 				name: 'Heavy Broadside',
 				arc: 'P/S',
 			},
@@ -1545,6 +1549,129 @@ window.imperium_ships = {
 				name: 'Broadside',
 				arc: 'P&S',
 			}
+		],
+	},
+
+	gefjon: {
+		name: 'Gefjon',
+		type: 'Merchantman',
+		points: 68,
+		traits: 'Imperium, Scandinavian, Surface Unit, Merchantman, Gefjon-class',
+		mass: '2/2',
+		speed: '9/6',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '4/3',
+		sdv: '4/3',
+		fray: '9/9',
+		hull: '4/4',
+		rules: [
+			'Attached Unit',
+			'Hammer Sweep',
+			'Inductorium',
+			'Landing Vessel',
+			'Logistical Support',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F'
+			},
+			{
+				name: 'Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			}
+		],
+	},
+
+	angrboda: {
+		name: 'Angrboda',
+		type: 'Midget Sub Carrier',
+		points: 100,
+		traits: 'Imperium, Scandinavian, Surface Unit, Midget Sub Carrier, Angrboda-class',
+		mass: '2/2',
+		speed: '9/6',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '4/3',
+		sdv: '4/3',
+		fray: '9/9',
+		hull: '4/4',
+		rules: [
+			'Hammer Sweep',
+			'Inductorium',
+			{
+				name: 'Vali Midget Subs',
+				value: '2/1',
+			},
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F'
+			},
+			{
+				name: 'Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			}
+		],
+	},
+
+	thor: {
+		name: 'Thor',
+		type: 'Assault Raider',
+		points: 125,
+		traits: 'Imperium, Scandinavian, Surface Unit, Assault Raider, Thor-class',
+		mass: '2/2',
+		speed: '9/6',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '4/3',
+		sdv: '4/3',
+		fray: '10/10',
+		hull: '4/4',
+		rules: [
+			'Hammer Sweep',
+			'Inductorium',
+			'Storm Vanes',
+			'Vulnerable Stern',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F'
+			},
+			{
+				name: 'Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			},
+			{
+				name: 'Colossal Melee Weapon',
+				arc: 'F',
+			}
+		],
+		generators: [
+			'Fury Generator',
 		],
 	},
 
