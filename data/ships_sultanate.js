@@ -521,7 +521,7 @@ window.sultanate_ships = {
 		speed: '6/5',
 		turnLimit: '5/4',
 		armour: '7/7',
-		citadel: '15/43',
+		citadel: '15/14',
 		adv: '6/6',
 		sdv: '5/3',
 		fray: '10/9',
