@@ -17,6 +17,8 @@ window.generators = {
 	'Shroud Generator': 'This Model is Obscured against Shooting.',
 	'Repulsion Field Generator':
 		'+3SDV. Move over any terrain or other Models during its Movement.',
+	'Solex Generator':
+		'Heat Lance, Heat Lancette, and Thermal Bombs gain Sustained. Can use Valour effect to fire as a 360-degree Heat Lancette.',
 	'Storm Generator':
 		'In the Shooting Phase, make a Shooting Attack using the Lightning Strike weapon profile. Ignores Shield and Shroud Generators. Incoming Shooting Attacks re-roll Heavy Hits. If Battle-Ready, +2 to Assault',
 };
