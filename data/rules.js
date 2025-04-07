@@ -43,7 +43,7 @@ window.general_rules = {
 	'Ablative Flank Armour': {
 		type: 'Defense',
 		description:
-			'Exploding Hit results from attacks originating in P or S equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
+			'Exploding Hit results from attacks originating in Port or Starboard arcs equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
 	},
 	'Acceptable Attrition': {
 		type: 'Misc',
@@ -148,7 +148,7 @@ window.general_rules = {
 	'Coordinated Support': {
 		type: 'Shooting',
 		description:
-			'The Model may Support a single Lead weapon with any weapon, regardless of Qualities. Uses their Crippled Support values for that range. Attack pool loses Sustained. Cannot be used by ramming, Submerged vs Aerial, or Aerial vs Submerged.'
+			'The Model may Support a single Lead weapon with any weapon, regardless of Qualities. Uses their Crippled Support values for that range. Attack pool loses Sustained. Cannot be used by Ramming, Submerged vs Aerial, or Aerial vs Submerged.'
 	},
 	'Cor Caroli': {
 		type: 'Assault/Defense',
