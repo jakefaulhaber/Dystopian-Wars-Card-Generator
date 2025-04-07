@@ -30,7 +30,8 @@ window.weapon_rules = {
 	'Small Torrent': 'use the small flamer template',
 	'No Damage to Aerial': 'never causes damage to Aerial Units',
 	'Sustained (Aerial Units)': 'If targeting Aerial Units, re-roll any one result type before Exploding.',
-	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again'
+	'Limited': 'Each time after a model uses weapon, roll a die: on blank, this weapon can not be used again',
+	Magnetic: 'Models cannot be considered Obscured from Actions with the Magnetic Quality. After any other effects or Critical Damage Markers, if at least one Point of Damage has been caused, inflict a Navigation Lock if the target does not already have one.'
 };
  
 window.general_rules = {
@@ -39,9 +40,18 @@ window.general_rules = {
 		description:
 			'Exploding Hit results equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
 	},
+	'Ablative Flank Armour': {
+		type: 'Defense',
+		description:
+			'Exploding Hit results from attacks originating in P or S equal to Mass do not explode. Attacks with Piercing, Rail, Ramming or Submerged Qualities ignores this rule.',
+	},
 	'Acceptable Attrition': {
 		type: 'Misc',
 		description: 'Provided it numbers 4 Models or less at the start of the Encounter, Destroying this Unit does not confer a Squadron Killer Victory Point bonus.',
+	},
+	"Admiral\'s Flag": {
+		type: 'Misc',
+		description: 'This Unit may gain the Flagship Trait for free. It then counts as a Flagship in all respects.'
 	},
 	'Advanced Repair Facilities': {
 		type: 'Misc',
@@ -135,6 +145,11 @@ window.general_rules = {
 		description:
 			`Once per Round reroll all your dice from a friendly pool generated within 15". Do this before any other dice manipulation.`,
 	},
+	'Coordinated Support': {
+		type: 'Shooting',
+		description:
+			'The Model may Support a single Lead weapon with any weapon, regardless of Qualities. Uses their Crippled Support values for that range. Attack pool loses Sustained. Cannot be used by ramming, Submerged vs Aerial, or Aerial vs Submerged.'
+	},
 	'Cor Caroli': {
 		type: 'Assault/Defense',
 		description:
@@ -217,6 +232,11 @@ window.general_rules = {
 		description:
 			'At the start of the End Phase, before SRS Resolution, Roll a number of Action Dice indicated by the rule. Remove one SRS Token that is in contact with this Unit or Friendly Units within 15" for each Exploding Hit.',
 	},
+	'Focused Fire (Aerial)': {
+		type: 'Shooting',
+		description:
+			'One attack with Aerial per Activation gets +2 dice and may re-roll Blanks.',
+	},
 	'Focused Fire (Gunnery)': {
 		type: 'Shooting',
 		description:
@@ -231,6 +251,11 @@ window.general_rules = {
 		type: 'Defense',
 		description:
 			'You may Cancel Valour Effects in an Encounter where this Unit has at least one Battle Ready Model in the Play Area.',
+	},
+	'For Valour!': {
+		type: 'Valour',
+		description:
+			'After this Unit uses a Valour effect or has one cancelled, roll an Action Die. On a Heavy Hit or Exploding Hit return the card to your hand.'
 	},
 	'Full Steam Ahead': {
 		type: 'Movement',
@@ -345,6 +370,14 @@ window.general_rules = {
 		description:
 			'Can be declared to be in more than one Fire Arc when shot.',
 	},
+	'Legionnaire Assault Pods': {
+		type: 'Assault',
+		description: 'This Modem may make assaults within 6" and ignores Counter Assault. Assault by this Model gain Sustained and Hazardous. Does not apply to Supporting Assaults.',
+	},
+	'Levant Surge': {
+		type: 'Movement',
+		description: 'Submerged attacks against this model gain a single Hit from a Heavy Hit instead of two. Exploding Hits are unaffected. May make a Levant Surge when Deployed or in Special Operations; for the remainder of that Round, the Unit is Obscured, doubles its Drift, and becomes an Aerial Unit. Cannot be used if used in previous Round.'
+	},
 	'Limited Generation': {
 		type: 'Weakness',
 		description:'May use one Generator type per Round.'
@@ -378,6 +411,11 @@ window.general_rules = {
 		description: 
 		'An attack on a model with this rule that is not Obscured, count Heavy Hits as Hits. This rule allows Defense Roll against Gunnery and Broadside types, using Crippled ADV as the quantity (max 6). Crippled Models or Shredded Defense models cannot use Luminiferous Defenses'
 	}, 
+	'Malinois Strike Fighters': {
+		type: 'SRS',
+		description:
+			'SRS Tokens launched by Units with this rule may Scramble up to 10". Attack Runs have Hazardous and Piercing.'
+	},
 	'Maritime Patrol': {
 		type: 'Shooting',
 		description:
@@ -440,6 +478,11 @@ window.general_rules = {
 		type: 'Misc',
 		description: 'Can retry a cancelled Valour Effect once per round.'
 	},
+	'Protected Gun Crews': {
+		type: 'Defense',
+		description:
+			'Crippled Models still use the Battle-Ready value of their Gunnery or Broadside weapons, unless the Model has the Chaos and Disarray Disorder Condition. Has no effect on supporting with the Coordinated Support rule.',
+	},
 	'Pycrete Construction': {
 		type: 'Misc/Weakness',
 		description:
@@ -455,9 +498,18 @@ window.general_rules = {
 		description:
 		'Valour Effect: Card of at least 30, any Claw Arc Projectors may be used in the Fore Arc within 10" as the Furnace Cascade'
 	},
+	'Reinforced Waterline': {
+		type: 'Defense',
+		description:
+			'Submerged attacks against this model gain a single Hit from a Heavy Hit instead of two. Exploding Hits and Piercing Quality attacks are unaffected by this rule.',
+	},
 	'Richtofen\'s Flying Circus': {
 		type: 'assault',
 		description: `Assaults led by this Unit have the Devastating and Voltaic Qualities. This Unit cannot Support Assaults.`
+	},
+	'Rostrata': {
+		type: 'Shooting',
+		description: 'Used when the Initial Target suffers one or more points of damage and has Mass equal or less than the attacking Model. As a Valour Effect, the Initial Target receives a Level of Disorder and may be turned up to 90 degrees by Attacker.'
 	},
 	'Shallow Draught': {
 		type: 'Movement',
@@ -474,6 +526,11 @@ window.general_rules = {
 	'Silent Stalker': {
 		type: 'Deployment/Shooting',
 		description: `Deploy at the start of an Encounter as a Silent Stalker. Units that do so are deployed at the same time as Vanguard moves and may be deployed anywhere at least 20" from the enemy deployment zone. Deploying with Silent Stalker gives Torpedo attacks Homing this round.`
+	},
+	'Solex Generator': {
+		type: 'Shooting/Misc',
+		description:
+		'Heat Lance, Heat Lancette, and Thermal Bombs gain Sustained. Can use Valour effect to fire as a 360-degree Heat Lancette.'
 	},
 	'Sonic Amplifier': {
         type: 'Shooting',

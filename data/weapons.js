@@ -31,7 +31,7 @@ window.weapons = {
 		pb: '4(3)/3(2)',
 		qualities: 'Broadside, Fusillade',
 	},
-	Broadside: {
+	'Broadside': {
 		pb: '6(3)/4(2)',
 		closing: '3(2)/2(1)',
 		qualities: 'Broadside, Fusillade',
@@ -292,5 +292,59 @@ window.weapons = {
 		pb: '12(6)/-',
 		qualities: 'Blast, Bomb, Devastating, Limited',
 		
+	},
+	// Alliance Weapons
+	'Picket Broadside': {
+		pb: '3(2)/-',
+		qualities: 'Broadside, Fusillade, Sustained',
+	},
+	'Rolling Broadside': {
+		pb: '5(3)/4(3)',
+		qualities: 'Broadside, Fusillade, Sustained',
+	},
+	'Heavy Rolling Broadside': {
+		pb: '7(5)/5(4)',
+		closing: '5(3)/4(3)',
+		qualities: 'Broadside, Fusillade, Sustained',
+	},
+	'Heat Lancette': {
+		pb: '7(4)/5(3)',
+		closing: '5(3)/3(2)',
+		qualities: 'Gunnery, Hazardous, Devastating',
+	},
+	'Heat Lance': {
+		pb: '9(5)/7(4)',
+		closing: '7(4)/5(3)',
+		long: '5(3)/3(2)',
+		qualities: 'Gunnery, Hazardous, Devastating',
+	},
+	'Magnetic Bombard': {
+		closing: '5(3)/3(2)',
+		long: '5(3)/3(2)',
+		qualities: 'Magnetic, Extreme Range',
+	},
+	'Heavy Magnetic Bombard': {
+		closing: '8(4)/4(2)',
+		long: '8(4)/4(2)',
+		qualities: 'Magnetic, Extreme Range',
+	},
+	'Rostratum Naval Ballista': {
+		closing: '12(7)/8(5)',
+		long: '12(7)/8(5)',
+		qualities: 'Gunnery, Piercing, Magnetic, Extreme Range',
+	},
+	'Torpedo Turret': {
+		pb: '5(2)/3(-)',
+		closing: '5(3)/3(2)',
+		long: '5(3)/3(2)',
+		qualities: 'Submerged, Torpedo, Extreme Range',
+	},
+	'Heavy Prow Ram': {
+		pb: '10/8',
+		qualities: 'Ramming, Piercing'
+	},
+	'Prow Ram': {
+		pb: '6/5',
+		qualities: 'Ramming, Piercing'
 	},
 };
