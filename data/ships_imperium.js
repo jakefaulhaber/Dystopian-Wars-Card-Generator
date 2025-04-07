@@ -99,7 +99,7 @@ window.imperium_ships = {
 	sms_eiskalte_schoenheit: {
 		name: 'SMS Eiskalte Schoenheit',
 		type: 'Dreadnought Super-Carrier',
-		points: 535,
+		points: 555,
 		traits: 'Ice Maiden Class, Teutonic, Imperium, Flagship, Surface Unit',
 		mass: '6/6',
 		speed: '5/3',
@@ -532,7 +532,10 @@ window.imperium_ships = {
 		rules: [
 			'Acceptable Attrition',
 			'Advanced Sturmcoils',
-			'Attached Unit',
+			{
+				name: 'Attached Unit',
+				value: 'Scandinavian',
+			},
 			'Corvette Duty',
 			'Hammer Sweep',
 			'Inductorium',
@@ -1567,7 +1570,10 @@ window.imperium_ships = {
 		fray: '9/9',
 		hull: '4/4',
 		rules: [
-			'Attached Unit',
+			{
+				name: 'Attached Unit',
+				value: 'Scandinavian',
+			},
 			'Hammer Sweep',
 			'Inductorium',
 			'Landing Vessel',
@@ -1583,6 +1589,47 @@ window.imperium_ships = {
 			{
 				name: 'Shock Rocket Battery',
 				arc: 'F/P/S',
+			},
+			{
+				name: 'Broadside',
+				arc: 'P&S',
+			}
+		],
+	},
+
+	baldr: {
+		name: 'Baldr',
+		type: 'Shock Raider',
+		points: 92,
+		traits: 'Imperium, Scandinavian, Surface Unit, Shock Raider, Baldr-class',
+		mass: '2/2',
+		speed: '9/6',
+		turnLimit: '5/4',
+		armour: '6/5',
+		citadel: '11/10',
+		adv: '4/3',
+		sdv: '4/3',
+		fray: '9/9',
+		hull: '4/4',
+		rules: [
+			'Hammer Sweep',
+			'Inductorium',
+			'Rocket Barrage',
+			'Vanguard',
+			'Wolves of the Sea'
+		],
+		weapons: [
+			{
+				name: 'Heavy Sturmklaue',
+				arc: 'F'
+			},
+			{
+				name: 'Shock Rocket Battery',
+				arc: 'F/P/S',
+			},
+			{
+				name: 'Heavy Shock Rocket Battery',
+				arc: 'A/P/S',
 			},
 			{
 				name: 'Broadside',

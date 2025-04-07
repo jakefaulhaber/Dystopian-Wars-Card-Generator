@@ -504,12 +504,16 @@ window.general_rules = {
 			'Submerged attacks against this model gain a single Hit from a Heavy Hit instead of two. Exploding Hits and Piercing Quality attacks are unaffected by this rule.',
 	},
 	'Richtofen\'s Flying Circus': {
-		type: 'assault',
+		type: 'Assault',
 		description: `Assaults led by this Unit have the Devastating and Voltaic Qualities. This Unit cannot Support Assaults.`
 	},
 	'Rostrata': {
 		type: 'Shooting',
 		description: 'Used when the Initial Target suffers one or more points of damage and has Mass equal or less than the attacking Model. As a Valour Effect, the Initial Target receives a Level of Disorder and may be turned up to 90 degrees by Attacker.'
+	},
+	'Rocket Barrage': {
+		type: 'Shooting',
+		description: `A single Attack with the Aerial Quality by this Unit each Activation may re-roll blanks and receives +2 Action Dice. `
 	},
 	'Shallow Draught': {
 		type: 'Movement',
