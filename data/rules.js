@@ -421,6 +421,10 @@ window.general_rules = {
 		description:
 			'Ignore the Submerged Unit Position Trait when making Attacks on any Initial Targets within 10", or against Initial Targets with at least one friendly SRS Token in base contact.',
 	},
+	'Mark of Fate' : {
+		type: 'Valour',
+		description: `Once per Round, you may attempt to Cancel a Valour Effect if this model is battle-ready. You may make further attempts with this rule, but gain a Level of disorder for each additional attempt per Round`
+	}, 
 	'Master Portal Generation': {
 		type: 'Misc',
 		description: 'May place any Portal Tokens it creates up to 20" away.'
@@ -582,6 +586,16 @@ window.general_rules = {
 		description:
 		'Any Friendly Model within 7" may remove a single level of Disorder at start of their activation. Friendly Units within 7" regain weapons lost due to Limited Quality'
 	},
+	'The Sultan\'s Hammer': {
+		type: 'Shooting',
+		description: 
+		'If all Aerial attacks are against a single Initial Target, Aerial gains High Velocity and +1 Dice per weapon'
+	},
+	'The Sultan\'s Monitor': {
+		type: 'Misc',
+		description:
+		'Each Round, a single other friendly unit within 15" may remove all Disorder at start of their activation'
+	},
 	'Tracer Fire (Aerial)': {
 		type: 'Shooting',
 		description:
@@ -591,6 +605,10 @@ window.general_rules = {
 		type: 'Shooting',
 		description:
 			'Once per activation, a single Torpedo attack by this Unit is +5 dice if target is within 15" of Model with Hydrophone Relay rule.'
+	},
+	'Two Per Force': {
+		type: 'Misc',
+		description: 'Only max of two of this Unit in a Force'
 	},
 	'Unexpected Arrival': {
 		type: 'Movement',

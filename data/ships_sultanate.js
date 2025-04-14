@@ -660,4 +660,215 @@ window.sultanate_ships = {
 			'Mirage Generator',
 		],
 	},
+	nemrut: {
+		name: 'Nemrut Supremacy Cruiser',
+		type: 'Supremacy Cruiser',
+		points: 245,
+		traits: 'Sultanate, Turkish, Surface Ship, Supremacy Cruiser, Nemrut-class',
+		mass: '3/3',
+		speed: '6/5',
+		turnLimit: '4/3',
+		armour: '6/6',
+		citadel: '12/12',
+		adv: '4/2',
+		sdv: '4/2',
+		fray: '8/6',
+		hull: '6/5',
+		rules: [
+            'Agile',
+			'Ikili Hull',
+			'Orichalcite Construction',
+    		'Powerslide',
+			'The Sultan\'s Hammer',
+			'Two Per Force',
+			'Vulnerable Stern'
+		],
+		generators: [
+			'Portal Generator (1)',
+			'Shield Generator'
+		],
+		weapons: [
+			{
+				name: 'Orichalcite Flechette Launcher',
+				arc: 'F'
+			},
+			{
+				name: 'Orichalcite Flechette Launcher',
+				arc: 'F'
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F'
+			},
+			{
+				name: 'Rocket Battery',
+				arc: 'F'
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/P'
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/S'
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Torpedo Salvo',
+				arc: 'F'
+			},
+		],
+	},
+	mehmed: {
+		name: 'Mehmed Grand Monitor',
+		type: 'Grand Monitor',
+		points: 210,
+		traits: 'Sultanate, Turkish, Surface Ship, Grand Monitor, Mehmed-class',
+		mass: '3/3',
+		speed: '6/5',
+		turnLimit: '3/2',
+		armour: '6/6',
+		citadel: '12/12',
+		adv: '5/3',
+		sdv: '5/3',
+		fray: '10/8',
+		hull: '6/5',
+		rules: [
+            'Agile',
+			'Elite Crew',
+			'Ikili Hull',
+			'Maritime Patrol',
+			'Mark of Fate',
+			'Orichalcite Construction',
+    		'Powerslide',
+			'The Sultan\'s Monitor',
+			'Two Per Force',
+			'Vulnerable Stern'
+		],
+		generators: [
+			'Shield Generator',
+			{
+				name: 'Generator',
+				choices: [
+					'Atomic Generator',
+					'Fury Generator',
+					'Magnetic Generator',
+					'Mirage Generator',
+					'Portal Generator (1)',
+					'Repulsion Field Generator',
+					'Shroud Generator',
+				],
+				option: 'Additional Generator'
+			},
+		],
+		weapons: [
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P 1 Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P 1 Weapon',
+			},	
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/P',
+				option: 'F/P 1 Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/P',
+				option: 'F/P 1 Weapon',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/P',
+				option: 'F/P 2 Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/P',
+				option: 'F/P 2 Weapon',
+			},	
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/P',
+				option: 'F/P 2 Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/P',
+				option: 'F/P 2 Weapon',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S 1 Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S 1 Weapon',
+			},	
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/S',
+				option: 'F/S 1 Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/S',
+				option: 'F/S 1 Weapon',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Gun Battery',
+				arc: 'F/S',
+				option: 'F/S 2 Weapon',
+			},
+			{
+				name: 'Heavy Rocket Battery',
+				arc: 'F/S',
+				option: 'F/S 2 Weapon',
+			},	
+			{
+				name: 'D-Cannon Battery',
+				arc: 'F/S',
+				option: 'F/S 2 Weapon',
+				optionCost: 4,
+			},
+			{
+				name: 'Particle Beamer',
+				arc: 'F/S',
+				option: 'F/S 2 Weapon',
+				optionCost: 7,
+			},
+			{
+				name: 'Heavy Broadside',
+				arc: 'P&S'
+			},
+			{
+				name: 'Torpedo Salvo',
+				arc: 'F'
+			},
+			{
+				name: 'Torpedo Salvo',
+				arc: 'F'
+			},
+		],
+	},
 }
