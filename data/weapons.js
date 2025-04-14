@@ -278,6 +278,10 @@ window.weapons = {
 		long: '8(8)/6(5)',
 		qualities: 'Arc, Sustained, Gunnery, Hazardous',
 	},
+	'Orichalcite Flechette Launcher': {
+		pb: '12(9)/9(6)',
+		qualities: 'Fusillade, Blast, Bomb',
+	}, 
 	'Pulse Broadside': {
 		pb: '5(2)/3(2)',
 		qualities: 'Broadside, Fusillade',
