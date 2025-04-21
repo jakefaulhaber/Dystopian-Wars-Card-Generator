@@ -292,6 +292,11 @@ window.weapons = {
 		long: '6(4)/4(3)',
 		qualities:'Submerged, Torpedo, Sustained',
 	},
+	'Micro Torpedo Salvo': {
+		pb: '5(2)/-',
+		closing: '5(3)/-',
+		qualities:'Submerged, Torpedo, Homing',
+	},
 	'Uranium-Trialen Bombs': {
 		pb: '12(6)/-',
 		qualities: 'Blast, Bomb, Devastating, Limited',
