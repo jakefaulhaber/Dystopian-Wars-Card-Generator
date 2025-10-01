@@ -5,15 +5,10 @@
 
 	<script src="js/utility.js"></script>
 	<script src="data/ships_imperium.js"></script>
-	<script src="data/ships_crown.js"></script>
-	<script src="data/ships_commonwealth.js"></script>
-	<script src="data/ships_enlightened.js"></script>
-	<script src="data/ships_sultanate.js"></script>
-	<script src="data/ships_union.js"></script>
-	<script src="data/ships_alliance.js"></script>
-	<script src="data/rules.js"></script>
-	<script src="data/weapons.js"></script>
-	<script src="data/generators.js"></script>
+	<script src="data/properties.js"></script>
+	<script src="data/srs_properties.js"></script>
+	<script src="data/qualities.js"></script>
+	<script src="data/systems.js"></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,115 +42,9 @@
 			setCookie('options', '', 0)
 		}
 
-		function renderOptions() {
-			const cards = document.querySelectorAll('.output .card')
-
-			cards.forEach((card) => {
-				const cardOptions = savedOptions[card.dataset.ship]
-
-				if (cardOptions) {
-					const optionNames = Object.keys(cardOptions)
-					optionNames.push('Optional Upgrades')
-					optionNames.map((optionName) => {
-						const optionValue = cardOptions[optionName] || (optionName != 'Optional Upgrades' ? 0 : null)
-
-						let optionValueId, optionChoice
-						if (optionValue) {
-							if (optionValue?.toString().indexOf('_') > -1) {
-								optionValueId = optionValue.split('_')[0]
-								optionChoice = optionValue.split('_')[1]
-							} else {
-								optionValueId = parseInt(optionValue)
-							}
-						} else {
-							optionValueId = optionValue
-						}
-
-						let optionElements = Array.from(card.querySelectorAll(`[data-option="${optionName}"]`))
-						optionElements = optionElements.concat(Array.from(card.nextElementSibling.querySelectorAll(`[data-option="${optionName}"]`)))
-
-						optionElements.map((optionElement) => {
-							optionElement.style.display = 'none'
-						})
-
-						console.log({optionName, optionValueId, optionChoice, optionElements})
-
-						if (optionValueId || optionValueId === 0) {
-							const selector = `[data-option="${optionName}"][data-option-choice-id="${optionValueId}${optionChoice ? '_' + optionChoice : ''}"]`
-							let matches = Array.from(card.querySelectorAll(selector))
-							matches = matches.concat(Array.from(card.nextElementSibling.querySelectorAll(selector)))
-							matches.forEach((match) => {
-								match.style.display = ''
-							})
-
-						}
-					})
-				}
-
-				card.querySelectorAll('tr').forEach((tr, i) => {
-					tr.classList.remove('odd')
-				})
-				const visibleRows = Array.from(card.querySelectorAll('tr')).filter(tr => tr.offsetParent !== null);
-				visibleRows.forEach((tr, i) => {
-					if (i % 2 == 0) {
-						tr.classList.add('odd')
-					}
-				})
-
-
-				// Hide or show weapon qualities based on the visible weapons.
-				const weaponRows = [...card.querySelectorAll('.weapons tr.weapon_row')].filter(tr => tr.style.display != 'none');
-				const weaponGroups = {}
-				let currentWeaponName = weaponRows[0]?.dataset?.weaponName
-				weaponRows.forEach((weaponRow, i) => {
-					const nextWeaponRow = weaponRows[i+1]
-					if (nextWeaponRow && nextWeaponRow.dataset.weaponName != currentWeaponName) {
-						weaponGroups[currentWeaponName] = weaponRow
-						currentWeaponName = nextWeaponRow.dataset.weaponName
-					} else if (!nextWeaponRow) {
-						weaponGroups[currentWeaponName] = weaponRow
-					}
-				})
-
-				const qualitiesRows = card.querySelectorAll('.weapons tr.qualities_row')
-				qualitiesRows.forEach((qualitiesRow) => {
-					qualitiesRow.style.display = 'none'
-				})
-
-				Object.values(weaponGroups).forEach((weaponRow) => {
-					weaponRow.nextElementSibling.style.display = ''
-				})
-
-				const generatorRules = card.querySelector('.generator_rules')
-				if (generatorRules) {
-					const generatorRulesVisible = Array.from(generatorRules.children).filter(child => child.style.display != 'none')
-					if (generatorRulesVisible.length == 0) {
-						generatorRules.style.display = 'none'
-					} else {
-						generatorRules.style.display = ''
-					}
-				}
-
-			})
-		}
-
 		function saveOption(e) {
 			console.log('saveOption')
-			const shipKey = e.target.dataset.ship
-			const optionName = e.target.name
-			const optionValue = e.target.value
-
-			if (!savedOptions?.[shipKey]) {
-				savedOptions[shipKey] = {}
-			}
-
-			if (savedOptions[shipKey][optionName] === optionValue) {
-				delete savedOptions[shipKey][optionName]
-			} else {
-				savedOptions[shipKey][optionName] = optionValue
-			}
 			setCookie('options', JSON.stringify(savedOptions), 365)
-			renderOptions()
 		}
 
 		function saveList(e) {
@@ -175,527 +64,202 @@
 			setCookie('list', savedList, 365)
 		}
 
+		function getShipData(shipName) {
+			console.log('getShipData', shipName, window[getCookie('faction') + '_ships'])
+			return window[getCookie('faction') + '_ships'].find((ship) => ship.name == shipName)
+		}
+
 		function init(faction) {
 			const output = $('.output')
 			const listElement = $('.list')
 			listElement.innerHTML = ''
 			output.innerHTML = ''
 
-			
 			const shipData = window[faction + '_ships']
+			document.querySelector('.rules_cards').innerHTML = ''
 
-			console.log(faction, faction + '_ships', shipData)
+			console.log('init', faction, faction + '_ships', shipData)
 
-			let shipKeys = Object.keys(shipData)
-			shipKeys.sort((a, b) => shipData[a].name.localeCompare(shipData[b].name))
-			shipKeys.map((shipKey) => {
-				const ship = shipData[shipKey]
-				listElement.innerHTML += `<label><input type="checkbox" onchange="saveList(event)" ${savedList.indexOf(shipKey) > -1 ? 'checked' : ''} value="${shipKey}" /> ${shipData[shipKey].name}</label>`
+			// loop over object
+			Object.keys(shipData).forEach((shipName) => {
+				const ship = shipData[shipName]
+				let displayName = ship.name
+				let shipClass = ship.class
+				if (displayName.indexOf('CONFIGURATION') > -1) {
+					displayName = ship?.class
+					shipClass = ship?.name
+				}
+				listElement.innerHTML += `<label>
+					<input type="checkbox" onchange="saveList(event)" ${savedList.indexOf(ship.name) > -1 ? 'checked' : ''} value="${shipName}" />
+					<div>
+						${displayName}
+						${shipClass ? `<sub>${shipClass}</sub>` : ''}
+					</div>
+				</label>`
 			})
 
 			const ships = savedList.length ? savedList.split(',') : []
 
-			let weaponRules = []
-			let separateOutputRules = []
 
-			const optionIds = {}
-			function getOptionId(shipKey, optionName, reuse = false) {
+			const rulesCardRules = []
+			const weaponQualities = {}
 
-				if (reuse) {
-					const existingId = optionIds?.[shipKey]?.[optionName]
-					if (existingId || existingId === 0) {
-						return existingId
-					}
-				}
-
-				if (!optionIds[shipKey]) {
-					optionIds[shipKey] = {}
-				}
-
-				if (!optionIds[shipKey][optionName] && optionIds[shipKey][optionName] !== 0) {
-					optionIds[shipKey][optionName] = 0
-				} else {
-					optionIds[shipKey][optionName] += 1
-				}
-
-				return optionIds[shipKey][optionName]
-			}
-						
-
-			ships.map((shipKey, cardIndex) => {
+			ships.forEach((shipKey) => {
 				const ship = shipData[shipKey]
-				const options = {}
-				let optionId = 0
-
-				if (!savedOptions[shipKey]) {
-					savedOptions[shipKey] = {}
-				}
-
+				const shipName = ship.name
 				const card = $('.template .card').cloneNode(true)
-				const cardRules = $('.rules.separate').cloneNode(true)
-				card.dataset.ship = shipKey
+				card.dataset.ship = ship.name
+				
 
-				card.find('.name').innerHTML = ship.name
-				card.find('.points').innerHTML = ship.points
-				card.find('.type').innerHTML = ship.type
-				card.find('.mass').innerHTML = ship.mass.split('/')[0]
-				card.find('.speed').innerHTML = ship.speed.split('/')[0]
-				card.find('.turn').innerHTML = ship.turnLimit.split('/')[0]
-				card.find('.armor').innerHTML = ship.armour.split('/')[0]
-				card.find('.citadel').innerHTML = ship.citadel.split('/')[0]
-				card.find('.adv').innerHTML = ship.adv.split('/')[0]
-				card.find('.sdv').innerHTML = ship.sdv.split('/')[0]
-				card.find('.fray').innerHTML = ship.fray.split('/')[0]
-				card.find('.hull').innerHTML = ship.hull.split('/')[0]
+				let displayName = ship?.name
+				let shipClass = ship?.class
+				if (shipName.indexOf('CONFIGURATION') > -1) {
+					displayName = ship?.class
+					shipClass = ship?.name
+				}
 
-				if (parseInt(ship.mass) > 1) {
-					card.find('.mass_crippled').innerHTML = ship.mass.split('/')[1]
-					card.find('.speed_crippled').innerHTML = ship.speed.split('/')[1]
-					card.find('.turn_crippled').innerHTML = ship.turnLimit.split('/')[1]
-					card.find('.armor_crippled').innerHTML = ship.armour.split('/')[1]
-					card.find('.citadel_crippled').innerHTML = ship.citadel.split('/')[1]
-					card.find('.adv_crippled').innerHTML = ship.adv.split('/')[1]
-					card.find('.sdv_crippled').innerHTML = ship.sdv.split('/')[1]
-					card.find('.fray_crippled').innerHTML = ship.fray.split('/')[1]
-					card.find('.hull_crippled').innerHTML = ship.hull.split('/')[1]
-				} else {
-					card.find('.crippled').style.display = 'none'
-					card.find('.battle_ready').classList.add('mass_1')
+				card.find('.name').innerHTML = displayName
+				card.find('.class').innerHTML = shipClass
+				
+				if (ship.points >= 100) {
+					card.find('.points').classList.add('points_wide')
 				}
 				
+				card.find('.points_value').innerHTML = ship?.points
+				card.find('.vpr_value').innerHTML = ship?.vpr
 
-				ship.traits.split(',').map((trait) => {
-					trait = trait.trim()
-					const image = getImage(trait)
-				
-					if (image) {
-						card.find('.trait_images').innerHTML += `<img src="${image}" title="${trait}">`
-					} else {
-						card.find('.traits').innerHTML += `<span>${trait}</span>`
+				card.find('.mas').innerHTML = ship.stats.mas
+				card.find('.spd').innerHTML = ship.stats.spd
+				card.find('.trn').innerHTML = ship.stats.trn
+				card.find('.def').innerHTML = ship.stats.def
+				card.find('.arm').innerHTML = ship.stats.arm
+				card.find('.hul').innerHTML = ship.stats.hul
+				card.find('.act').innerHTML = ship.stats.act
+				card.find('.brd').innerHTML = ship.stats.brd
+				card.find('.rep').innerHTML = ship.stats.rep
+				card.find('.crw').innerHTML = ship.stats.crw
+
+				card.find('.traits').innerHTML = ship.traits.join(', ')
+
+				function slugify_rule(rule) {
+					let slug = rule
+					if (rule.indexOf(':') > -1) {
+						slug = rule.split(':')[0]
 					}
+					slug = slug.replace(/\(.*?\)/g, '').trim()
+					slug = slug.toLowerCase().replace(/ /g, '_')
+					return slug
+				}
+
+				function cleanupRuleName(rule) {
+					return rule.replace(/\(.*?\)/g, '(X)').trim()
+				}
+
+				function cleanupRule(rule) {
+					const cites = rule.matchAll(/\[cite:(.*?)\]/g)
+					if (cites) {
+						cites.forEach((cite) => {
+							rule = rule.replace(cite[0], '<cite>[cite: ' + cite[1] + ']</cite>')
+						})
+					}
+
+					rule = rule.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+
+					let inchMatches = rule.matchAll(/\$(.)\^{"}\$/g)
+					if (inchMatches) {
+						inchMatches.forEach((match) => {
+							rule = rule.replace(match[0], '<strong>' + match[1] + '"</strong>')
+						})
+					}
+					return rule
+				}
+
+				function cleanupQualityName(quality) {
+					let qualityName = quality
+					if (quality.indexOf(':') > -1) {
+						qualityName = quality.split(':')[0]
+						if (quality.indexOf('(X)') > -1) {
+							qualityName += ' (X)'
+						}
+					}
+					return qualityName.replace(/\(.*?\)/g, '(X)').trim()
+				}
+
+				const simpleProperties = ['boarding_parties']
+
+				const propertiesWrapperElement = card.find('.properties_content')
+				ship.properties.map((property, propertyId) => {
+					const propertyElement = document.createElement('div')
+					propertyElement.classList.add('property')
+					propertyElement.innerHTML = `<strong>${property}</strong>`
+					const propertySlug = slugify_rule(property)
+					if (!simpleProperties.includes(propertySlug)) {
+						// propertyElement.innerHTML += `<p>${cleanupRule(window.properties?.[propertySlug]?.value || '')}</p>`
+					}
+					rulesCardRules.push(property)
+					propertiesWrapperElement.appendChild(propertyElement)
 				})
 
-				const iconsToShow = ['assault', 'shooting', 'ramming', 'movement', 'srs', 'phone', 'defense', 'weakness', 'valour', 'deployment']
+				const simpleSystems = ['']
 
-				function initOptionalRule(rule) {
-					if (rule.option) {
-						if (options[rule.option]) {
-							options[rule.option].push(rule)
-							optionId += 1
-						} else {
-							options[rule.option] = [rule]
-						}
+				const systemsWrapperElement = card.find('.systems_content')
+				ship.systems.map((system, systemId) => {
+					const systemElement = document.createElement('div')
+					systemElement.classList.add('system')
+					systemElement.innerHTML = `<strong>${system}</strong>`
+					const systemSlug = slugify_rule(system)
+					if (!simpleSystems.includes(systemSlug)) {
+						// systemElement.innerHTML += `<p>${cleanupRule(window.systems?.[systemSlug]?.value || '')}</p>`
 					}
-				}
-
-				function renderRule(rule, element, reuseRuleId = false) {
-					
-					let ruleName = rule
-					if (typeof rule != 'string') {
-						ruleName = rule.name
-					}
-
-					if (window.general_rules[ruleName]) {
-						const ruleObj = window.general_rules[ruleName]
-
-						const icons = ruleObj.type.toLowerCase().split('/').map((type) => {
-							if (iconsToShow.indexOf(type) > -1) {
-								return `<img src="images/${type}.png" title="${type}">`
-							}
-						})
-
-						let ruleText
-						if (typeof rule != 'string') {
-							if (rule.value) {
-								ruleText = rule.name + ` [${rule.value}]`
-							} else {
-								ruleText = rule.name
-							}
-						} else {
-							ruleText = rule
-						}
-
-						const optionalRule = rule?.option && typeof rule?.option != 'undefined'
-
-						element.innerHTML += `<div class="rule ${ruleObj.common ? 'common_rule' : ''} type_${ruleObj.type}" ${optionalRule ? `data-option="${rule.option}" data-option-choice-id=${getOptionId(shipKey, rule.option, reuseRuleId)}` : ''}>
-							<h3>${icons.join('')}<span>• </span>${ruleText}</h3>
-							<p>${ruleObj.description}</p>
-						</div>`
-					} else {
-						element.innerHTML += `<p class="missing_rule">Missing Rule: ${ruleName}</p>`
-					}
-				}
+					rulesCardRules.push(system)
+					systemsWrapperElement.appendChild(systemElement)
+				})
 
 				const mainRulesElement = card.find('.rules.main')
-				const secondaryRulesElement = card.find('.rules.secondary')
-				const commonRulesElement = card.find('.rules.common')
-				const separateOnCardElement = card.find('.rules.separate_on_card')
 
-				const offensiveRules = []
-				const defensiveRules = []
-				const movementRules = []
-				const srsRules = []
-				const miscRules = []
-				const minimalOutputRules = []
-				const commonRules = []
-
-				ship.rules.map((rule) => {
-					let fullRule
-					if (typeof rule != 'string') {
-						fullRule = window.general_rules[rule.name]
-					} else {
-						fullRule = window.general_rules[rule]
-					}
-
-					// console.log('rule', rule, fullRule)
-					let type = fullRule ? fullRule.type : 'Missing'
-					let common = fullRule ? fullRule.common : false
-
-					if (common) {
-						commonRules.push(rule)
-						if (separateOutputRules.indexOf(rule) == -1) {
-							separateOutputRules.push(rule)
-						}
-					} else if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1 || type.indexOf('Phone') > -1) {
-						offensiveRules.push(rule)
-					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
-						defensiveRules.push(rule)
-					} else if (type.indexOf('SRS') > -1) {
-						srsRules.push(rule)
-					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
-						movementRules.push(rule)
-					} else {
-						miscRules.push(rule)
-					}
-				})
-
-				// console.log({offensiveRules, defensiveRules, movementRules, srsRules, miscRules})
-
-				offensiveRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, mainRulesElement)
-				})
-
-				defensiveRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, mainRulesElement)
-				})
-
-				movementRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, mainRulesElement)
-				})
-
-				srsRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, secondaryRulesElement)
-				})
-
-				// Sort miscRules by type
-				miscRules.sort((a, b) => {
-					let aType = window.general_rules[a] ? window.general_rules[a].type : 'Missing'
-					let bType = window.general_rules[b] ? window.general_rules[b].type : 'Missing'
-					if (aType == 'Misc') {
-						return 1
-					} else if (bType == 'Misc') {
-						return -1
-					}
-					return aType.localeCompare(bType)
-				})
-
-				miscRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, secondaryRulesElement)
-				})
-
-				commonRules.map((rule) => {
-					initOptionalRule(rule)
-					renderRule(rule, commonRulesElement)
-				})
-
-				ship.rules.map((rule) => {
-					renderRule(rule, separateOnCardElement, true)
-				})
-
-				const sortOrder = {
-					'Offensive': 1,
-					'Defensive': 2,
-					'Movement': 3,
-					'SRS': 4,
-					'Misc': 5,
-					'Missing': 6
-				}
-				const getRuleType = (rule) => {
-					let type = window.general_rules[rule] ? window.general_rules[rule].type : 'Missing'
-					if (type.indexOf('Shooting') > -1 || type.indexOf('Assault') > -1 || type.indexOf('Phone') > -1) {
-						type = 'Offensive'
-					} else if (type.indexOf('Defense') > -1 || type.indexOf('Weakness') > -1) {
-						type = 'Defensive'
-					} else if (type.indexOf('SRS') > -1) {
-						type = 'SRS'
-					} else if (type.indexOf('Movement') > -1 || type.indexOf('Ramming') > -1) {
-						type = 'Movement'
-					} else {
-						type = 'Misc'
-					}
-					return type
-				}
-				const sortedRules = [...ship.rules].sort((a, b) => {
-					const aType = getRuleType(a)
-					const bType = getRuleType(b)
-					if (sortOrder[aType] < sortOrder[bType]) {
-						return -1
-					} else if (sortOrder[aType] > sortOrder[bType]) {
-						return 1
-					}
-				})
-
-				cardRules.innerHTML = ''
-				sortedRules.map((rule) => {
-					renderRule(rule, cardRules, true)
-				})
-
-				const weaponsWrapper = card.find('.weapons')
-				const weaponsElement = weaponsWrapper.find('tbody')
-				const generatorElement = card.find('.generator_rules')
-				if (parseInt(ship.mass) == 1) {
-					card.find('.stats').parentNode.classList.add('mass_1')
-					card.find('.stats').classList.add('mass_1')
-				}
+				const weaponWrapperElement = card.find('.weapons tbody')
 
 				ship.weapons.map((weapon, weaponId) => {
-
-					if (weapon.option) {
-						if (options[weapon.option]) {
-							options[weapon.option].push(weapon)
-						} else {
-							options[weapon.option] = [weapon]
-						}
-					}
-
-					function renderWeapon(name, weapon, weaponData) {
-
-						weapon.option = weapon.option || null
-
-						if (!weaponData) {
-							weaponsElement.innerHTML += `<tr ${weapon.option ? `data-option-choice-id="${getOptionId(shipKey, weapon.option)}"` : ''} data-option="${weapon.option ? weapon.option : ''}"><td colspan="9">${name} (Missing)</td></tr>`
-							return
-						}
-
-						weaponRules = weaponRules.concat(weaponData.qualities.split(','))
-
-						let long, longCrippled, closing, closingCrippled, pb, pbCrippled;
-						long = longCrippled = closing = closingCrippled = pb = pbCrippled = '-'
-						if (weaponData?.pb) {
-							pb = weaponData.pb.split('/')[0]
-							pbCrippled = weaponData.pb.split('/')[1]
-						}
-						if (weaponData?.closing) {
-							closing = weaponData.closing.split('/')[0]
-							closingCrippled = weaponData.closing.split('/')[1]
-						}
-						if (weaponData?.long) {
-							long = weaponData.long.split('/')[0]
-							longCrippled = weaponData.long.split('/')[1]
-						}
-
-						const weaponOptionId = weapon.option ? getOptionId(shipKey, weapon.option) : null
-
-						let weaponHtml = `<tr class="weapon_row" data-weapon-name="${name}" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
-							<td class="w_name ${name.length > 16 ? 'long' : ''}">${name}</td><td>${weapon.arc}</td><td>${pb}</td><td>${closing}</td><td>${long}</td>
-							<td>${pbCrippled}</td><td>${closingCrippled}</td><td>${longCrippled}</td>
-						</tr>`
-
-						if (weapon.multiple) {
-							for (let i = 0; i < weapon.multiple; i++) {
-								weaponsElement.innerHTML += weaponHtml
-							}
-						} else {
-							weaponsElement.innerHTML +=  weaponHtml
-						}
-
-						const nextWeapon = ship?.weapons?.[weaponId+1]
-
-						weaponsElement.innerHTML += `<tr class="qualities_row" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
-							<td colspan="9" class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td>
-						</tr>`
-						// if (!nextWeapon || (nextWeapon && nextWeapon?.name != weapon.name)) {
-						// 	console.log(weapon)
-						// }
-
-						// 	weaponsElement.innerHTML += `<tr class="qualities_row" ${weapon.option ? `data-option-choice-id="${weaponOptionId}"` : ''} data-option="${weapon.option ? weapon.option : ''}">
-						// 		<td colspan="9" class="w_qualities">${weaponData.qualities.replace('|', ', ')}</td>
-						// 	</tr>`
-						// }
-
-					}
-
-					const weaponData = window.weapons[weapon.name]
-					renderWeapon(weapon.name, weapon, weaponData)
-				})
-
-
-
-
-
-				if (ship?.generators?.length) {
-					ship?.generators?.map((generator, i) => {
-						if (generator?.option) {
-							if (options[generator.option]) {
-								options[generator.option].push(generator)
-							} else {
-								options[generator.option] = [generator]
-							}
-						}
-
-						function renderGenerator(generator) {
-							const generatorDescription = window.generators[generator?.name || generator]
-
-							if (generator?.option) {
-								const choicesOptionId = getOptionId(shipKey, generator.option)
-								generator.choices.map((choice) => {
-									const generatorDescription = window.generators[choice] || 'Missing rules'
-									generatorElement.innerHTML += `<div ${generator.option ? `data-option-choice-id="${choicesOptionId}_${choice}"` : ''} data-option="${generator.option ? generator.option : ''}">
-										<h3>${choice}</h3>
-										<p>${generatorDescription}</p>
-									</div>`
-								})
-
-							} else {
-								generatorElement.innerHTML += `<div>
-									<h3>${generator?.name || generator}</h3>
-									<p>${generatorDescription}</p>
-								</div>`
-							}
-						}
-
-						renderGenerator(generator)
+					const weaponRow = document.createElement('tr')
+					weaponRow.classList.add('weapon_name')
+					weaponWrapperElement.appendChild(weaponRow)
+					weaponRow.innerHTML = `
+						<td>${weapon.name}</td>
+						<td>${weapon.arc}</td>
+						<td>${weapon.firepower_c || '-'}</td>
+						<td>${weapon.firepower_s || '-'}</td>
+						<td>${weapon.firepower_e || '-'}</td>
+					`
+					const qualitiesRow = document.createElement('tr')
+					qualitiesRow.classList.add('qualities')
+					weapon.qualities.map((quality) => {
+						weaponQualities[quality.replace(/\(.*?\)/g, '(X)').trim()] = true
 					})
-				} else {
-					generatorElement.style.display = 'none'
-				}
-
-
-
-
-
-				const optionWrapper = card.querySelector('.options')
-				Object.keys(options).map((optionName) => {
-					const optionChoices = options[optionName]
-					const optionRow = document.createElement('div')
-
-					const hasDefault = optionChoices.filter((option) => option.default).length > 0
-					optionChoices.map((option, optionId) => {
-
-						if (!savedOptions[shipKey]?.[optionName]) {
-							if (option.default) {
-								savedOptions[shipKey][optionName] = optionId
-							} else if (option.option != 'Optional Upgrades' && !hasDefault) {
-								savedOptions[shipKey][optionName] = 0
-							}
-						}
-
-						let optionInner = option?.name
-						let optionChoices = ''
-						let optionIdSuffix = ''
-						if (option?.choices) {
-							optionIdSuffix = '_' + option.choices[0]
-							optionChoices = `<select onchange="saveOption(event)" data-ship="${shipKey}" name="${optionName}">`
-							option.choices.map((choice) => {
-								optionChoices += `<option ${savedOptions[shipKey][optionName] == `${optionId}_${choice}` ? 'selected="selected"' : ''} value="${optionId}_${choice}">${choice}</option>`
-							})
-							optionChoices += '</select>'
-						}
-
-						let savedOptionId = null
-						let savedOption = savedOptions[shipKey][optionName]
-						if (savedOption) {
-							savedOptionId = typeof savedOption == 'string' && savedOption.indexOf('_') > -1 ? savedOption.split('_')[0] : savedOption
-						}
-
-						const optionCost = option.optionCost ? ` (${option.optionCost})` : ''
-						let checked = savedOptionId == optionId
-						let type = 'radio'
-						
-						if (option.option == 'Optional Upgrades') {
-							type = 'checkbox'
-						}
-
-						if (option.default && !savedOptionId) {
-							checked = true
-						} else if (option.option != 'Optional Upgrades' && !savedOptionId && optionId == 0) {
-							checked = true
-						}
-
-						// console.log('option', option, savedOptionId, optionId)
-
-						optionElement = `<label>
-							<input ${checked ? 'checked="checked"' : ''} onchange="saveOption(event)" type="${type}" data-ship="${shipKey}" name="${optionName}" value="${optionId}${optionIdSuffix}">
-							${optionInner}${optionCost}${optionChoices}
-						</label>`
-						optionRow.innerHTML += optionElement
-					})
-					optionWrapper.innerHTML += '<h3>' + optionName + '</h3>'
-					optionWrapper.append(optionRow)
+					qualitiesRow.innerHTML = `
+						<td colspan="5">${weapon.qualities.join(', ')}</td>
+					`
+					weaponWrapperElement.appendChild(qualitiesRow)
 				})
 
 				output.append(card)
-				output.append(cardRules)
+
+				const rulesCard = document.createElement('div')
+				rulesCard.classList.add('rules_card')
+				$('.rules_cards').append(rulesCard)
+				rulesCardRules.sort().map((rule) => {
+					const ruleSlug = slugify_rule(rule)
+					const ruleValue = window.properties?.[ruleSlug]?.value || window.systems?.[ruleSlug]?.value || ''
+					rulesCard.innerHTML += `<strong>${cleanupRuleName(rule)}</strong><p>${cleanupRule(ruleValue)}</p>`
+				})
+
+				const qualitiesCard = document.createElement('div')
+				qualitiesCard.classList.add('rules_card')
+				$('.rules_cards').append(qualitiesCard)
+				Object.keys(weaponQualities).sort().map((quality) => {
+					qualitiesCard.innerHTML += `<strong>${cleanupQualityName(quality)}</strong><p>${cleanupRule(window.qualities?.[slugify_rule(quality)]?.value || '')}</p>`
+				})
 
 			})
-
-
-			weaponRules = weaponRules.map((quality) => {
-				let qualityDetail = quality.match(/\(([\w|]+)\)/)
-				if (qualityDetail?.[1]) {
-					return quality.replace(qualityDetail[0], '')
-				}
-				return quality
-			})
-			weaponRules = weaponRules.map((rule) => rule.trim()).filter((rule, index, self) => self.indexOf(rule.trim()) === index)
-
-			const rulesCardsOutput = document.querySelector('.rules_cards')
-
-			const separateWeaponRulesElement = document.createElement('section')
-			separateWeaponRulesElement.innerHTML = '<h2>Weapon Rules</h2>'
-			separateWeaponRulesElement.classList.add('common_rules', 'rules')
-			rulesCardsOutput.innerHTML = ''
-			rulesCardsOutput.append(separateWeaponRulesElement)
-
-			if (!weaponRules.length) {
-				separateWeaponRulesElement.innerHTML += '<p>No weapon rules found</p>'
-			}
-
-			weaponRules.map((quality) => {
-				let qualityDetail = quality.match(/\(([\w|]+)\)/)
-				if (qualityDetail?.[1]) {
-					quality = quality.replace(qualityDetail[0], '')
-				}
-
-				const ruleText = window.weapon_rules[quality]
-				if (ruleText) {
-					separateWeaponRulesElement.innerHTML += `<h3>${quality}</h3>`
-					separateWeaponRulesElement.innerHTML += `<p>${ruleText}</p>`
-				} else {
-					separateWeaponRulesElement.innerHTML += `<p class="missing_rule">${quality}</p>`
-				}
-			})
-
-			const separateRulesElement = document.createElement('section')
-			separateRulesElement.innerHTML = '<h2>Common Rules</h2>'
-			separateRulesElement.classList.add('common_rules', 'rules')
-			rulesCardsOutput.append(separateRulesElement)
-			separateOutputRules.map((rule) => {
-				// console.log({rule})
-				if (rule) {
-					separateRulesElement.innerHTML += `<h3>${rule}</h3>`
-					separateRulesElement.innerHTML += `<p>${window.general_rules[rule].description}</p>`
-				} else {
-					separateRulesElement.innerHTML += `<p class="missing_rule">${rule}</p>`
-				}
-			})
-
-			renderOptions()
 		}
 
 		window.addEventListener('load', () => {
@@ -731,13 +295,15 @@
 
 				const maxHeight = 400
 
-				if (mainRules.offsetHeight + commonRules.offsetHeight > maxHeight) {
+				if (mainRules.offsetHeight > maxHeight) {
 					card.classList.add('hide_card_rules')
-				} else if (mainRules.offsetHeight + secondaryRules.offsetHeight + commonRules.offsetHeight > maxHeight) {
+				} else if (mainRules.offsetHeight > maxHeight) {
 					card.classList.add('hide_card_rules')
 				} else {
 					// Hide separate rules card if we don't need it.
-					card.nextElementSibling.style.display = 'none'
+					if (card?.nextElementSibling) {
+						card.nextElementSibling.style.display = 'none'
+					}
 				}
 			})
 
@@ -769,12 +335,6 @@
 		<button onclick="clearOptions()">Clear</button>
 		<select id="faction_select" onchange="selectFaction(event)">
 			<option value="imperium">Imperium</option>
-			<option value="union">Union</option>
-			<option value="crown">Crown</option>
-			<option value="commonwealth">Commonwealth</option>
-			<option value="sultanate">Sultanate</option>
-			<option value="enlightened">Enlightened</option>
-			<option value="alliance">Alliance</option>
 		</select>
 
 		<select id="print_layout" onChange="onChangePrintLayout(event)" style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%);">
@@ -792,18 +352,25 @@
 
 	<div class="template" style="display: none;">
 		<div class="card">
-			<form class="options"></form>
 			<div class="header">
-				<h1>
-					<span class="name"></span>
-				</h1>
+				<div>
+					<h1>
+						<span class="name"></span>
+					</h1>
+					<h2 class="class"></h2>
+					<div class="traits_wrapper">
+						<div class="traits"></div>
+					</div>
+				</div>
 
 				<div class="right">
-					<h2 class="type"></h2>
-					<span class="points"></span>
-					<div class="traits_wrapper" style="display: none;">
-						<div class="trait_images"></div>
-						<div class="traits"></div>
+					<div class="vpr">
+						<span>VPR</span>
+						<span class="vpr_value"></span>
+					</div>
+					<div class="points">
+						<span>Points</span>
+						<span class="points_value"></span>
 					</div>
 				</div>
 			</div>
@@ -812,37 +379,39 @@
 					<tr>
 						<td>Mass</td>
 						<td>Spd</td>
-						<td>Turn</td>
+						<td>Trn</td>
+						<td>Def</td>
 						<td>Arm</td>
-						<td>Cit</td>
-						<td>ADV</td>
-						<td>SDV</td>
-						<td>Fray</td>
-						<td>Hull</td>
+						<td>Hul</td>
+						<td>Act</td>
+						<td>Brd</td>
+						<td>Rep</td>
+						<td>Crw</td>
 					</tr>
-					<tr class="battle_ready">
-						<td class="mass"></td>
-						<td class="speed"></td>
-						<td class="turn"></td>
-						<td class="armor"></td>
-						<td class="citadel"></td>
-						<td class="adv"></td>
-						<td class="sdv"></td>
-						<td class="fray"></td>
-						<td class="hull"></td>
-					</tr>
-					<tr class="crippled">
-						<td class="mass_crippled"></td>
-						<td class="speed_crippled"></td>
-						<td class="turn_crippled"></td>
-						<td class="armor_crippled"></td>
-						<td class="citadel_crippled"></td>
-						<td class="adv_crippled"></td>
-						<td class="sdv_crippled"></td>
-						<td class="fray_crippled"></td>
-						<td class="hull_crippled"></td>
+					<tr class="stat_values">
+						<td class="mas"></td>
+						<td class="spd"></td>
+						<td class="trn"></td>
+						<td class="def"></td>
+						<td class="arm"></td>
+						<td class="hul"></td>
+						<td class="act"></td>
+						<td class="brd"></td>
+						<td class="rep"></td>
+						<td class="crw"></td>
 					</tr>
 				</table>
+			</div>
+
+			<div class="props_system_wrapper">
+				<div class="properties">
+					<h3>Properties</h3>
+					<div class="properties_content"></div>
+				</div>
+				<div class="systems">
+					<h3>Systems</h3>
+					<div class="systems_content"></div>
+				</div>
 			</div>
 			
 			<table class="weapons">
@@ -850,26 +419,14 @@
 					<tr>
 						<th>Weapon</th>
 						<th>Arc</th>
-						<th>PB</th>
-						<th>Mid</th>
-						<th>Long</th>
-						<th>PB</th>
-						<th>Mid</th>
-						<th>Long</th>
+						<th>C</th>
+						<th>S</th>
+						<th>E</th>
 					</tr>
 				</thead>
 				<tbody></tbody>
 			</table>
-
-			<div class="rules generator_rules"></div>
-
-			<div class="rules main"></div>
-			<div class="rules secondary"></div>
-			<div class="rules common"></div>
-			<div class="rules separate_on_card"></div>
-			
+		
 		</div>
-
-		<div class="rules_card separate rules"></div>
 	</div>
 </html>

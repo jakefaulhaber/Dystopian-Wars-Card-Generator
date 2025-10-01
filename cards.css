@@ -11,16 +11,28 @@ body {
 	position: relative;
 }
 
-.points {
-	font-size: 1rem;
+.points, .vpr {
+	font-size: .8rem;
 	font-weight: 500;
 	background-color: #333;
 	color: white;
-	border-radius: .5rem;
-	padding: .1rem .6rem .2rem .6rem;
+	padding: .1rem .6rem .6rem .6rem;
 	line-height: 1.2rem;
 	margin-left: 1rem;
-	margin-top: -.3rem;
+	position: relative;
+}
+
+.points *, .vpr * {
+	text-align: center;
+}
+
+.points_value, .vpr_value {
+	font-size: 1.8rem;
+	font-family: 'Special Elite', sans-serif;
+	font-weight: bold;
+	line-height: 1rem;
+	margin-bottom: -.1rem;
+	margin-top: .5rem;
 }
 
 .list {
@@ -34,9 +46,16 @@ body {
 	flex-direction: column;
 }
 
+.list label sub {
+	display: block;
+	font-size: .8rem;
+}
+
 .list label {
-	margin-right: .5rem;
 	cursor: pointer;
+	display: flex;
+	gap: .5rem;
+	margin: .5rem .5rem 0 0;
 }
 
 .card {
@@ -96,14 +115,18 @@ body {
 
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .header .right {
+	position: absolute;
+	top: 0;
+	right: 1rem;
 	display: flex;
-	align-items: center;
+}
+
+.header .right div {
+	display: flex;
+	flex-direction: column;
 }
 
 
@@ -115,6 +138,7 @@ h1, h2 {
 h1 {
 	display: flex;
 	font-size: 1.2rem;
+	margin-bottom: .5rem;
 }
 
 h2 {
@@ -261,7 +285,7 @@ div.common .common_rule p {
 .stats table {
 	width: 100%;
 	border-spacing: 0;
-    border-collapse: collapse;
+	border-collapse: collapse;
 }
 
 .stats tr:first-child td {
@@ -287,7 +311,7 @@ div.common .common_rule p {
 .stats td {
 	font-family: 'Special Elite', serif;
 	font-optical-sizing: auto;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 1.2rem;
 	padding: .5rem 0 .1rem 0;
 	line-height: 1.2rem;
@@ -295,40 +319,56 @@ div.common .common_rule p {
 }
 
 
-
-
-
-
-.traits_wrapper {
-	display: flex;
+.props_system_wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	margin-top: 1rem;
 }
 
-.trait_images {
-	display: flex;
-	align-items: center;
+.props_system_wrapper h3 {
+	font-size: 1.2rem;
+	width: 10rem;
+	margin-left: 1rem;
+	margin-bottom: .4rem;
 }
 
-.trait_images img {
-	width: 30px;
-	height: auto;
-	margin: 0 0 0 .3rem;
+.props_system_wrapper cite {
+	font-size: .8rem;
+	font-style: italic;
+	margin-left: .5rem;
+	display: none;
 }
+
+
+.props_system_wrapper div div {
+	background-color: #eee;	
+	padding: .2rem .5rem;
+}
+
+.props_system_wrapper strong {
+	font-weight: 600;
+	font-size: .9rem;
+}
+
+.props_system_wrapper p {
+	font-size: .8rem;
+	margin-top: 0;
+}
+
+
+
+
+
 
 .traits {
-	display: flex;
-	align-items: center;
-	margin-left: .3rem;
-	margin-top: .4rem;
-}
-
-.traits span {
+	border-top: 1px solid #333;
+	padding-top: .5rem;
+	margin-top: .5rem;
 	font-family: 'Roboto Slab', sans-serif;
-	font-size: .9rem;
-	font-weight: 500;
-	background-color: #c3deed;
-	padding: .2rem .6rem;
-	margin: 0 .2rem;
-	border-radius: .7rem;
+	font-size: .8rem;
+	font-weight: 400;
+	font-style: italic;
 }
 
 
@@ -356,56 +396,51 @@ div.common .common_rule p {
 }
 
 .weapons td {
-	padding: .2rem .2rem;
-	height: 2.2rem;
+	padding: .2rem .2rem .2rem .2rem;
+	height: 1.6rem;
 	font-size: .9rem;
 	text-align: center;
 	border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
-.weapons tr.merged td {
+.weapons td:nth-child(2) {
+	background-color: #eee;
+}
+
+.weapons tr.qualities td {
 	border-bottom: 0;
+	font-size: .8rem;
+	padding-top: 0;
+	padding-bottom: .5rem;
+	height: 1.8rem;
+	/* background-color: #daeaf3; */
+	font-weight: 400;
 }
 
 .weapons td:first-child {
 	text-align: left;
+	font-weight: 500;
 }
 
 .weapons tr:last-child td {
 	border-bottom: 0;
 }
 
-/* .weapons td:nth-child(6) {
-	border-right: 2px solid #333;
-} */
-
-
-.weapons td:nth-child(n+6) {
-	background-color: #ad4f35;
-	color: white;
-}
-
 .weapons tr:first-child td {
 	border-top: 2px dotted #333;
 }
 
-/* .weapons tr.odd td:nth-child(-n+5) {
-	background-color: #daeaf3;
-	color: black;
-} */
+.weapon_name td {
+	background-color: #eee;
+}
 
-/* .weapons tr.odd td:nth-child(n+6) {
-	background-color: #913f28;
-	color: white;
-} */
-
-.weapons td.w_qualities {
+/* .weapons td.w_qualities {
 	font-size: .8rem;
 	font-style: italic;
 	text-align: right;
 	height: 2rem;
 	padding-bottom: .8rem;
-}
+} */
 
 .w_name {
 	font-weight: 500;
@@ -423,6 +458,20 @@ div.common .common_rule p {
 	padding: 1rem;
 	max-width: 35rem;
 	border: .4rem solid #ccc;
+	margin: 1rem auto;
+	/* display: none; */
+}
+
+.rules_card p {
+	margin-top: 0;
+	font-size: .8rem;
+}
+
+.rules_card cite {
+	margin-left: .2rem;
+	font-size: .8rem;
+	font-style: italic;
+	font-weight: 500;
 	display: none;
 }
 
@@ -595,9 +644,7 @@ div.common .common_rule p {
 	}	
 
 	.rules_cards {
-		width: 100%;
-		display: flex;
-		gap: 1rem;
 	}
 
+	
 }
