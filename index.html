@@ -5,6 +5,8 @@
 
 	<script src="js/utility.js"></script>
 	<script src="data/ships_imperium.js"></script>
+	<script src="data/ships_commonwealth.js"></script>
+	<script src="data/ships_enlightened.js"></script>
 	<script src="data/properties.js"></script>
 	<script src="data/srs_properties.js"></script>
 	<script src="data/qualities.js"></script>
@@ -106,6 +108,7 @@
 
 			ships.forEach((shipKey) => {
 				const ship = shipData[shipKey]
+				console.log('ship', ship)
 				const shipName = ship.name
 				const card = $('.template .card').cloneNode(true)
 				card.dataset.ship = ship.name
@@ -171,6 +174,13 @@
 							rule = rule.replace(match[0], '<strong>' + match[1] + '"</strong>')
 						})
 					}
+
+					rule = rule.replaceAll('$IO^{"}$', '10"')
+
+					rule = rule.replaceAll('T"', '1"')
+
+					rule = rule.replaceAll(' o.', ' 0.')
+
 					return rule
 				}
 
@@ -188,17 +198,21 @@
 				const simpleProperties = ['boarding_parties']
 
 				const propertiesWrapperElement = card.find('.properties_content')
-				ship.properties.map((property, propertyId) => {
-					const propertyElement = document.createElement('div')
-					propertyElement.classList.add('property')
-					propertyElement.innerHTML = `<strong>${property}</strong>`
-					const propertySlug = slugify_rule(property)
-					if (!simpleProperties.includes(propertySlug)) {
-						// propertyElement.innerHTML += `<p>${cleanupRule(window.properties?.[propertySlug]?.value || '')}</p>`
-					}
-					rulesCardRules.push(property)
-					propertiesWrapperElement.appendChild(propertyElement)
-				})
+				if (ship?.properties?.length) {
+					ship.properties.map((property, propertyId) => {
+						const propertyElement = document.createElement('div')
+						propertyElement.classList.add('property')
+						propertyElement.innerHTML = `<strong>${property}</strong>`
+						const propertySlug = slugify_rule(property)
+						if (!simpleProperties.includes(propertySlug)) {
+							// propertyElement.innerHTML += `<p>${cleanupRule(window.properties?.[propertySlug]?.value || '')}</p>`
+						}
+						rulesCardRules.push(property)
+						propertiesWrapperElement.appendChild(propertyElement)
+					})
+				} else {
+					card.find('.properties').style.opacity = '0'
+				}
 
 				const simpleSystems = ['']
 
@@ -219,13 +233,18 @@
 
 				const weaponWrapperElement = card.find('.weapons tbody')
 
-				ship.weapons.map((weapon, weaponId) => {
+				function renderWeapon(weapon, container) {
+
+
+					// Todo: Render a weapon ID like 1,2,3,4 for hardpoint mapping. Make buttons under hardpoint weapons to toggle which weapon id they're replacing.
+					
+					console.log('renderWeapon', weapon)
 					const weaponRow = document.createElement('tr')
 					weaponRow.classList.add('weapon_name')
-					weaponWrapperElement.appendChild(weaponRow)
+					container.appendChild(weaponRow)
 					weaponRow.innerHTML = `
-						<td>${weapon.name}</td>
-						<td>${weapon.arc}</td>
+						<td>${weapon?.name || '-'}</td>
+						${weapon.arc ? `<td>${weapon.arc}</td>` : ''}
 						<td>${weapon.firepower_c || '-'}</td>
 						<td>${weapon.firepower_s || '-'}</td>
 						<td>${weapon.firepower_e || '-'}</td>
@@ -235,11 +254,63 @@
 					weapon.qualities.map((quality) => {
 						weaponQualities[quality.replace(/\(.*?\)/g, '(X)').trim()] = true
 					})
-					qualitiesRow.innerHTML = `
-						<td colspan="5">${weapon.qualities.join(', ')}</td>
-					`
-					weaponWrapperElement.appendChild(qualitiesRow)
+					if (weapon.qualities.length) {
+						const qualitiesArray = weapon.qualities.map((quality) => {
+							if (['Singular', 'Submerged', 'Torrent', 'Aerial', 'Assault', 'Bomb'].includes(quality)) {
+								return `<strong>${quality}</strong>`
+							}
+							return quality
+						})
+						qualitiesRow.innerHTML = `
+							<td colspan="5">
+								${qualitiesArray.join(', ')}
+							</td>
+						`
+					}
+					container.appendChild(qualitiesRow)
+				}
+
+				ship.weapons.map((weapon) => {
+					renderWeapon(weapon, weaponWrapperElement)
 				})
+
+
+				const optionsAndUpgradesContentElement = card.find('.options_and_upgrades_content')
+				if (ship?.options_and_upgrades?.length) {
+					ship.options_and_upgrades.map((optionAndUpgrade) => {
+						optionsAndUpgradesContentElement.innerHTML += `
+							<p>${optionAndUpgrade}</p>
+						`
+					})
+				} else {
+					card.find('.options_and_upgrades').style.display = 'none'
+				}
+
+				const hardpointOptionsContentElement = card.find('.hardpoint_options_content')
+				if (ship?.hardpoint_options) {
+					hardpointOptionsContentElement.style.display = 'block'
+
+					ship?.hardpoint_options.map((hardpointOption) => {
+						const hardPointWeaponTable = document.createElement('table')
+						hardPointWeaponTable.classList.add('weapons')
+						hardPointWeaponTable.innerHTML = `
+							<thead>
+								<tr>
+									<th>Weapon</th>
+									<th>C</th>
+									<th>S</th>
+									<th>E</th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						`
+						const hardPointWeaponTableBody = hardPointWeaponTable.querySelector('tbody')
+						renderWeapon(hardpointOption, hardPointWeaponTableBody)
+						hardpointOptionsContentElement.appendChild(hardPointWeaponTable)
+					})
+				} else {
+					hardpointOptionsContentElement.style.display = 'none'
+				}
 
 				output.append(card)
 
@@ -335,6 +406,8 @@
 		<button onclick="clearOptions()">Clear</button>
 		<select id="faction_select" onchange="selectFaction(event)">
 			<option value="imperium">Imperium</option>
+			<option value="commonwealth">Commonwealth</option>
+			<option value="enlightened">Enlightened</option>
 		</select>
 
 		<select id="print_layout" onChange="onChangePrintLayout(event)" style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%);">
@@ -356,6 +429,7 @@
 				<div>
 					<h1>
 						<span class="name"></span>
+						<!-- <span class="escorts"></span> -->
 					</h1>
 					<h2 class="class"></h2>
 					<div class="traits_wrapper">
@@ -426,7 +500,18 @@
 				</thead>
 				<tbody></tbody>
 			</table>
-		
+
+			<div class="alternate_configurations">
+				<div class="hardpoint_options">
+					<h3>Hardpoint Options</h3>
+					<div class="hardpoint_options_content"></div>
+				</div>
+
+				<div class="options_and_upgrades">
+					<h3>Options and Upgrades</h3>
+					<div class="options_and_upgrades_content"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </html>

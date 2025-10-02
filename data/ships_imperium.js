@@ -1,4 +1,4 @@
-window.imperium_ships = {
+window.imperium_ships =  {
 	asgard_rotor_tethership: {
 		name: 'ASGARD',
 		class: 'ROTOR TETHERSHIP',
@@ -132,6 +132,7 @@ window.imperium_ships = {
 			{
 				name: 'Bertha Heavy Bombard',
 				firepower_s: 6,
+				firepower_e: 11,
 				qualities: ['Arc (4)', 'Blast (5)'],
 			},
 			{
@@ -213,6 +214,7 @@ window.imperium_ships = {
 			{
 				name: 'Bertha Heavy Bombard',
 				firepower_s: 6,
+				firepower_e: 11,
 				qualities: ['Arc (4)', 'Blast (5)'],
 			},
 			{

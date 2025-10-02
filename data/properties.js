@@ -173,7 +173,7 @@ window.properties = {
 	},
 	mine_layer: {
 		name: 'MINE LAYER (X)',
-		value: 'As a Special Deployment Action, this model\'s unit can Distribute Mines. When it does, for each model in the unit with this Property, the unit\'s Admiral places up to X Minefield markers anywhere in the Play Area. Each one must be placed at least " from the enemy Deployment Zone, and cannot be placed within $T^{"}$ of a model, a Terrain Feature, or another Marker.',
+		value: 'As a Special Deployment Action, this model\'s unit can Distribute Mines. When it does, for each model in the unit with this Property, the unit\'s Admiral places up to X Minefield markers anywhere in the Play Area. Each one must be placed at least 10" from the enemy Deployment Zone, and cannot be placed within $T^{"}$ of a model, a Terrain Feature, or another Marker.',
 	},
 	mobile: {
 		name: 'MOBILE',
