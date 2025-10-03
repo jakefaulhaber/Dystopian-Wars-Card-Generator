@@ -48,16 +48,32 @@ body {
 	overflow-y: auto;
 }
 
-.list label sub {
-	display: block;
-	font-size: .8rem;
+.list p {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 500;
+	margin: 0 0 -.5rem 0;
+	
 }
 
-.list label {
+.list sub {
+	display: block;
+	font-size: .8rem;
+	font-family: 'Roboto Slab', sans-serif;
+}
+
+.list button {
+	border: none;
 	cursor: pointer;
 	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
 	gap: .5rem;
+	padding: .3rem;
 	margin: .5rem .5rem 0 0;
+}
+
+.list button:hover {
+	background-color: #ddd;
 }
 
 .card {
@@ -67,6 +83,24 @@ body {
 	border: .4rem solid #ccc;
 	border-width: .4rem;
 	margin: 1rem auto;
+}
+
+.card .remove_ship {
+	background-color: white;
+	z-index: 1;
+	border-radius: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+	width: 2.2rem;
+	height: 2.2rem;
+	background-image: url('/images/minus_icon.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
 }
 
 .card::after {
@@ -93,11 +127,19 @@ body {
 
 .hardpoint_options {
 	margin-bottom: 1rem;
-	width: 24rem;
+	width: 28rem;
+}
+
+.hardpoint_options label {
+	border: 1px solid grey;
+	padding: .2rem;
+	margin-right: .2rem;
+	background-color: #ccc;
+	color: black;
 }
 
 .options_and_upgrades {
-	width: 24rem;
+	width: 28rem;
 }
 
 .options_and_upgrades h3, .hardpoint_options h3 {
@@ -499,6 +541,28 @@ div.common .common_rule p {
 	background-color: #eee;
 }
 
+.weapon_name td > div {
+	position: relative;
+}
+
+.weapon_index {
+	background-color: #616195;
+	border: .2rem solid #7a7aab;
+	width: 1.5rem;
+	height: 1.5rem;
+	position: absolute;
+	left: -2.4rem;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 500;
+	font-size: .8rem;
+
+}
+
 /* .weapons td.w_qualities {
 	font-size: .8rem;
 	font-style: italic;
@@ -518,13 +582,26 @@ div.common .common_rule p {
 
 
 
+.rules_cards {
+	max-width: 35rem;
+	margin: 0 auto;
+}
+
 .rules_card {
 	position: relative;
 	padding: 1rem;
-	max-width: 35rem;
 	border: .4rem solid #ccc;
 	margin: 1rem auto;
 	/* display: none; */
+}
+
+.rules_card > strong {
+	font-size: .9rem;
+}
+
+.rules_card > h2 {
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
 }
 
 .rules_card p {
@@ -587,6 +664,7 @@ div.common .common_rule p {
 	@page {
 		padding: .5cm;
 	}
+
 	body {
 		margin: 0;
 		padding: 0;
@@ -595,7 +673,19 @@ div.common .common_rule p {
 	html {
 		font-size: 60%;
 	}
-   
+
+	.weapon_index {
+		display: none;
+	}
+
+	.alternate_configurations {
+		display: none;
+	}
+
+	.remove_ship {
+		display: none;
+	}
+
 	.options {
 		display: none;
 	}
@@ -613,6 +703,10 @@ div.common .common_rule p {
 		border-top: 1px dotted #333;
 	}
 
+	.output {
+		margin-bottom: .5rem;
+	}
+
 	.layout_1 .output {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
@@ -623,6 +717,15 @@ div.common .common_rule p {
 
 		/* display: grid;
 		grid-template-columns: 1fr 1fr; */
+	}
+
+	.layout_1 .rules_cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		align-items: flex-start;
+		page-break-before: always;
+		max-width: none;
 	}
 
 	.layout_1 .card, .layout_1 .common_rules, .layout_1 .rules_card {
@@ -639,30 +742,26 @@ div.common .common_rule p {
 		grid-template-columns: 1fr 1fr; */
 	}
 
-	.layout_2 .card, .layout_2 .common_rules, .layout_2 .rules_card {
+	.layout_2 .rules_cards {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		align-items: flex-start;
+		page-break-before: always;
+		max-width: none;
+	}
+
+	.layout_2 .card {
 		page-break-inside: avoid;
 		margin: 0;
 		width: 35rem;
-		height: 60rem;
 		box-sizing: border-box;
 		max-width: none;
 	}
 
-	.layout_2 .hide_card_rules .rules.main, .layout_2 .hide_card_rules .rules.secondary, .layout_2 .hide_card_rules .rules.common {
-		display: none;
-	}
-
-	.layout_2 .hide_card_rules .separate_on_card {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
 	.layout_2 .rules_card {
-		display: block;
-	}
-
-	.layout_2 .rules_card.compact {
-		font-size: .9rem;
+		width: auto;
+		page-break-inside: avoid;
 	}
 
 	.layout_3 .output {
@@ -686,7 +785,7 @@ div.common .common_rule p {
 		justify-content: center;
 	}
 
-	.layout_3 .common_rules, .layout_3 .rules_card {
+	.layout_3 .rules_card {
 		page-break-inside: avoid;
 		margin: 0 10rem;
 		width: 40rem;
@@ -712,4 +811,21 @@ div.common .common_rule p {
 	}
 
 	
+}
+
+
+@media print and (orientation: portrait) {
+
+	.layout_1 .output {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: 1fr 1fr;
+		align-items: flex-start;
+	}
+
+	.layout_1 .card {
+		max-width: none;
+		margin: 0;
+	}
+
 }

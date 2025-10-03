@@ -10,6 +10,7 @@
 	<script src="data/properties.js"></script>
 	<script src="data/srs_properties.js"></script>
 	<script src="data/qualities.js"></script>
+	<script src="data/generators.js"></script>
 	<script src="data/systems.js"></script>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +21,11 @@
 	<script>
 		const savedOptions = {}
 		const savedOptionsString = getCookie('options')
-		let savedList = getCookie('list') || ''
+		let savedList = getCookie('list') ? JSON.parse(getCookie('list')) : []
 
 		if (savedOptionsString) {
 			Object.assign(savedOptions, JSON.parse(savedOptionsString))
 		}
-
-		console.log({savedOptions})
 
 		function selectFaction(e, faction) {
 			if (faction) {
@@ -36,6 +35,7 @@
 				faction = e.target.value
 				setCookie('faction', faction, 365)
 				setCookie('options', '', 0)
+				saveList([])
 			}
 			init(faction)
 		}
@@ -49,26 +49,31 @@
 			setCookie('options', JSON.stringify(savedOptions), 365)
 		}
 
-		function saveList(e) {
-			let newSavedList = ''
-			document.querySelectorAll('.list input:checked').forEach((input) => {
-				if (input.checked) {
-					newSavedList += newSavedList ? ',' + input.value : input.value
-				}
-			})
-
-			if (newSavedList != savedList) {
-				setCookie('list', newSavedList, 365)
-				savedList = newSavedList
-				init(getCookie('faction'))
-			}
-
-			setCookie('list', savedList, 365)
+		function saveList(newList) {
+			const newListString = JSON.stringify(newList)
+			setCookie('list', newListString, 365)
+			savedList = newList
+			init(getCookie('faction'))
 		}
 
 		function getShipData(shipName) {
 			console.log('getShipData', shipName, window[getCookie('faction') + '_ships'])
 			return window[getCookie('faction') + '_ships'].find((ship) => ship.name == shipName)
+		}
+
+		function addShipToList(e, shipName) {
+			e.preventDefault()
+			const shipObject = {shipKey:shipName}
+			savedList.push(shipObject)
+			saveList(savedList)
+		}
+
+		function removeShipFromList(e) {
+			e.preventDefault()
+			const shipElement = e.target.closest('.card')
+			const shipIndex = shipElement.dataset.shipIndex
+			savedList.splice(shipIndex, 1)
+			saveList(savedList)
 		}
 
 		function init(faction) {
@@ -77,41 +82,92 @@
 			listElement.innerHTML = ''
 			output.innerHTML = ''
 
-			const shipData = window[faction + '_ships']
+			const shipData = window.shipData = window[faction + '_ships']
 			document.querySelector('.rules_cards').innerHTML = ''
 
 			console.log('init', faction, faction + '_ships', shipData)
 
 			// loop over object
-			Object.keys(shipData).forEach((shipName) => {
+			Object.keys(shipData).sort().map((shipName) => {
 				const ship = shipData[shipName]
 				let displayName = ship.name
 				let shipClass = ship.class
-				if (displayName.indexOf('CONFIGURATION') > -1) {
-					displayName = ship?.class
-					shipClass = ship?.name
-				}
-				listElement.innerHTML += `<label>
-					<input type="checkbox" onchange="saveList(event)" ${savedList.indexOf(ship.name) > -1 ? 'checked' : ''} value="${shipName}" />
-					<div>
-						${displayName}
+
+				listElement.innerHTML += `
+					<button onClick="addShipToList(event, '${shipName}')">
+						<p>${displayName}</p>
 						${shipClass ? `<sub>${shipClass}</sub>` : ''}
-					</div>
-				</label>`
+					</button>
+				`
 			})
 
-			const ships = savedList.length ? savedList.split(',') : []
+			const currentList = savedList || []
 
+			const systemsRules = []
+			const propertiesRules = []
+			const weaponQualities = []
 
-			const rulesCardRules = []
-			const weaponQualities = {}
+			function slugify_rule(rule) {
+				let slug = rule
+				if (rule.indexOf(':') > -1) {
+					slug = rule.split(':')[0]
+				}
+				slug = slug.replace(/\(.*?\)/g, '').trim()
+				slug = slug.toLowerCase().replace(/ /g, '_')
+				return slug
+			}
 
-			ships.forEach((shipKey) => {
-				const ship = shipData[shipKey]
-				console.log('ship', ship)
+			function cleanupRuleName(rule) {
+				return rule.replace(/\(.*?\)/g, '(X)').trim()
+			}
+
+			function cleanupRule(rule) {
+				const cites = rule.matchAll(/\[cite:(.*?)\]/g)
+				if (cites) {
+					cites.forEach((cite) => {
+						rule = rule.replace(cite[0], '<cite>[cite: ' + cite[1] + ']</cite>')
+					})
+				}
+
+				rule = rule.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+
+				let inchMatches = rule.matchAll(/\$(.)\^{"}\$/g)
+				if (inchMatches) {
+					inchMatches.forEach((match) => {
+						rule = rule.replace(match[0], '<strong>' + match[1] + '"</strong>')
+					})
+				}
+
+				rule = rule.replaceAll('$IO^{"}$', '10"')
+
+				rule = rule.replaceAll('T"', '1"')
+
+				rule = rule.replaceAll(' o.', ' 0.')
+
+				rule = rule.replaceAll('$2 \\times$', '2x')
+
+				return rule
+			}
+
+			function cleanupQualityName(quality) {
+				let qualityName = quality
+				if (quality.indexOf(':') > -1) {
+					qualityName = quality.split(':')[0]
+					if (quality.indexOf('(X)') > -1) {
+						qualityName += ' (X)'
+					}
+				}
+				return qualityName.replace(/\(.*?\)/g, '(X)').trim()
+			}
+
+			currentList.forEach((shipObject, shipIndex) => {
+				// console.log('shipObject', shipObject)
+				const ship = shipData[shipObject.shipKey]
+				// console.log('ship', ship)
 				const shipName = ship.name
 				const card = $('.template .card').cloneNode(true)
 				card.dataset.ship = ship.name
+				card.dataset.shipIndex = shipIndex
 				
 
 				let displayName = ship?.name
@@ -144,59 +200,6 @@
 
 				card.find('.traits').innerHTML = ship.traits.join(', ')
 
-				function slugify_rule(rule) {
-					let slug = rule
-					if (rule.indexOf(':') > -1) {
-						slug = rule.split(':')[0]
-					}
-					slug = slug.replace(/\(.*?\)/g, '').trim()
-					slug = slug.toLowerCase().replace(/ /g, '_')
-					return slug
-				}
-
-				function cleanupRuleName(rule) {
-					return rule.replace(/\(.*?\)/g, '(X)').trim()
-				}
-
-				function cleanupRule(rule) {
-					const cites = rule.matchAll(/\[cite:(.*?)\]/g)
-					if (cites) {
-						cites.forEach((cite) => {
-							rule = rule.replace(cite[0], '<cite>[cite: ' + cite[1] + ']</cite>')
-						})
-					}
-
-					rule = rule.replaceAll(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-
-					let inchMatches = rule.matchAll(/\$(.)\^{"}\$/g)
-					if (inchMatches) {
-						inchMatches.forEach((match) => {
-							rule = rule.replace(match[0], '<strong>' + match[1] + '"</strong>')
-						})
-					}
-
-					rule = rule.replaceAll('$IO^{"}$', '10"')
-
-					rule = rule.replaceAll('T"', '1"')
-
-					rule = rule.replaceAll(' o.', ' 0.')
-
-					return rule
-				}
-
-				function cleanupQualityName(quality) {
-					let qualityName = quality
-					if (quality.indexOf(':') > -1) {
-						qualityName = quality.split(':')[0]
-						if (quality.indexOf('(X)') > -1) {
-							qualityName += ' (X)'
-						}
-					}
-					return qualityName.replace(/\(.*?\)/g, '(X)').trim()
-				}
-
-				const simpleProperties = ['boarding_parties']
-
 				const propertiesWrapperElement = card.find('.properties_content')
 				if (ship?.properties?.length) {
 					ship.properties.map((property, propertyId) => {
@@ -204,10 +207,7 @@
 						propertyElement.classList.add('property')
 						propertyElement.innerHTML = `<strong>${property}</strong>`
 						const propertySlug = slugify_rule(property)
-						if (!simpleProperties.includes(propertySlug)) {
-							// propertyElement.innerHTML += `<p>${cleanupRule(window.properties?.[propertySlug]?.value || '')}</p>`
-						}
-						rulesCardRules.push(property)
+						propertiesRules.push(property)
 						propertiesWrapperElement.appendChild(propertyElement)
 					})
 				} else {
@@ -217,33 +217,35 @@
 				const simpleSystems = ['']
 
 				const systemsWrapperElement = card.find('.systems_content')
-				ship.systems.map((system, systemId) => {
-					const systemElement = document.createElement('div')
-					systemElement.classList.add('system')
-					systemElement.innerHTML = `<strong>${system}</strong>`
-					const systemSlug = slugify_rule(system)
-					if (!simpleSystems.includes(systemSlug)) {
-						// systemElement.innerHTML += `<p>${cleanupRule(window.systems?.[systemSlug]?.value || '')}</p>`
-					}
-					rulesCardRules.push(system)
-					systemsWrapperElement.appendChild(systemElement)
-				})
+				if (ship?.systems?.length) {
+					ship.systems.map((system, systemId) => {
+						const systemElement = document.createElement('div')
+						systemElement.classList.add('system')
+						systemElement.innerHTML = `<strong>${system}</strong>`
+						const systemSlug = slugify_rule(system)
+						if (!simpleSystems.includes(systemSlug)) {
+							// systemElement.innerHTML += `<p>${cleanupRule(window.systems?.[systemSlug]?.value || '')}</p>`
+						}
+						systemsRules.push(system)
+						systemsWrapperElement.appendChild(systemElement)
+					})
+				} else {
+					card.find('.systems').style.opacity = '0'
+				}
 
 				const mainRulesElement = card.find('.rules.main')
 
 				const weaponWrapperElement = card.find('.weapons tbody')
 
-				function renderWeapon(weapon, container) {
+				function renderWeapon(weapon, container, index, drawIndexLabel) {
 
-
-					// Todo: Render a weapon ID like 1,2,3,4 for hardpoint mapping. Make buttons under hardpoint weapons to toggle which weapon id they're replacing.
-					
-					console.log('renderWeapon', weapon)
+					// console.log('renderWeapon', weapon)
 					const weaponRow = document.createElement('tr')
 					weaponRow.classList.add('weapon_name')
 					container.appendChild(weaponRow)
+					const indexLabel = drawIndexLabel ? `<div class="weapon_index">${index}</div>` : ''
 					weaponRow.innerHTML = `
-						<td>${weapon?.name || '-'}</td>
+						<td><div>${indexLabel}${weapon?.name || '-'}</div></td>
 						${weapon.arc ? `<td>${weapon.arc}</td>` : ''}
 						<td>${weapon.firepower_c || '-'}</td>
 						<td>${weapon.firepower_s || '-'}</td>
@@ -252,7 +254,7 @@
 					const qualitiesRow = document.createElement('tr')
 					qualitiesRow.classList.add('qualities')
 					weapon.qualities.map((quality) => {
-						weaponQualities[quality.replace(/\(.*?\)/g, '(X)').trim()] = true
+						weaponQualities.push(quality)
 					})
 					if (weapon.qualities.length) {
 						const qualitiesArray = weapon.qualities.map((quality) => {
@@ -270,8 +272,22 @@
 					container.appendChild(qualitiesRow)
 				}
 
-				ship.weapons.map((weapon) => {
-					renderWeapon(weapon, weaponWrapperElement)
+				ship.weapons.map((weapon, weaponIndex) => {
+					let replaced = false
+					if (shipObject.hardpointOptions) {
+						Object.keys(shipObject.hardpointOptions).forEach((hardpointIndex) => {
+							const hardpointWeaponIndexes = shipObject.hardpointOptions[hardpointIndex]
+							if (hardpointWeaponIndexes[weaponIndex]) {
+								const hardpointWeapon = shipData[shipObject.shipKey].hardpoint_options[hardpointIndex]
+								hardpointWeapon.arc = weapon.arc
+								renderWeapon(hardpointWeapon, weaponWrapperElement, weaponIndex, true)
+								replaced = true
+							}
+						})
+					}
+					if (!replaced) {
+						renderWeapon(weapon, weaponWrapperElement, weaponIndex, true)
+					}
 				})
 
 
@@ -286,14 +302,35 @@
 					card.find('.options_and_upgrades').style.display = 'none'
 				}
 
+
+				window.saveHardpointOption = function(e, shipIndex) {
+					const hardpointElement = e.target
+					const checked = hardpointElement.checked
+					const hardpointIndex = hardpointElement.dataset.hardpointIndex
+					const hardpointWeaponIndex = hardpointElement.value
+
+					const savedShip = savedList[shipIndex]
+					savedShip.hardpointOptions = savedShip.hardpointOptions || {}
+					if (checked) {
+						if (!savedShip.hardpointOptions[hardpointIndex]) {
+							savedShip.hardpointOptions[hardpointIndex] = {}
+						}
+						savedShip.hardpointOptions[hardpointIndex][hardpointWeaponIndex] = true
+					} else {
+						delete savedShip.hardpointOptions[hardpointIndex][hardpointWeaponIndex]
+					}
+
+					saveList(savedList)
+				}
+
 				const hardpointOptionsContentElement = card.find('.hardpoint_options_content')
-				if (ship?.hardpoint_options) {
+				if (ship?.hardpoint_options && ship?.hardpoint_options.length) {
 					hardpointOptionsContentElement.style.display = 'block'
 
-					ship?.hardpoint_options.map((hardpointOption) => {
-						const hardPointWeaponTable = document.createElement('table')
-						hardPointWeaponTable.classList.add('weapons')
-						hardPointWeaponTable.innerHTML = `
+					ship?.hardpoint_options.map((hardpointOption, hardpointIndex) => {
+						const hardpointWeaponTable = document.createElement('table')
+						hardpointWeaponTable.classList.add('weapons')
+						hardpointWeaponTable.innerHTML = `
 							<thead>
 								<tr>
 									<th>Weapon</th>
@@ -304,33 +341,80 @@
 							</thead>
 							<tbody></tbody>
 						`
-						const hardPointWeaponTableBody = hardPointWeaponTable.querySelector('tbody')
-						renderWeapon(hardpointOption, hardPointWeaponTableBody)
-						hardpointOptionsContentElement.appendChild(hardPointWeaponTable)
+						const hardpointWeaponTableBody = hardpointWeaponTable.querySelector('tbody')
+						renderWeapon(hardpointOption, hardpointWeaponTableBody)
+						hardpointOptionsContentElement.appendChild(hardpointWeaponTable)
+
+						const hardpointOptions = document.createElement('div')
+						hardpointOptions.innerHTML = `<strong>Assign to Hardpoint: </strong>`
+						hardpointOptions.classList.add('hardpoint_options')
+						ship.weapons.map((weapon, weaponIndex) => {
+							const checked = savedList[shipIndex].hardpointOptions?.[hardpointIndex]?.[weaponIndex]
+							hardpointOptions.innerHTML += `<label>${weaponIndex}<input ${checked ? 'checked=checked' : ''} onChange="saveHardpointOption(event, ${shipIndex})" data-hardpoint-index="${hardpointIndex}" type="checkbox" value="${weaponIndex}" /></label>`
+						})
+						hardpointOptionsContentElement .appendChild(hardpointOptions)
 					})
 				} else {
-					hardpointOptionsContentElement.style.display = 'none'
+					card.find('.hardpoint_options').style.display = 'none'
 				}
 
 				output.append(card)
-
-				const rulesCard = document.createElement('div')
-				rulesCard.classList.add('rules_card')
-				$('.rules_cards').append(rulesCard)
-				rulesCardRules.sort().map((rule) => {
-					const ruleSlug = slugify_rule(rule)
-					const ruleValue = window.properties?.[ruleSlug]?.value || window.systems?.[ruleSlug]?.value || ''
-					rulesCard.innerHTML += `<strong>${cleanupRuleName(rule)}</strong><p>${cleanupRule(ruleValue)}</p>`
-				})
-
-				const qualitiesCard = document.createElement('div')
-				qualitiesCard.classList.add('rules_card')
-				$('.rules_cards').append(qualitiesCard)
-				Object.keys(weaponQualities).sort().map((quality) => {
-					qualitiesCard.innerHTML += `<strong>${cleanupQualityName(quality)}</strong><p>${cleanupRule(window.qualities?.[slugify_rule(quality)]?.value || '')}</p>`
-				})
-
 			})
+
+
+			function renderRuleCard(title, rules, rulesData) {
+				const cardElement = document.createElement('div')
+				cardElement.classList.add('rules_card')
+				$('.rules_cards').append(cardElement)
+
+				const ruleSlugs = {}
+				rules.map((rule) => {
+					const ruleSlug = slugify_rule(rule)
+					ruleSlugs[ruleSlug] = true
+				})
+
+				cardElement.innerHTML += `<h2>${title}</h2>`
+
+				Object.keys(ruleSlugs).sort().map((ruleSlug) => {
+					const ruleName = cleanupRuleName(rulesData?.[ruleSlug]?.name)
+					const ruleValue = rulesData?.[ruleSlug]?.value || ''
+					cardElement.innerHTML += `<strong>${ruleName}</strong><p>${cleanupRule(ruleValue)}</p>`
+				})
+			}
+
+			renderRuleCard('Systems', systemsRules, window.systems)
+			renderRuleCard('Properties', propertiesRules, window.properties)
+			renderRuleCard('Qualities', weaponQualities, window.qualities)
+
+			// const systemsCard = document.createElement('div')
+			// systemsCard.classList.add('rules_card')
+			// $('.rules_cards').append(rulesCard)
+			// systemsRules.sort().map((rule) => {
+			// 	const ruleSlug = slugify_rule(rule)
+			// 	const ruleValue = window.properties?.[ruleSlug]?.value || window.systems?.[ruleSlug]?.value || ''
+			// 	rulesCard.innerHTML += `<strong>${cleanupRuleName(rule)}</strong><p>${cleanupRule(ruleValue)}</p>`
+			// })
+
+			// const propertiesCard = document.createElement('div')
+			// propertiesCard.classList.add('rules_card')
+			// $('.rules_cards').append(propertiesCard)
+			// propertiesRules.sort().map((rule) => {
+			// 	const ruleSlug = slugify_rule(rule)
+			// 	const ruleValue = window.properties?.[ruleSlug]?.value || window.systems?.[ruleSlug]?.value || ''
+			// 	propertiesCard.innerHTML += `<strong>${cleanupRuleName(rule)}</strong><p>${cleanupRule(ruleValue)}</p>`
+			// })
+
+			// const qualitiesCard = document.createElement('div')
+			// qualitiesCard.classList.add('rules_card')
+			// $('.rules_cards').append(qualitiesCard)
+			// weaponQualities.sort().map((quality) => {
+			// 	if (quality == 'N/A') {
+			// 		return
+			// 	}
+			// 	qualitiesCard.innerHTML += `<strong>${cleanupQualityName(quality)}</strong><p>${cleanupRule(window.qualities?.[slugify_rule(quality)]?.value || '')}</p>`
+			// })
+			
+
 		}
 
 		window.addEventListener('load', () => {
@@ -425,6 +509,7 @@
 
 	<div class="template" style="display: none;">
 		<div class="card">
+			<button class="remove_ship" onclick="removeShipFromList(event)"></button>
 			<div class="header">
 				<div>
 					<h1>
