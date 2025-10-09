@@ -577,7 +577,7 @@ window.commonwealth_ships = {
 			rep: '3',
 			crw: '9',
 		},
-		properties: ['Ablative Armour (3)', 'Heavy Prow (5)'],
+		properties: ['Ablative Armour (6)', 'Heavy Prow (6)'],
 		systems: ["Boosted Propulsion (+3'')", 'Shockwave Generator'],
 		weapons: [
 			{
@@ -591,24 +591,24 @@ window.commonwealth_ships = {
 			{
 				name: 'Heavy Gun Battery',
 				arc: 'FPS',
-				firepower_c: 6,
-				firepower_s: 8,
+				firepower_c: 7,
+				firepower_s: 10,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
 			{
 				name: 'Heavy Gun Battery',
 				arc: 'FP',
-				firepower_c: 6,
-				firepower_s: 8,
+				firepower_c: 7,
+				firepower_s: 10,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
 			{
 				name: 'Heavy Gun Battery',
 				arc: 'FS',
-				firepower_c: 6,
-				firepower_s: 8,
+				firepower_c: 7,
+				firepower_s: 10,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
@@ -616,7 +616,7 @@ window.commonwealth_ships = {
 				name: 'Light Gun Battery',
 				arc: 'FP',
 				firepower_c: 4,
-				firepower_s: 6,
+				firepower_s: 7,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
@@ -624,7 +624,7 @@ window.commonwealth_ships = {
 				name: 'Light Gun Battery',
 				arc: 'FS',
 				firepower_c: 4,
-				firepower_s: 6,
+				firepower_s: 7,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
@@ -640,9 +640,9 @@ window.commonwealth_ships = {
 			{
 				name: 'Yastreb Missile Battery',
 				firepower_c: 'N/A',
-				firepower_s: 7,
+				firepower_s: 8,
 				firepower_e: 4,
-				qualities: ['All Around'],
+				qualities: ['All Around', 'Barrage'],
 			},
 			{
 				name: 'Railgun',
@@ -1369,7 +1369,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 85,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -1451,7 +1451,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 80,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -1531,7 +1531,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 90,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '2-4',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Line', 'Ship'],
 		stats: {
@@ -1592,7 +1592,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 135,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Line', 'Ship'],
 		stats: {
@@ -1683,7 +1683,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 130,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Line', 'Ship'],
 		stats: {
@@ -1702,18 +1702,18 @@ window.commonwealth_ships = {
 		systems: ["Boosted Propulsion (+3'')"],
 		weapons: [
 			{
-				name: 'Heavy Gun Battery',
+				name: 'Focused Heavy Gun Battery',
 				arc: 'FPS',
-				firepower_c: 5,
-				firepower_s: 7,
+				firepower_c: 6,
+				firepower_s: 8,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
 			{
-				name: 'Heavy Gun Battery',
+				name: 'Focused Heavy Gun Battery',
 				arc: 'PSA',
-				firepower_c: 5,
-				firepower_s: 7,
+				firepower_c: 6,
+				firepower_s: 8,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
@@ -1728,10 +1728,10 @@ window.commonwealth_ships = {
 		],
 		hardpoint_options: [
 			{
-				name: 'Tri-Railgun',
+				name: 'Focused Tri-Railgun',
 				firepower_c: 2,
-				firepower_s: 3,
-				firepower_e: 3,
+				firepower_s: 4,
+				firepower_e: 4,
 				qualities: ['Rail (2)'],
 			},
 			{
@@ -1742,9 +1742,9 @@ window.commonwealth_ships = {
 				qualities: ['All Around', 'Barrage'],
 			},
 			{
-				name: 'Light Gun Battery',
-				firepower_c: 3,
-				firepower_s: 5,
+				name: 'Focused Light Gun Battery',
+				firepower_c: 4,
+				firepower_s: 6,
 				firepower_e: 'N/A',
 				qualities: ['N/A'],
 			},
@@ -1773,7 +1773,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 137,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Airborne', 'Line', 'Airship'],
 		stats: {
@@ -1838,7 +1838,7 @@ window.commonwealth_ships = {
 		type: 'line',
 		points: 118,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -1918,7 +1918,7 @@ window.commonwealth_ships = {
 		type: 'patrol',
 		points: 65,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Patrol', 'Ship'],
 		stats: {
@@ -2373,9 +2373,9 @@ window.commonwealth_ships = {
 		hardpoint_options: [],
 		options_and_upgrades: [],
 	},
-	"markov's_prometheus_support": {
+	"markovs_prometheus_support": {
 		name: "MARKOV'S PROMETHEUS",
-		class: 'N/A',
+		class: 'GENERATOR SHIP',
 		type: 'support',
 		points: 312,
 		escorts: '0-4',
@@ -2446,7 +2446,7 @@ window.commonwealth_ships = {
 		type: 'support',
 		points: 'III',
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -2515,7 +2515,7 @@ window.commonwealth_ships = {
 		type: 'support',
 		points: 118,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Airborne', 'Support', 'Airship'],
 		stats: {
@@ -2614,7 +2614,7 @@ window.commonwealth_ships = {
 		type: 'support',
 		points: 65,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -2681,7 +2681,7 @@ window.commonwealth_ships = {
 		type: 'support',
 		points: 130,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
@@ -2849,7 +2849,7 @@ window.commonwealth_ships = {
 		type: 'scout',
 		points: 118,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Airborne', 'Scout', 'Airship'],
 		stats: {
@@ -3078,7 +3078,7 @@ window.commonwealth_ships = {
 		type: 'scout',
 		points: 100,
 		escorts: 'N/A',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Scout', 'Ship'],
 		stats: {
@@ -3237,7 +3237,7 @@ window.commonwealth_ships = {
 		type: 'scout',
 		points: 68,
 		escorts: '0-4',
-		vpr: 50,
+		vpr: 5,
 		models: '2-4',
 		traits: ['Commonwealth', 'Russian', 'Surface', 'Scout', 'Hovercraft'],
 		stats: {
@@ -3433,7 +3433,7 @@ window.commonwealth_ships = {
 		type: 'logistical',
 		points: 65,
 		escorts: '0-2',
-		vpr: 50,
+		vpr: 5,
 		models: '1-3',
 		traits: [
 			'Commonwealth',
